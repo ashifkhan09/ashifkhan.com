@@ -1,0 +1,699 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const experience = [
+  {
+    company: 'Yahoo DSP',
+    role: 'Senior Product Manager, Brand Safety & Contextual Targeting',
+    period: 'May 2022 – Present',
+    location: 'Raleigh, NC',
+    highlights: [
+      'Grew contextual targeting market adoption from 50% → 85% through a comprehensive product redesign',
+      'Launched suite of CTV brand safety products and advanced contextual targeting capabilities',
+      'Architected AI-powered audience recommendation engine — improved targeting precision by 40%',
+      'Orchestrated migration of enterprise viewability platform with tiered pricing strategy',
+    ],
+  },
+  {
+    company: 'Yahoo Inc.',
+    role: 'Price Yield Manager',
+    period: 'Aug 2019 – May 2022',
+    location: 'New York, NY',
+    highlights: [
+      'Designed strategic pricing models and yield optimization algorithms for programmatic inventory',
+      'Built pricing automation tools and data visualization dashboards with engineering',
+      'Established streamlined processes for custom pricing workflows',
+    ],
+  },
+  {
+    company: 'Content IQ',
+    role: 'Revenue Analytics & Yield Manager',
+    period: 'Dec 2018 – Aug 2019',
+    location: 'New York, NY',
+    highlights: [
+      'Managed programmatic revenue optimization and partner relationships',
+      'Implemented A/B testing methodologies to optimize performance',
+    ],
+  },
+  {
+    company: 'Seeking Alpha',
+    role: 'Digital Media Yield & Analytics Manager',
+    period: 'May 2017 – Dec 2018',
+    location: 'New York, NY',
+    highlights: [
+      'Analyzed advertising campaign performance across exchanges',
+      'Established relationships with new SSPs and demand partners',
+    ],
+  },
+];
+
+const skills = [
+  { group: 'Product', items: ['Product Strategy', 'Roadmap Prioritization', 'User Research', 'A/B Testing', 'Go-to-Market'] },
+  { group: 'Technical', items: ['SQL', 'Data Analytics', 'Machine Learning', 'GenAI & LLMs', 'Programmatic Advertising'] },
+  { group: 'Domain', items: ['AdTech & DSP', 'Brand Safety', 'Contextual Targeting', 'CTV', 'Yield Optimization'] },
+];
+---
+
+<BaseLayout>
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="hero-grid"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-tag">Senior Product Manager</div>
+      <h1 class="hero-headline">
+        Building products at the intersection of <em>ad-tech</em> and <em>intelligence</em>
+      </h1>
+      <p class="hero-sub">
+        14 years shipping high-impact products at Yahoo DSP — from contextual targeting and brand safety 
+        to GenAI-powered audience solutions. Based in Raleigh, NC.
+      </p>
+      <div class="hero-actions">
+        <a href="#experience" class="btn-primary">View Experience</a>
+        <a href="/resume.pdf" class="btn-ghost" target="_blank">Download Resume ↗</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num">14+</span>
+          <span class="stat-label">Years in AdTech</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">50→85%</span>
+          <span class="stat-label">Contextual Adoption</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">40%</span>
+          <span class="stat-label">Targeting Precision Gain</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <span>scroll</span>
+      <div class="hero-scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <section class="about-section" id="about">
+    <div class="section">
+      <div class="about-grid">
+        <div class="about-left reveal">
+          <p class="section-label">About</p>
+          <h2 class="section-title">PM who ships, not just<br/>strategizes</h2>
+          <p class="about-body">
+            I'm a product manager with deep roots in digital advertising technology — programmatic platforms, 
+            data analytics, and the full lifecycle from idea to market impact. Currently at Yahoo DSP, I focus on
+            Brand Safety and Contextual Targeting: making sure ads appear in the right context, at the right price, 
+            powered by the right signals.
+          </p>
+          <p class="about-body">
+            What drives me is the intersection of precision and scale — building systems that handle millions 
+            of decisions per second while still feeling thoughtful to the end user. Lately that means applying 
+            GenAI and ML to ad-tech problems that were previously too complex to solve at scale.
+          </p>
+          <a href="mailto:ashif@ashifkhan.com" class="about-cta">Let's connect →</a>
+        </div>
+        <div class="about-right reveal">
+          <div class="skills-block">
+            {skills.map(group => (
+              <div class="skill-group">
+                <p class="skill-group-label">{group.group}</p>
+                <div class="skill-chips">
+                  {group.items.map(item => (
+                    <span class="chip">{item}</span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── EXPERIENCE ── -->
+  <section class="exp-section" id="experience">
+    <div class="section">
+      <div class="exp-header reveal">
+        <p class="section-label">Experience</p>
+        <h2 class="section-title">Where I've built</h2>
+      </div>
+      <div class="timeline">
+        {experience.map((job, i) => (
+          <div class={`timeline-item reveal ${i === 0 ? 'timeline-item--current' : ''}`}>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-meta">
+                <span class="timeline-period">{job.period}</span>
+                <span class="timeline-location">{job.location}</span>
+              </div>
+              <p class="timeline-company">{job.company}</p>
+              <p class="timeline-role">{job.role}</p>
+              <ul class="timeline-highlights">
+                {job.highlights.map(h => (
+                  <li>{h}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="exp-earlier reveal">
+        <p class="exp-earlier-label">Earlier roles</p>
+        <div class="exp-earlier-list">
+          <div class="exp-earlier-item">
+            <span class="exp-earlier-co">Seeking Alpha</span>
+            <span class="exp-earlier-role">Team Lead, Digital Analytics</span>
+            <span class="exp-earlier-year">2016–2017</span>
+          </div>
+          <div class="exp-earlier-item">
+            <span class="exp-earlier-co">S&P Global Market Intelligence</span>
+            <span class="exp-earlier-role">Research Analyst</span>
+            <span class="exp-earlier-year">2011–2012</span>
+          </div>
+          <div class="exp-earlier-item">
+            <span class="exp-earlier-co">Mercer</span>
+            <span class="exp-earlier-role">Senior Analyst</span>
+            <span class="exp-earlier-year">2009–2011</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BUILDING ── -->
+  <section class="building-section" id="building">
+    <div class="section">
+      <div class="reveal">
+        <p class="section-label">Building</p>
+        <h2 class="section-title">What I'm working on</h2>
+        <p class="building-sub">
+          Outside of Yahoo, I'm exploring ideas at the intersection of AI, community, and entrepreneurship.
+        </p>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card reveal">
+          <div class="project-icon">⚡</div>
+          <h3 class="project-title">AI Competitor Intelligence Agent</h3>
+          <p class="project-desc">
+            An automated system that monitors DSP and contextual targeting trends across 
+            competitors — surfacing insights that would take hours of manual research.
+          </p>
+          <span class="project-tag">In progress</span>
+        </div>
+        <div class="project-card reveal">
+          <div class="project-icon">📊</div>
+          <h3 class="project-title">TLAQ Trading Program</h3>
+          <p class="project-desc">
+            A quantitative, systematic approach to algorithmic trading — applying the same 
+            data-driven rigor I bring to product decisions to personal finance.
+          </p>
+          <span class="project-tag">Exploring</span>
+        </div>
+        <div class="project-card reveal">
+          <div class="project-icon">🤖</div>
+          <h3 class="project-title">OpenClaw on Raspberry Pi 5</h3>
+          <p class="project-desc">
+            Running local AI infrastructure on edge hardware. Currently using Gemini 2.5 Flash 
+            via direct Node.js with systemd — tinkering at the intersection of hardware and LLMs.
+          </p>
+          <span class="project-tag">Tinkering</span>
+        </div>
+        <div class="project-card project-card--cta reveal">
+          <p class="project-cta-text">
+            Interested in what I'm building, or want to collaborate?
+          </p>
+          <a href="mailto:ashif@ashifkhan.com" class="btn-primary">Get in touch →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--ink);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(250, 249, 247, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(250, 249, 247, 0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: calc(var(--nav-h) + 4rem) 2rem 6rem;
+      width: 100%;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      border: 1px solid rgba(200, 80, 26, 0.4);
+      padding: 0.35rem 0.85rem;
+      border-radius: 100px;
+      margin-bottom: 2rem;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .hero-headline {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: var(--paper);
+      max-width: 18ch;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.8s 0.1s ease both;
+    }
+
+    .hero-headline em {
+      font-style: italic;
+      color: var(--accent-light);
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 1.5vw, 1.125rem);
+      color: rgba(250, 249, 247, 0.55);
+      max-width: 52ch;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 4rem;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--paper);
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover { background: var(--accent-light); transform: translateY(-1px); }
+
+    .btn-ghost {
+      display: inline-block;
+      border: 1px solid rgba(250, 249, 247, 0.2);
+      color: rgba(250, 249, 247, 0.7);
+      font-size: 0.875rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-ghost:hover { border-color: rgba(250, 249, 247, 0.5); color: var(--paper); }
+
+    .hero-stats {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      animation: fadeUp 0.8s 0.4s ease both;
+    }
+
+    .stat { display: flex; flex-direction: column; gap: 0.25rem; }
+
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 1.75rem;
+      color: var(--paper);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .stat-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(250, 249, 247, 0.4);
+    }
+
+    .stat-divider {
+      width: 1px;
+      height: 40px;
+      background: rgba(250, 249, 247, 0.12);
+    }
+
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      animation: fadeUp 1s 0.8s ease both;
+    }
+
+    .hero-scroll-hint span {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(250, 249, 247, 0.3);
+    }
+
+    .hero-scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, rgba(250,249,247,0.3), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    /* ── ABOUT ── */
+    .about-section { background: var(--paper-warm); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-body {
+      color: var(--ink-light);
+      line-height: 1.75;
+      font-weight: 300;
+      margin-bottom: 1rem;
+    }
+
+    .about-cta {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 1px;
+    }
+
+    .skills-block {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .skill-group-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 0.75rem;
+    }
+
+    .skill-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+    .chip {
+      font-size: 0.8125rem;
+      color: var(--ink-light);
+      background: var(--paper);
+      border: 1px solid var(--border-med);
+      padding: 0.375rem 0.875rem;
+      border-radius: 100px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .chip:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── EXPERIENCE ── */
+    .exp-section { background: var(--paper); }
+
+    .exp-header { margin-bottom: 3rem; }
+
+    .timeline {
+      position: relative;
+      padding-left: 1.5rem;
+      border-left: 1px solid var(--border);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 0 0 3rem 2.5rem;
+    }
+
+    .timeline-item:last-child { padding-bottom: 0; }
+
+    .timeline-dot {
+      position: absolute;
+      left: -2.1rem;
+      top: 6px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--border-med);
+      border: 2px solid var(--paper);
+    }
+
+    .timeline-item--current .timeline-dot {
+      background: var(--accent);
+      border-color: var(--accent-faint);
+    }
+
+    .timeline-meta {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-period {
+      font-size: 0.8rem;
+      color: var(--ink-faint);
+    }
+
+    .timeline-location {
+      font-size: 0.8rem;
+      color: var(--ink-faint);
+      padding-left: 1rem;
+      border-left: 1px solid var(--border);
+    }
+
+    .timeline-company {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-role {
+      font-size: 1.0625rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+
+    .timeline-highlights {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .timeline-highlights li {
+      font-size: 0.875rem;
+      color: var(--ink-light);
+      line-height: 1.6;
+      padding-left: 1rem;
+      position: relative;
+      font-weight: 300;
+    }
+
+    .timeline-highlights li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--border-med);
+    }
+
+    .exp-earlier {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .exp-earlier-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 1.25rem;
+    }
+
+    .exp-earlier-list { display: flex; flex-direction: column; gap: 0.875rem; }
+
+    .exp-earlier-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.875rem;
+    }
+
+    .exp-earlier-co { font-weight: 500; color: var(--ink); }
+    .exp-earlier-role { color: var(--ink-light); font-weight: 300; }
+    .exp-earlier-year {
+      margin-left: auto;
+      font-size: 0.8rem;
+      color: var(--ink-faint);
+    }
+
+    /* ── BUILDING ── */
+    .building-section {
+      background: var(--paper-warm);
+    }
+
+    .building-sub {
+      color: var(--ink-light);
+      font-weight: 300;
+      max-width: 50ch;
+      margin-bottom: 3rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+
+    .project-card {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .project-card:hover {
+      border-color: var(--border-med);
+      transform: translateY(-2px);
+    }
+
+    .project-icon {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-title {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 0.625rem;
+      line-height: 1.3;
+    }
+
+    .project-desc {
+      font-size: 0.875rem;
+      color: var(--ink-light);
+      line-height: 1.7;
+      font-weight: 300;
+      margin-bottom: 1.25rem;
+    }
+
+    .project-tag {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid rgba(200, 80, 26, 0.3);
+      padding: 0.25rem 0.65rem;
+      border-radius: 100px;
+    }
+
+    .project-card--cta {
+      background: var(--ink);
+      border-color: transparent;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 1.5rem;
+    }
+
+    .project-cta-text {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      color: var(--paper);
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.revealed {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; transform: scaleY(1); }
+      50% { opacity: 0.7; transform: scaleY(1.1); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero-stats { flex-wrap: wrap; gap: 1.25rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .exp-earlier-item { flex-wrap: wrap; }
+      .exp-earlier-year { margin-left: 0; }
+    }
+  </style>
+</BaseLayout>

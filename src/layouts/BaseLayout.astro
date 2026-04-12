@@ -1,0 +1,308 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Ashif Khan — Senior Product Manager',
+  description = 'Senior Product Manager specializing in AdTech, Brand Safety & Contextual Targeting, and GenAI Solutions. 14+ years building high-impact products at Yahoo DSP.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Ashif Khan" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ashifkhan.com" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="nav" id="nav">
+      <a href="/" class="nav-logo">Ashif Khan</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#building">Building</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <button class="nav-menu-btn" id="menuBtn" aria-label="Toggle menu">
+        <span></span><span></span>
+      </button>
+    </nav>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="footer" id="contact">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <p class="footer-name">Ashif Khan</p>
+          <p class="footer-role">Senior Product Manager</p>
+          <p class="footer-location">Raleigh, NC</p>
+        </div>
+        <div class="footer-links">
+          <a href="mailto:ashif@ashifkhan.com" class="footer-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+            ashif@ashifkhan.com
+          </a>
+          <a href="https://linkedin.com/in/ashifkhan" target="_blank" rel="noopener" class="footer-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://github.com/ashifkhan" target="_blank" rel="noopener" class="footer-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© {new Date().getFullYear()} Ashif Khan. Built with Astro, deployed on GitHub Pages.</p>
+      </div>
+    </footer>
+
+    <style is:global>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      :root {
+        --ink: #0e0e0d;
+        --ink-light: #4a4945;
+        --ink-faint: #8a8880;
+        --paper: #faf9f7;
+        --paper-warm: #f4f2ed;
+        --accent: #c8501a;
+        --accent-light: #e8773d;
+        --accent-faint: #f5e4db;
+        --border: rgba(14, 14, 13, 0.1);
+        --border-med: rgba(14, 14, 13, 0.2);
+        --serif: 'DM Serif Display', Georgia, serif;
+        --sans: 'DM Sans', system-ui, sans-serif;
+        --nav-h: 64px;
+        --max-w: 1120px;
+      }
+
+      html { scroll-behavior: smooth; }
+
+      body {
+        font-family: var(--sans);
+        font-size: 16px;
+        line-height: 1.6;
+        color: var(--ink);
+        background: var(--paper);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* ── NAV ── */
+      .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        height: var(--nav-h);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 2rem;
+        background: transparent;
+        transition: background 0.3s, border-color 0.3s;
+      }
+
+      .nav.scrolled {
+        background: rgba(250, 249, 247, 0.92);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-logo {
+        font-family: var(--serif);
+        font-size: 1.25rem;
+        color: var(--ink);
+        text-decoration: none;
+        letter-spacing: -0.02em;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .nav-links a {
+        font-size: 0.875rem;
+        font-weight: 400;
+        color: var(--ink-light);
+        text-decoration: none;
+        letter-spacing: 0.01em;
+        transition: color 0.2s;
+      }
+
+      .nav-links a:hover { color: var(--ink); }
+
+      .nav-menu-btn {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+      }
+
+      .nav-menu-btn span {
+        display: block;
+        width: 22px;
+        height: 1.5px;
+        background: var(--ink);
+        transition: transform 0.3s;
+      }
+
+      /* ── FOOTER ── */
+      .footer {
+        background: var(--ink);
+        color: var(--paper);
+        padding: 4rem 2rem 2rem;
+      }
+
+      .footer-inner {
+        max-width: var(--max-w);
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 3rem;
+        padding-bottom: 3rem;
+        border-bottom: 1px solid rgba(250, 249, 247, 0.1);
+      }
+
+      .footer-name {
+        font-family: var(--serif);
+        font-size: 1.5rem;
+        margin-bottom: 0.25rem;
+        color: var(--paper);
+      }
+
+      .footer-role, .footer-location {
+        font-size: 0.875rem;
+        color: rgba(250, 249, 247, 0.5);
+      }
+
+      .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: flex-end;
+      }
+
+      .footer-link {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.875rem;
+        color: rgba(250, 249, 247, 0.6);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .footer-link:hover { color: var(--paper); }
+
+      .footer-bottom {
+        max-width: var(--max-w);
+        margin: 0 auto;
+        padding-top: 1.5rem;
+        font-size: 0.75rem;
+        color: rgba(250, 249, 247, 0.3);
+      }
+
+      /* ── SECTION SHARED ── */
+      .section {
+        padding: 6rem 2rem;
+        max-width: var(--max-w);
+        margin: 0 auto;
+      }
+
+      .section-label {
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 1rem;
+      }
+
+      .section-title {
+        font-family: var(--serif);
+        font-size: clamp(2rem, 4vw, 3rem);
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        color: var(--ink);
+        margin-bottom: 1.5rem;
+      }
+
+      /* ── RESPONSIVE ── */
+      @media (max-width: 768px) {
+        .nav-links { display: none; }
+        .nav-links.open {
+          display: flex;
+          flex-direction: column;
+          position: fixed;
+          inset: 0;
+          background: var(--paper);
+          align-items: center;
+          justify-content: center;
+          gap: 2rem;
+          font-size: 1.25rem;
+          z-index: 99;
+        }
+        .nav-menu-btn { display: flex; z-index: 101; }
+        .footer-inner { flex-direction: column; }
+        .footer-links { align-items: flex-start; }
+        .section { padding: 4rem 1.25rem; }
+      }
+    </style>
+
+    <script>
+      // Scroll-aware nav
+      const nav = document.getElementById('nav');
+      window.addEventListener('scroll', () => {
+        nav?.classList.toggle('scrolled', window.scrollY > 20);
+      });
+
+      // Mobile menu
+      const menuBtn = document.getElementById('menuBtn');
+      const navLinks = document.querySelector('.nav-links');
+      menuBtn?.addEventListener('click', () => {
+        navLinks?.classList.toggle('open');
+      });
+      navLinks?.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => navLinks.classList.remove('open'));
+      });
+
+      // Scroll reveal
+      const observer = new IntersectionObserver(
+        (entries) => entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('revealed');
+            observer.unobserve(e.target);
+          }
+        }),
+        { threshold: 0.1 }
+      );
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+  </body>
+</html>
