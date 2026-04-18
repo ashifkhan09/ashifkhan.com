@@ -5,8 +5,8 @@ interface Props {
 }
 
 const {
-  title = 'Ashif Khan — Senior Product Manager',
-  description = 'Senior Product Manager specializing in AdTech, Brand Safety & Contextual Targeting, and GenAI Solutions. 14+ years building high-impact products at Yahoo DSP.',
+  title = 'Ashif Khan — Senior Product Manager, AI Agent Lead',
+  description = 'Senior Product Manager and AI Agent Lead at Yahoo DSP. 14+ years in AdTech and programmatic advertising. Building agentic AI systems, contextual targeting products, and yield optimization strategies.',
 } = Astro.props;
 ---
 
@@ -52,7 +52,7 @@ const {
       <div class="footer-inner">
         <div class="footer-left">
           <p class="footer-name">Ashif Khan</p>
-          <p class="footer-role">Senior Product Manager</p>
+          <p class="footer-role">Senior Product Manager · AI Agent Lead</p>
         </div>
         <div class="footer-links">
           <a href="mailto:ashif@ashifkhan.com" class="footer-link">
@@ -70,6 +70,7 @@ const {
         </div>
       </div>
       <div class="footer-bottom">
+        <p class="footer-tagline">Open to Senior PM, Staff PM, and Principal PM roles in AdTech and AI products.</p>
         <p>© {new Date().getFullYear()} Ashif Khan. Built with Astro, deployed on GitHub Pages.</p>
       </div>
     </footer>
@@ -225,6 +226,11 @@ const {
         padding-top: 1.5rem;
         font-size: 0.75rem;
         color: rgba(250, 249, 247, 0.3);
+      }
+
+      .footer-tagline {
+        color: rgba(250, 249, 247, 0.5);
+        margin-bottom: 0.5rem;
       }
 
       /* ── SECTION SHARED ── */

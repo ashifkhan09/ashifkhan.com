@@ -4,25 +4,44 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const experience = [
   {
     company: 'Yahoo DSP',
-    role: 'Senior Product Manager, Brand Safety & Contextual Targeting',
-    period: 'May 2022 – Present',
+    role: 'Senior Product Manager, AI Agent Lead',
+    period: 'Mar 2026 – Present',
     location: '',
     highlights: [
-      'Grew contextual targeting market adoption from 50% → 85% through a comprehensive product redesign',
-      'Launched suite of CTV brand safety products and advanced contextual targeting capabilities',
-      'Architected AI-powered audience recommendation engine — improved targeting precision by 40%',
-      'Orchestrated migration of enterprise viewability platform with tiered pricing strategy',
+      'Overarching PM for all agentic AI initiatives at Yahoo DSP — owning strategy, guardrails, and UX standards across three parallel product tracks',
+      'Driving a RAG-powered conversational help agent to GA, replacing a static keyword-search help center',
+      'Building an agentic troubleshooting agent that identifies campaign non-delivery root causes conversationally — roadmap extends to in-chat configuration changes',
+      'Owning anomaly detection product: surfaces campaign configuration issues (targeting conflicts, brand safety mismatches, creative failures) before they impact delivery',
+      'Established cross-team guiding principles governing LLM use, architecture sequencing, and content governance — formally adopted across the org',
+    ],
+  },
+  {
+    company: 'Yahoo DSP',
+    role: 'Senior Product Manager, Contextual & Audience Targeting',
+    period: 'May 2022 – Feb 2026',
+    location: '',
+    highlights: [
+      'Grew contextual targeting revenue from $600K → $1M/month (~$4.8M incremental/year) through pricing strategy, competitive analysis, and UX redesign of the Boolean targeting workflow',
+      'Doubled Next Gen Audience product fees from $400K → $800K/month (~$4.8M incremental/year) by shipping long-stalled improvements within one quarter of taking ownership',
+      'Built Yahoo\'s first internal AI audience creation agent — replacing manual keyword and domain research with an LLM tool that interprets user intent, enforces policy compliance, and adds approved assets directly to the workflow',
+      'Migrated contextual classification from batch to real-time streaming, reducing URL classification latency and expanding addressable inventory scale',
+      'Launched CTV contextual products using content metadata signals, unlocking a new programmatic revenue channel as CTV spend accelerated',
+      'Reduced predictive audience scoring time from 2 days to 8 hours, shortening time-to-live for new campaigns',
+      'Compressed vendor product onboarding from 8 weeks to 1 week across 6 active vendors',
+      'Delivered DSP line-level targeting UI overhaul and Omniscope forecasting tool revamp in 2 quarters',
+      'Expanded location targeting: shipped Congressional District, DMA, and geo targeting features across Yahoo DSP',
     ],
   },
   {
     company: 'Yahoo Inc.',
     role: 'Price Yield Manager',
     period: 'Aug 2019 – May 2022',
-    location: 'New York, NY',
+    location: '',
     highlights: [
-      'Designed strategic pricing models and yield optimization algorithms for programmatic inventory',
-      'Built pricing automation tools and data visualization dashboards with engineering',
-      'Established streamlined processes for custom pricing workflows',
+      'Owned pricing strategy and yield management for Yahoo\'s audience data products across DSP and SSP channels',
+      'Identified product and pricing gaps alongside the Yield team and partnered with Product to resolve them — the work that led directly to transitioning into a PM role',
+      'Built pricing automation tools and data visualization dashboards with engineering, reducing manual workflows and improving SLA adherence for enterprise clients',
+      'Conducted competitive pricing analyses that identified systematic underpricing — forming the analytical foundation for the $4.8M revenue increase executed in the Sr. PM role',
     ],
   },
   {
@@ -48,9 +67,10 @@ const experience = [
 ];
 
 const skills = [
-  { group: 'Product', items: ['Product Strategy', 'Roadmap Prioritization', 'User Research', 'A/B Testing', 'Go-to-Market'] },
-  { group: 'Technical', items: ['SQL', 'Data Analytics', 'Machine Learning', 'GenAI & LLMs', 'Programmatic Advertising'] },
-  { group: 'Domain', items: ['AdTech & DSP', 'Brand Safety', 'Contextual Targeting', 'CTV', 'Yield Optimization'] },
+  { group: 'Product', items: ['Product Strategy', 'Roadmap Prioritization', 'Design Thinking', 'Rapid Prototyping', 'User Research', 'A/B Testing', 'PRD Authoring', 'Go-to-Market Strategy', 'OKR & KPI Development'] },
+  { group: 'AI & Agentic', items: ['RAG Architecture', 'Agentic Workflow Design', 'LLM Prompt Engineering', 'AI Guardrails', 'Anomaly Detection', 'Knowledge Graph Design'] },
+  { group: 'Domain', items: ['AdTech & DSP', 'Contextual Targeting', 'Brand Safety', 'CTV', 'Yield Optimization', 'Dynamic Pricing', 'Programmatic Advertising', 'Supply Path Optimization'] },
+  { group: 'Technical', items: ['SQL', 'Data Analytics', 'Machine Learning Concepts', 'API Integration', 'JIRA', 'Confluence', 'Figma (collaboration)'] },
 ];
 ---
 
@@ -63,11 +83,10 @@ const skills = [
     <div class="hero-content">
       <div class="hero-tag">Senior Product Manager</div>
       <h1 class="hero-headline">
-        Building products at the intersection of <em>ad-tech</em> and <em>intelligence</em>
+        Building agentic AI products at the intersection of <em>AdTech</em> and <em>intelligence</em>
       </h1>
       <p class="hero-sub">
-        14 years shipping high-impact products at Yahoo DSP — from contextual targeting and brand safety
-        to GenAI-powered audience solutions.
+        14 years shipping high-impact products at Yahoo DSP — from contextual targeting and yield optimization to RAG-powered conversational agents and agentic troubleshooting systems.
       </p>
       <div class="hero-actions">
         <a href="#experience" class="btn-primary">View Experience</a>
@@ -75,18 +94,18 @@ const skills = [
       </div>
       <div class="hero-stats">
         <div class="stat">
-          <span class="stat-num">14+</span>
-          <span class="stat-label">Years in AdTech</span>
+          <span class="stat-num">~$10M</span>
+          <span class="stat-label">Incremental annual revenue driven</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat">
-          <span class="stat-num">50→85%</span>
-          <span class="stat-label">Contextual Adoption</span>
+          <span class="stat-num">8 wks → 1 wk</span>
+          <span class="stat-label">Vendor onboarding time reduction</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat">
-          <span class="stat-num">40%</span>
-          <span class="stat-label">Targeting Precision Gain</span>
+          <span class="stat-num">2 days → 8 hrs</span>
+          <span class="stat-label">Audience scoring time reduction</span>
         </div>
       </div>
     </div>
@@ -102,17 +121,18 @@ const skills = [
       <div class="about-grid">
         <div class="about-left reveal">
           <p class="section-label">About</p>
-          <h2 class="section-title">PM who ships, not just<br/>strategizes</h2>
+          <h2 class="section-title">PM who builds, ships, and orchestrates</h2>
           <p class="about-body">
-            I'm a product manager with deep roots in digital advertising technology — programmatic platforms, 
-            data analytics, and the full lifecycle from idea to market impact. Currently at Yahoo DSP, I focus on
-            Brand Safety and Contextual Targeting: making sure ads appear in the right context, at the right price, 
-            powered by the right signals.
+            I'm a Senior Product Manager and AI Agent Lead at Yahoo DSP, with 14 years of experience in digital advertising technology — programmatic platforms, contextual targeting, yield optimization, and, increasingly, agentic AI systems.
           </p>
           <p class="about-body">
-            What drives me is the intersection of precision and scale — building systems that handle millions 
-            of decisions per second while still feeling thoughtful to the end user. Lately that means applying 
-            GenAI and ML to ad-tech problems that were previously too complex to solve at scale.
+            My current focus is building a suite of conversational agents for Yahoo DSP: a help agent, an agentic campaign troubleshooter, and an anomaly detection system that surfaces issues before they impact delivery. I set the strategy, guardrails, and standards across all three — making sure every agent we ship is grounded in real user problems, not technology for its own sake.
+          </p>
+          <p class="about-body">
+            Before the AI Agent Lead role, I spent three years as the product owner for contextual targeting and audience products — growing contextual revenue from $600K to $1M per month, shipping Yahoo's first internal AI audience creation agent, and delivering UI overhauls, CTV products, and geo targeting features across the DSP.
+          </p>
+          <p class="about-body">
+            What drives me is the intersection of precision and scale — systems that handle millions of decisions per second while still feeling thoughtful to the user. That's true whether it's a pricing model, a targeting workflow, or a conversational agent that tells an advertiser why their campaign isn't delivering.
           </p>
           <a href="mailto:ashif@ashifkhan.com" class="about-cta">Let's connect →</a>
         </div>
@@ -191,7 +211,7 @@ const skills = [
         <p class="section-label">Building</p>
         <h2 class="section-title">What I'm working on</h2>
         <p class="building-sub">
-          Outside of Yahoo, I'm exploring ideas at the intersection of AI, community, and entrepreneurship.
+          Outside of Yahoo, I explore ideas at the intersection of AI, community, and entrepreneurship.
         </p>
       </div>
       <div class="projects-grid">
@@ -199,28 +219,25 @@ const skills = [
           <div class="project-icon">⚡</div>
           <h3 class="project-title">AI Competitor Intelligence Agent</h3>
           <p class="project-desc">
-            An automated system that monitors DSP and contextual targeting trends across 
-            competitors — surfacing insights that would take hours of manual research.
+            An automated system that monitors AdTech and contextual targeting trends — surfacing competitive insights that would take hours of manual research. Built on agentic architecture, applying the same principles I use at work.
           </p>
           <span class="project-tag">In progress</span>
         </div>
         <div class="project-card reveal">
           <div class="project-icon">📊</div>
-          <h3 class="project-title">TLAQ Trading Program</h3>
+          <h3 class="project-title">Systematic Trading Program</h3>
           <p class="project-desc">
-            A quantitative, systematic approach to algorithmic trading — applying the same 
-            data-driven rigor I bring to product decisions to personal finance.
+            A quantitative, rules-based approach to investing — applying the same data-driven rigor I bring to product decisions to personal portfolio management.
           </p>
           <span class="project-tag">Exploring</span>
         </div>
         <div class="project-card reveal">
-          <div class="project-icon">🤖</div>
-          <h3 class="project-title">OpenClaw on Raspberry Pi 5</h3>
+          <div class="project-icon">✍️</div>
+          <h3 class="project-title">Writing on AI Product Management</h3>
           <p class="project-desc">
-            Running local AI infrastructure on edge hardware. Currently using Gemini 2.5 Flash 
-            via direct Node.js with systemd — tinkering at the intersection of hardware and LLMs.
+            Sharing frameworks and patterns from building agentic products in AdTech — what works, what doesn't, and how to think about LLMs as product infrastructure rather than features.
           </p>
-          <span class="project-tag">Tinkering</span>
+          <span class="project-tag">Coming soon</span>
         </div>
         <div class="project-card project-card--cta reveal">
           <p class="project-cta-text">
