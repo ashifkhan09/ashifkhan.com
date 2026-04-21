@@ -224,12 +224,14 @@ const skills = [
           <span class="project-tag">In progress</span>
         </div>
         <div class="project-card reveal">
-          <div class="project-icon">📊</div>
-          <h3 class="project-title">Systematic Trading Program</h3>
+          <div class="project-icon">📅</div>
+          <h3 class="project-title">
+            <a href="https://calendar.ashifkhan.com/" target="_blank" rel="noopener" class="project-link">Calendar App ↗</a>
+          </h3>
           <p class="project-desc">
-            A quantitative, rules-based approach to investing — applying the same data-driven rigor I bring to product decisions to personal portfolio management.
+            A clean, fast scheduling app built for personal use — book time directly without the back-and-forth.
           </p>
-          <span class="project-tag">Exploring</span>
+          <span class="project-tag">Live</span>
         </div>
         <div class="project-card reveal">
           <div class="project-icon">✍️</div>
@@ -643,6 +645,13 @@ const skills = [
       margin-bottom: 0.625rem;
       line-height: 1.3;
     }
+
+    .project-link {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .project-link:hover { color: var(--accent); }
 
     .project-desc {
       font-size: 0.875rem;
