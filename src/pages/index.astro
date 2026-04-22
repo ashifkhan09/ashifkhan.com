@@ -241,6 +241,21 @@ const skills = [
           </p>
           <span class="project-tag">Coming soon</span>
         </div>
+        <div class="project-card project-card--live reveal">
+          <div class="project-card-top">
+            <div class="project-icon">🗓️</div>
+            <span class="project-tag project-tag--live">Live</span>
+          </div>
+          <h3 class="project-title">Calendar OS</h3>
+          <p class="project-desc">
+            A personal calendar web app that feels like a physical desk planner — monthly grid,
+            goal countdown tracking, event management, to-dos, and a mood journal.
+            All data syncs live to Notion.
+          </p>
+          <a href="https://calendar.ashifkhan.com" target="_blank" rel="noopener noreferrer" class="project-link">
+            Open app →
+          </a>
+        </div>
         <div class="project-card project-card--cta reveal">
           <p class="project-cta-text">
             Interested in what I'm building, or want to collaborate?
@@ -671,6 +686,32 @@ const skills = [
       padding: 0.25rem 0.65rem;
       border-radius: 100px;
     }
+
+    .project-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .project-card-top .project-icon {
+      margin-bottom: 0;
+    }
+
+    .project-tag--live {
+      color: #059669;
+      border-color: rgba(5, 150, 105, 0.3);
+    }
+
+    .project-link {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--accent);
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+
+    .project-link:hover { opacity: 0.75; }
 
     .project-card--cta {
       background: var(--ink);

@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import FactReview from '../../../components/careercraft/FactReview.tsx';
+---
+
+<BaseLayout
+  title="CareerCraft — Review & Generate"
+  description="Review your confirmed facts, then generate your rewritten resume, LinkedIn update, and site content."
+>
+  <div style="padding-top: var(--nav-h); min-height: 100vh; background: var(--paper);">
+    <FactReview client:load />
+  </div>
+</BaseLayout>

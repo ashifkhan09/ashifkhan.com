@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ChatWindow from '../../../components/careercraft/ChatWindow.tsx';
+---
+
+<BaseLayout
+  title="CareerCraft — Interview"
+  description="Answer a few questions so CareerCraft can rewrite your resume with real metrics."
+>
+  <div style="padding-top: var(--nav-h);">
+    <ChatWindow client:load />
+  </div>
+</BaseLayout>
