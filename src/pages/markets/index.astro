@@ -1,0 +1,1048 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Markets Dashboard — Ashif Khan"
+  description="Real-time financial markets dashboard: crude oil, gold, silver, crypto, forex, US & India equities, bonds, treasury, futures, and live news."
+>
+  <div class="markets-page">
+
+    <!-- ── PAGE HEADER ── -->
+    <div class="mkt-header">
+      <div class="mkt-header-inner">
+        <div>
+          <p class="mkt-label">Live Data</p>
+          <h1 class="mkt-title">Markets Dashboard</h1>
+          <p class="mkt-sub">Commodities · Crypto · Forex · Equities · Bonds · Futures · News</p>
+        </div>
+        <div class="mkt-clock-block">
+          <span class="mkt-clock" id="mkt-clock"></span>
+          <span class="mkt-status" id="mkt-status"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── TICKER TAPE ── -->
+    <div class="ticker-band">
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+        {
+          "symbols": [
+            {"proName":"FOREXCOM:SPXUSD","title":"S&P 500"},
+            {"proName":"FOREXCOM:NSXUSD","title":"NASDAQ 100"},
+            {"proName":"FOREXCOM:DJI","title":"Dow Jones"},
+            {"description":"VIX","proName":"CBOE:VIX"},
+            {"description":"WTI Crude","proName":"NYMEX:CL1!"},
+            {"description":"Gold","proName":"FX_IDC:XAUUSD"},
+            {"description":"Silver","proName":"COMEX:SI1!"},
+            {"description":"Bitcoin","proName":"BITSTAMP:BTCUSD"},
+            {"description":"Ethereum","proName":"BITSTAMP:ETHUSD"},
+            {"description":"USD/INR","proName":"FX_IDC:USDINR"},
+            {"description":"USD/CNY","proName":"FX:USDCNY"},
+            {"description":"EUR/USD","proName":"FX:EURUSD"},
+            {"description":"NIFTY 50","proName":"NSE:NIFTY"},
+            {"description":"US 10Y","proName":"TVC:US10Y"},
+            {"description":"DXY","proName":"TVC:DXY"},
+            {"description":"S&P Futures","proName":"CME_MINI:ES1!"}
+          ],
+          "showSymbolLogo": true,
+          "isTransparent": true,
+          "displayMode": "adaptive",
+          "colorTheme": "dark",
+          "locale": "en"
+        }
+        </script>
+      </div>
+    </div>
+
+    <!-- ── MARKET OVERVIEW ── -->
+    <section class="mkt-section">
+      <div class="mkt-inner">
+        <h2 class="mkt-section-title">Market Overview</h2>
+        <div class="overview-card">
+          <div class="tradingview-widget-container" style="height:450px">
+            <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px)"></div>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+            {
+              "colorTheme": "dark",
+              "dateRange": "12M",
+              "showChart": true,
+              "locale": "en",
+              "isTransparent": true,
+              "showSymbolLogo": true,
+              "showFloatingTooltip": false,
+              "width": "100%",
+              "height": "450",
+              "tabs": [
+                {
+                  "title": "Indices",
+                  "symbols": [
+                    {"s":"FOREXCOM:SPXUSD","d":"S&P 500"},
+                    {"s":"FOREXCOM:NSXUSD","d":"NASDAQ 100"},
+                    {"s":"FOREXCOM:DJI","d":"Dow Jones"},
+                    {"s":"CBOE:VIX","d":"VIX Volatility"},
+                    {"s":"NSE:NIFTY","d":"NIFTY 50"},
+                    {"s":"BSE:SENSEX","d":"BSE SENSEX"}
+                  ],
+                  "originalTitle": "Indices"
+                },
+                {
+                  "title": "Commodities",
+                  "symbols": [
+                    {"s":"NYMEX:CL1!","d":"WTI Crude Oil"},
+                    {"s":"FX_IDC:XAUUSD","d":"Gold"},
+                    {"s":"COMEX:SI1!","d":"Silver"},
+                    {"s":"NYMEX:NG1!","d":"Natural Gas"},
+                    {"s":"CBOT:ZC1!","d":"Corn"},
+                    {"s":"CBOT:ZW1!","d":"Wheat"}
+                  ],
+                  "originalTitle": "Commodities"
+                },
+                {
+                  "title": "Crypto",
+                  "symbols": [
+                    {"s":"BITSTAMP:BTCUSD","d":"Bitcoin"},
+                    {"s":"BITSTAMP:ETHUSD","d":"Ethereum"},
+                    {"s":"BINANCE:SOLUSDT","d":"Solana"},
+                    {"s":"BINANCE:BNBUSDT","d":"BNB"}
+                  ],
+                  "originalTitle": "Crypto"
+                },
+                {
+                  "title": "Bonds",
+                  "symbols": [
+                    {"s":"TVC:US10Y","d":"US 10Y Yield"},
+                    {"s":"TVC:US02Y","d":"US 2Y Yield"},
+                    {"s":"TVC:US30Y","d":"US 30Y Yield"},
+                    {"s":"TVC:IN10Y","d":"India 10Y Bond"}
+                  ],
+                  "originalTitle": "Bonds"
+                }
+              ]
+            }
+            </script>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── COMMODITIES ── -->
+    <section class="mkt-section mkt-section--alt">
+      <div class="mkt-inner">
+        <h2 class="mkt-section-title">Commodities</h2>
+        <div class="chart-grid chart-grid--4">
+
+          <div class="chart-card">
+            <p class="chart-label">WTI Crude Oil</p>
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+              {"symbol":"NYMEX:CL1!","width":"100%","height":"220","locale":"en","dateRange":"6M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true,"largeChartUrl":""}
+              </script>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <p class="chart-label">Gold (XAU/USD)</p>
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+              {"symbol":"FX_IDC:XAUUSD","width":"100%","height":"220","locale":"en","dateRange":"6M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true,"largeChartUrl":""}
+              </script>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <p class="chart-label">Silver (XAG/USD)</p>
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+              {"symbol":"COMEX:SI1!","width":"100%","height":"220","locale":"en","dateRange":"6M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true,"largeChartUrl":""}
+              </script>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <p class="chart-label">Natural Gas</p>
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+              {"symbol":"NYMEX:NG1!","width":"100%","height":"220","locale":"en","dateRange":"6M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true,"largeChartUrl":""}
+              </script>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <p class="chart-label">Brent Crude Oil</p>
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+              {"symbol":"NYMEX:BB1!","width":"100%","height":"220","locale":"en","dateRange":"6M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true,"largeChartUrl":""}
+              </script>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <p class="chart-label">Platinum</p>
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+              {"symbol":"TVC:PLATINUM","width":"100%","height":"220","locale":"en","dateRange":"6M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true,"largeChartUrl":""}
+              </script>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <p class="chart-label">Copper</p>
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+              {"symbol":"COMEX:HG1!","width":"100%","height":"220","locale":"en","dateRange":"6M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true,"largeChartUrl":""}
+              </script>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <p class="chart-label">Palladium</p>
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+              {"symbol":"TVC:PALLADIUM","width":"100%","height":"220","locale":"en","dateRange":"6M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true,"largeChartUrl":""}
+              </script>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CRYPTO ── -->
+    <section class="mkt-section">
+      <div class="mkt-inner">
+        <h2 class="mkt-section-title">Crypto</h2>
+        <div class="chart-grid chart-grid--2">
+
+          <div class="chart-card">
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+              {
+                "symbols": [
+                  ["Bitcoin","BITSTAMP:BTCUSD|1D"],
+                  ["Ethereum","BITSTAMP:ETHUSD|1D"],
+                  ["Solana","BINANCE:SOLUSDT|1D"],
+                  ["BNB","BINANCE:BNBUSDT|1D"]
+                ],
+                "chartOnly": false,
+                "width": "100%",
+                "height": "420",
+                "locale": "en",
+                "colorTheme": "dark",
+                "autosize": true,
+                "showVolume": true,
+                "showMA": false,
+                "hideDateRanges": false,
+                "hideMarketStatus": false,
+                "hideSymbolLogo": false,
+                "scalePosition": "right",
+                "scaleMode": "Normal",
+                "fontFamily": "DM Sans, system-ui, sans-serif",
+                "fontSize": "10",
+                "noTimeScale": false,
+                "valuesTracking": "1",
+                "changeMode": "price-and-percent",
+                "chartType": "area",
+                "lineWidth": 2,
+                "lineType": 0,
+                "dateRanges": ["1d|1","1m|30","3m|60","12m|1D","all|1M"]
+              }
+              </script>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <div class="tradingview-widget-container" style="height:420px">
+              <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px)"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-crypto-mkt.js" async>
+              {
+                "width": "100%",
+                "height": "420",
+                "defaultColumn": "overview",
+                "screener_type": "crypto_mkt",
+                "displayCurrency": "USD",
+                "colorTheme": "dark",
+                "locale": "en"
+              }
+              </script>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FOREIGN EXCHANGE ── -->
+    <section class="mkt-section mkt-section--alt">
+      <div class="mkt-inner">
+        <h2 class="mkt-section-title">Foreign Exchange</h2>
+        <div class="chart-grid chart-grid--4">
+
+          <div class="chart-card">
+            <p class="chart-label">USD / INR</p>
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+              {"symbol":"FX_IDC:USDINR","width":"100%","height":"220","locale":"en","dateRange":"6M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
+              </script>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <p class="chart-label">USD / CNY</p>
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+              {"symbol":"FX:USDCNY","width":"100%","height":"220","locale":"en","dateRange":"6M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
+              </script>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <p class="chart-label">EUR / USD</p>
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+              {"symbol":"FX:EURUSD","width":"100%","height":"220","locale":"en","dateRange":"6M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
+              </script>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <p class="chart-label">USD / JPY</p>
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+              {"symbol":"FX:USDJPY","width":"100%","height":"220","locale":"en","dateRange":"6M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
+              </script>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <p class="chart-label">GBP / USD</p>
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+              {"symbol":"FX:GBPUSD","width":"100%","height":"220","locale":"en","dateRange":"6M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
+              </script>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <p class="chart-label">USD / AUD</p>
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+              {"symbol":"FX:AUDUSD","width":"100%","height":"220","locale":"en","dateRange":"6M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
+              </script>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <p class="chart-label">USD / CAD</p>
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+              {"symbol":"FX:USDCAD","width":"100%","height":"220","locale":"en","dateRange":"6M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
+              </script>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <p class="chart-label">US Dollar Index (DXY)</p>
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+              {"symbol":"TVC:DXY","width":"100%","height":"220","locale":"en","dateRange":"6M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
+              </script>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Forex Cross Rates Matrix -->
+        <div class="cross-rates-wrap">
+          <p class="cross-rates-label">Cross Rates Matrix</p>
+          <div class="tradingview-widget-container" style="height:420px">
+            <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px)"></div>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-forex-cross-rates.js" async>
+            {
+              "width": "100%",
+              "height": "420",
+              "currencies": ["EUR","USD","JPY","GBP","INR","CNY","AUD","CAD"],
+              "isTransparent": true,
+              "colorTheme": "dark",
+              "locale": "en",
+              "backgroundColor": "#0e0e0d"
+            }
+            </script>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── US EQUITY MARKETS ── -->
+    <section class="mkt-section">
+      <div class="mkt-inner">
+        <h2 class="mkt-section-title">Equity Markets</h2>
+
+        <div class="equities-group">
+          <p class="equities-flag-label">🇺🇸 United States</p>
+          <div class="chart-grid chart-grid--4">
+
+            <div class="chart-card">
+              <p class="chart-label">S&P 500</p>
+              <div class="tradingview-widget-container">
+                <div class="tradingview-widget-container__widget"></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                {"symbol":"FOREXCOM:SPXUSD","width":"100%","height":"220","locale":"en","dateRange":"12M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
+                </script>
+              </div>
+            </div>
+
+            <div class="chart-card">
+              <p class="chart-label">NASDAQ 100</p>
+              <div class="tradingview-widget-container">
+                <div class="tradingview-widget-container__widget"></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                {"symbol":"FOREXCOM:NSXUSD","width":"100%","height":"220","locale":"en","dateRange":"12M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
+                </script>
+              </div>
+            </div>
+
+            <div class="chart-card">
+              <p class="chart-label">Dow Jones 30</p>
+              <div class="tradingview-widget-container">
+                <div class="tradingview-widget-container__widget"></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                {"symbol":"FOREXCOM:DJI","width":"100%","height":"220","locale":"en","dateRange":"12M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
+                </script>
+              </div>
+            </div>
+
+            <div class="chart-card">
+              <p class="chart-label">Russell 2000</p>
+              <div class="tradingview-widget-container">
+                <div class="tradingview-widget-container__widget"></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                {"symbol":"TVC:RUT","width":"100%","height":"220","locale":"en","dateRange":"12M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
+                </script>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="equities-group">
+          <p class="equities-flag-label">🇮🇳 India</p>
+          <div class="chart-grid chart-grid--4">
+
+            <div class="chart-card">
+              <p class="chart-label">NIFTY 50</p>
+              <div class="tradingview-widget-container">
+                <div class="tradingview-widget-container__widget"></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                {"symbol":"NSE:NIFTY","width":"100%","height":"220","locale":"en","dateRange":"12M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
+                </script>
+              </div>
+            </div>
+
+            <div class="chart-card">
+              <p class="chart-label">BSE SENSEX</p>
+              <div class="tradingview-widget-container">
+                <div class="tradingview-widget-container__widget"></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                {"symbol":"BSE:SENSEX","width":"100%","height":"220","locale":"en","dateRange":"12M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
+                </script>
+              </div>
+            </div>
+
+            <div class="chart-card">
+              <p class="chart-label">NIFTY Bank</p>
+              <div class="tradingview-widget-container">
+                <div class="tradingview-widget-container__widget"></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                {"symbol":"NSE:BANKNIFTY","width":"100%","height":"220","locale":"en","dateRange":"12M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
+                </script>
+              </div>
+            </div>
+
+            <div class="chart-card">
+              <p class="chart-label">NIFTY IT</p>
+              <div class="tradingview-widget-container">
+                <div class="tradingview-widget-container__widget"></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                {"symbol":"NSE:NIFTYIT","width":"100%","height":"220","locale":"en","dateRange":"12M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
+                </script>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── BONDS & TREASURY ── -->
+    <section class="mkt-section mkt-section--alt">
+      <div class="mkt-inner">
+        <h2 class="mkt-section-title">Bonds & Treasury Yields</h2>
+        <div class="chart-grid chart-grid--4">
+
+          <div class="chart-card">
+            <p class="chart-label">US 2Y Treasury</p>
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+              {"symbol":"TVC:US02Y","width":"100%","height":"220","locale":"en","dateRange":"12M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
+              </script>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <p class="chart-label">US 10Y Treasury</p>
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+              {"symbol":"TVC:US10Y","width":"100%","height":"220","locale":"en","dateRange":"12M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
+              </script>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <p class="chart-label">US 30Y Treasury</p>
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+              {"symbol":"TVC:US30Y","width":"100%","height":"220","locale":"en","dateRange":"12M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
+              </script>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <p class="chart-label">India 10Y Bond</p>
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+              {"symbol":"TVC:IN10Y","width":"100%","height":"220","locale":"en","dateRange":"12M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
+              </script>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Yield Curve Signal -->
+        <div class="yield-signal-card">
+          <p class="yield-signal-title">Yield Curve Spread (10Y – 2Y)</p>
+          <div class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget"></div>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+            {"symbol":"FRED:T10Y2Y","width":"100%","height":"220","locale":"en","dateRange":"12M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
+            </script>
+          </div>
+          <p class="yield-signal-note">Inverted yield curve (negative) has historically preceded recessions by 6–18 months.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── US FUTURES & MARKET SIGNALS ── -->
+    <section class="mkt-section">
+      <div class="mkt-inner">
+        <h2 class="mkt-section-title">US Futures & Market Signals</h2>
+        <div class="chart-grid chart-grid--4">
+
+          <div class="chart-card">
+            <p class="chart-label">S&P 500 Futures (ES1!)</p>
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+              {"symbol":"CME_MINI:ES1!","width":"100%","height":"220","locale":"en","dateRange":"3M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
+              </script>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <p class="chart-label">NASDAQ Futures (NQ1!)</p>
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+              {"symbol":"CME_MINI:NQ1!","width":"100%","height":"220","locale":"en","dateRange":"3M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
+              </script>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <p class="chart-label">Dow Futures (YM1!)</p>
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+              {"symbol":"CBOT_MINI:YM1!","width":"100%","height":"220","locale":"en","dateRange":"3M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
+              </script>
+            </div>
+          </div>
+
+          <div class="chart-card signal-card">
+            <p class="chart-label">VIX — Fear Index</p>
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+              {"symbol":"CBOE:VIX","width":"100%","height":"220","locale":"en","dateRange":"3M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
+              </script>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <p class="chart-label">Gold Futures (GC1!)</p>
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+              {"symbol":"COMEX:GC1!","width":"100%","height":"220","locale":"en","dateRange":"3M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
+              </script>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <p class="chart-label">Crude Oil Futures (CL1!)</p>
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+              {"symbol":"NYMEX:CL1!","width":"100%","height":"220","locale":"en","dateRange":"3M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
+              </script>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <p class="chart-label">Fed Funds Rate</p>
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+              {"symbol":"FRED:FEDFUNDS","width":"100%","height":"220","locale":"en","dateRange":"12M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
+              </script>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <p class="chart-label">Bitcoin Dominance</p>
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+              {"symbol":"CRYPTOCAP:BTC.D","width":"100%","height":"220","locale":"en","dateRange":"6M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
+              </script>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ECONOMIC CALENDAR ── -->
+    <section class="mkt-section mkt-section--alt">
+      <div class="mkt-inner">
+        <h2 class="mkt-section-title">Economic Calendar</h2>
+        <div class="calendar-wrap">
+          <div class="tradingview-widget-container" style="height:500px">
+            <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px)"></div>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
+            {
+              "colorTheme": "dark",
+              "isTransparent": true,
+              "width": "100%",
+              "height": "500",
+              "locale": "en",
+              "importanceFilter": "0,1",
+              "countryFilter": "us,in,eu,cn,jp,gb,au,ca"
+            }
+            </script>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── MARKET NEWS ── -->
+    <section class="mkt-section">
+      <div class="mkt-inner">
+        <h2 class="mkt-section-title">Market News</h2>
+        <div class="chart-grid chart-grid--2">
+
+          <div class="news-card">
+            <p class="news-card-label">📰 Financial Markets</p>
+            <div class="tradingview-widget-container" style="height:550px">
+              <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px)"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
+              {
+                "feedMode": "market",
+                "market": "stock",
+                "colorTheme": "dark",
+                "isTransparent": true,
+                "displayMode": "regular",
+                "width": "100%",
+                "height": "550",
+                "locale": "en"
+              }
+              </script>
+            </div>
+          </div>
+
+          <div class="news-card">
+            <p class="news-card-label">₿ Crypto News</p>
+            <div class="tradingview-widget-container" style="height:550px">
+              <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px)"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
+              {
+                "feedMode": "market",
+                "market": "crypto",
+                "colorTheme": "dark",
+                "isTransparent": true,
+                "displayMode": "regular",
+                "width": "100%",
+                "height": "550",
+                "locale": "en"
+              }
+              </script>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FOOTER NOTE ── -->
+    <div class="mkt-footer-note">
+      <div class="mkt-inner">
+        <p>Data powered by <a href="https://tradingview.com" target="_blank" rel="noopener">TradingView</a>. Prices may be delayed. Not financial advice.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <style>
+    /* ─────────────────────────────────────
+       MARKETS PAGE
+    ───────────────────────────────────── */
+    .markets-page {
+      padding-top: var(--nav-h);
+      background: var(--ink);
+      color: var(--paper);
+      min-height: 100vh;
+    }
+
+    /* Header */
+    .mkt-header {
+      padding: 3.5rem 2rem 2rem;
+      border-bottom: 1px solid rgba(250,249,247,0.07);
+    }
+
+    .mkt-header-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .mkt-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .mkt-label::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #22c55e;
+      animation: pulse-green 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-green {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .mkt-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      color: var(--paper);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 0.625rem;
+    }
+
+    .mkt-sub {
+      font-size: 0.8125rem;
+      color: rgba(250,249,247,0.35);
+      letter-spacing: 0.04em;
+    }
+
+    .mkt-clock-block {
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .mkt-clock {
+      display: block;
+      font-size: 0.875rem;
+      color: rgba(250,249,247,0.45);
+      font-variant-numeric: tabular-nums;
+      margin-bottom: 0.375rem;
+    }
+
+    .mkt-status {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* Ticker Band */
+    .ticker-band {
+      background: rgba(250,249,247,0.025);
+      border-bottom: 1px solid rgba(250,249,247,0.05);
+    }
+
+    /* Sections */
+    .mkt-section {
+      padding: 3rem 2rem;
+      background: var(--ink);
+    }
+
+    .mkt-section--alt {
+      background: #111110;
+    }
+
+    .mkt-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+
+    .mkt-section-title {
+      font-family: var(--serif);
+      font-size: 1.375rem;
+      color: var(--paper);
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.875rem;
+      border-bottom: 1px solid rgba(250,249,247,0.07);
+    }
+
+    /* Overview card */
+    .overview-card {
+      border: 1px solid rgba(250,249,247,0.07);
+      border-radius: 12px;
+      overflow: hidden;
+      background: rgba(250,249,247,0.02);
+    }
+
+    /* Chart Grid */
+    .chart-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .chart-grid--4 { grid-template-columns: repeat(4, 1fr); }
+    .chart-grid--3 { grid-template-columns: repeat(3, 1fr); }
+    .chart-grid--2 { grid-template-columns: repeat(2, 1fr); }
+
+    /* Chart Cards */
+    .chart-card {
+      background: rgba(250,249,247,0.025);
+      border: 1px solid rgba(250,249,247,0.06);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .chart-card:hover {
+      border-color: rgba(250,249,247,0.14);
+      background: rgba(250,249,247,0.04);
+    }
+
+    .chart-label {
+      font-size: 0.675rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(250,249,247,0.3);
+      padding: 0.875rem 1rem 0;
+    }
+
+    /* Equities groups */
+    .equities-group {
+      margin-bottom: 2.5rem;
+    }
+
+    .equities-group:last-child { margin-bottom: 0; }
+
+    .equities-flag-label {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: rgba(250,249,247,0.5);
+      margin-bottom: 0.875rem;
+      letter-spacing: 0.02em;
+    }
+
+    /* Yield signal */
+    .yield-signal-card {
+      margin-top: 1rem;
+      background: rgba(200,80,26,0.06);
+      border: 1px solid rgba(200,80,26,0.18);
+      border-radius: 10px;
+      overflow: hidden;
+      padding-bottom: 0;
+    }
+
+    .yield-signal-title {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      padding: 0.875rem 1rem 0;
+    }
+
+    .yield-signal-note {
+      font-size: 0.75rem;
+      color: rgba(250,249,247,0.35);
+      padding: 0.5rem 1rem 0.875rem;
+      line-height: 1.5;
+      font-style: italic;
+    }
+
+    /* Cross rates */
+    .cross-rates-wrap {
+      margin-top: 1rem;
+    }
+
+    .cross-rates-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(250,249,247,0.3);
+      margin-bottom: 0.625rem;
+    }
+
+    /* Calendar */
+    .calendar-wrap {
+      border: 1px solid rgba(250,249,247,0.07);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    /* News */
+    .news-card {
+      background: rgba(250,249,247,0.02);
+      border: 1px solid rgba(250,249,247,0.06);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .news-card-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(250,249,247,0.4);
+      padding: 1rem 1.25rem 0.5rem;
+      border-bottom: 1px solid rgba(250,249,247,0.05);
+    }
+
+    /* Footer note */
+    .mkt-footer-note {
+      padding: 1.5rem 2rem;
+      background: #0a0a09;
+      border-top: 1px solid rgba(250,249,247,0.05);
+    }
+
+    .mkt-footer-note p {
+      font-size: 0.75rem;
+      color: rgba(250,249,247,0.2);
+      text-align: center;
+    }
+
+    .mkt-footer-note a {
+      color: rgba(250,249,247,0.35);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(250,249,247,0.15);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .chart-grid--4 { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .mkt-header-inner { flex-direction: column; align-items: flex-start; }
+      .mkt-clock-block { text-align: left; }
+      .chart-grid--4 { grid-template-columns: 1fr; }
+      .chart-grid--3 { grid-template-columns: 1fr; }
+      .chart-grid--2 { grid-template-columns: 1fr; }
+    }
+  </style>
+
+  <script is:inline>
+    // Live clock + market status
+    function updateClock() {
+      const now = new Date();
+      const clockEl = document.getElementById('mkt-clock');
+      const statusEl = document.getElementById('mkt-status');
+      if (!clockEl || !statusEl) return;
+
+      clockEl.textContent = now.toLocaleString('en-US', {
+        weekday: 'short', month: 'short', day: 'numeric',
+        hour: '2-digit', minute: '2-digit', second: '2-digit',
+        timeZoneName: 'short'
+      });
+
+      // NYSE hours: Mon–Fri 9:30–16:00 ET
+      const nyStr = now.toLocaleString('en-US', { timeZone: 'America/New_York' });
+      const ny = new Date(nyStr);
+      const d = ny.getDay(), h = ny.getHours(), m = ny.getMinutes();
+      const isWeekday = d >= 1 && d <= 5;
+      const afterOpen = h > 9 || (h === 9 && m >= 30);
+      const beforeClose = h < 16;
+      const nyseOpen = isWeekday && afterOpen && beforeClose;
+
+      // NSE hours: Mon–Fri 9:15–15:30 IST
+      const istStr = now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
+      const ist = new Date(istStr);
+      const di = ist.getDay(), hi = ist.getHours(), mi = ist.getMinutes();
+      const istWeekday = di >= 1 && di <= 5;
+      const nseOpen = istWeekday && ((hi > 9 || (hi === 9 && mi >= 15)) && (hi < 15 || (hi === 15 && mi <= 30)));
+
+      let statusText = '';
+      if (nyseOpen && nseOpen) statusText = '🟢 NYSE + NSE OPEN';
+      else if (nyseOpen) statusText = '🟢 NYSE OPEN';
+      else if (nseOpen) statusText = '🟡 NSE OPEN';
+      else statusText = '🔴 MARKETS CLOSED';
+
+      statusEl.textContent = statusText;
+      statusEl.style.color = (nyseOpen || nseOpen) ? 'rgba(34,197,94,0.85)' : 'rgba(250,249,247,0.25)';
+    }
+
+    updateClock();
+    setInterval(updateClock, 1000);
+  </script>
+</BaseLayout>
