@@ -34,18 +34,18 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             {"proName":"FOREXCOM:NSXUSD","title":"NASDAQ 100"},
             {"proName":"FOREXCOM:DJI","title":"Dow Jones"},
             {"description":"VIX","proName":"CBOE:VIX"},
-            {"description":"WTI Crude","proName":"NYMEX:CL1!"},
+            {"description":"WTI Crude","proName":"TVC:USOIL"},
             {"description":"Gold","proName":"FX_IDC:XAUUSD"},
-            {"description":"Silver","proName":"COMEX:SI1!"},
+            {"description":"Silver","proName":"TVC:SILVER"},
             {"description":"Bitcoin","proName":"BITSTAMP:BTCUSD"},
             {"description":"Ethereum","proName":"BITSTAMP:ETHUSD"},
             {"description":"USD/INR","proName":"FX_IDC:USDINR"},
-            {"description":"USD/CNY","proName":"FX:USDCNY"},
+            {"description":"USD/CNY","proName":"FX_IDC:USDCNY"},
             {"description":"EUR/USD","proName":"FX:EURUSD"},
-            {"description":"NIFTY 50","proName":"NSE:NIFTY"},
-            {"description":"US 10Y","proName":"TVC:US10Y"},
-            {"description":"DXY","proName":"TVC:DXY"},
-            {"description":"S&P Futures","proName":"CME_MINI:ES1!"}
+            {"description":"NIFTY 50","proName":"CAPITALCOM:IN50"},
+            {"description":"US 10Y","proName":"FRED:DGS10"},
+            {"description":"DXY","proName":"CAPITALCOM:DXY"},
+            {"description":"S&P Futures","proName":"CAPITALCOM:US500"}
           ],
           "showSymbolLogo": true,
           "isTransparent": true,
@@ -113,10 +113,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
                 {
                   "title": "Bonds",
                   "symbols": [
-                    {"s":"TVC:US10Y","d":"US 10Y Yield"},
-                    {"s":"TVC:US02Y","d":"US 2Y Yield"},
-                    {"s":"TVC:US30Y","d":"US 30Y Yield"},
-                    {"s":"TVC:IN10Y","d":"India 10Y Bond"}
+                    {"s":"FRED:DGS10","d":"US 10Y Yield"},
+                    {"s":"FRED:DGS2","d":"US 2Y Yield"},
+                    {"s":"FRED:DGS30","d":"US 30Y Yield"},
+                    {"s":"CAPITALCOM:IN10Y","d":"India 10Y Bond"}
                   ],
                   "originalTitle": "Bonds"
                 }
@@ -169,7 +169,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <div class="tradingview-widget-container">
               <div class="tradingview-widget-container__widget"></div>
               <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-              {"symbol":"TVC:NATGAS","width":"100%","height":"220","locale":"en","dateRange":"6M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true,"largeChartUrl":""}
+              {"symbol":"CAPITALCOM:NATURALGAS","width":"100%","height":"220","locale":"en","dateRange":"6M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true,"largeChartUrl":""}
               </script>
             </div>
           </div>
@@ -199,7 +199,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <div class="tradingview-widget-container">
               <div class="tradingview-widget-container__widget"></div>
               <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-              {"symbol":"TVC:COPPER","width":"100%","height":"220","locale":"en","dateRange":"6M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true,"largeChartUrl":""}
+              {"symbol":"CAPITALCOM:COPPER","width":"100%","height":"220","locale":"en","dateRange":"6M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true,"largeChartUrl":""}
               </script>
             </div>
           </div>
@@ -454,7 +454,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
               <div class="tradingview-widget-container">
                 <div class="tradingview-widget-container__widget"></div>
                 <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-                {"symbol":"NSE:NIFTY50","width":"100%","height":"220","locale":"en","dateRange":"12M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
+                {"symbol":"CAPITALCOM:IN50","width":"100%","height":"220","locale":"en","dateRange":"12M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
                 </script>
               </div>
             </div>
@@ -470,21 +470,21 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             </div>
 
             <div class="chart-card">
-              <p class="chart-label">NIFTY Bank</p>
+              <p class="chart-label">BSE BANKEX</p>
               <div class="tradingview-widget-container">
                 <div class="tradingview-widget-container__widget"></div>
                 <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-                {"symbol":"NSE:NIFTYBANK","width":"100%","height":"220","locale":"en","dateRange":"12M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
+                {"symbol":"BSE:BANKEX","width":"100%","height":"220","locale":"en","dateRange":"12M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
                 </script>
               </div>
             </div>
 
             <div class="chart-card">
-              <p class="chart-label">NIFTY IT</p>
+              <p class="chart-label">India VIX</p>
               <div class="tradingview-widget-container">
                 <div class="tradingview-widget-container__widget"></div>
                 <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-                {"symbol":"NSE:CNXIT","width":"100%","height":"220","locale":"en","dateRange":"12M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
+                {"symbol":"NSE:INDIAVIX","width":"100%","height":"220","locale":"en","dateRange":"12M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
                 </script>
               </div>
             </div>
@@ -505,7 +505,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <div class="tradingview-widget-container">
               <div class="tradingview-widget-container__widget"></div>
               <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-              {"symbol":"TVC:US02Y","width":"100%","height":"220","locale":"en","dateRange":"12M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
+              {"symbol":"FRED:DGS2","width":"100%","height":"220","locale":"en","dateRange":"12M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
               </script>
             </div>
           </div>
@@ -515,7 +515,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <div class="tradingview-widget-container">
               <div class="tradingview-widget-container__widget"></div>
               <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-              {"symbol":"TVC:US10Y","width":"100%","height":"220","locale":"en","dateRange":"12M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
+              {"symbol":"FRED:DGS10","width":"100%","height":"220","locale":"en","dateRange":"12M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
               </script>
             </div>
           </div>
@@ -525,7 +525,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <div class="tradingview-widget-container">
               <div class="tradingview-widget-container__widget"></div>
               <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-              {"symbol":"TVC:US30Y","width":"100%","height":"220","locale":"en","dateRange":"12M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
+              {"symbol":"FRED:DGS30","width":"100%","height":"220","locale":"en","dateRange":"12M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
               </script>
             </div>
           </div>
@@ -535,7 +535,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <div class="tradingview-widget-container">
               <div class="tradingview-widget-container__widget"></div>
               <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-              {"symbol":"TVC:IN10Y","width":"100%","height":"220","locale":"en","dateRange":"12M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
+              {"symbol":"CAPITALCOM:IN10Y","width":"100%","height":"220","locale":"en","dateRange":"12M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
               </script>
             </div>
           </div>
@@ -598,7 +598,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <div class="tradingview-widget-container">
               <div class="tradingview-widget-container__widget"></div>
               <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-              {"symbol":"TVC:VIX","width":"100%","height":"220","locale":"en","dateRange":"3M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
+              {"symbol":"CBOE:VIX","width":"100%","height":"220","locale":"en","dateRange":"3M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
               </script>
             </div>
           </div>
@@ -1181,24 +1181,33 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       async function loadDay() {
         wrap.innerHTML = `<div class="earn-state">⏳ Loading…</div>`;
         const date = iso(dates[dayIdx]);
-        try {
-          // Nasdaq public earnings API via CORS proxy
-          const proxy = 'https://api.allorigins.win/raw?url=';
-          const target = encodeURIComponent(`https://api.nasdaq.com/api/calendar/earnings?date=${date}`);
-          const res = await fetch(proxy + target, { headers: {'Accept':'application/json'} });
-          if (!res.ok) throw new Error('HTTP ' + res.status);
-          const json = await res.json();
-          // Nasdaq returns data.rows or data.earnings.rows depending on version
-          const rows = json?.data?.rows ?? json?.data?.earnings?.rows ?? [];
-          wrap.innerHTML = renderTable(rows);
-        } catch(e) {
-          wrap.innerHTML = `<div class="earn-state">
-            Could not load earnings data.&nbsp;
-            <a href="https://www.nasdaq.com/market-activity/earnings" target="_blank" rel="noopener">
-              View on Nasdaq →
-            </a>
-          </div>`;
+        const nasdaqUrl = `https://api.nasdaq.com/api/calendar/earnings?date=${date}`;
+        // Try multiple CORS proxies in sequence for reliability
+        const proxies = [
+          `https://corsproxy.io/?${encodeURIComponent(nasdaqUrl)}`,
+          `https://api.allorigins.win/raw?url=${encodeURIComponent(nasdaqUrl)}`,
+          `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(nasdaqUrl)}`
+        ];
+        let rows = null;
+        for (const url of proxies) {
+          try {
+            const res = await fetch(url, { headers: {'Accept':'application/json'}, signal: AbortSignal.timeout(8000) });
+            if (!res.ok) continue;
+            const json = await res.json();
+            rows = json?.data?.rows ?? json?.data?.earnings?.rows ?? [];
+            if (rows !== null) break;
+          } catch(e) { continue; }
         }
+        if (rows !== null) {
+          wrap.innerHTML = renderTable(rows);
+          return;
+        }
+        wrap.innerHTML = `<div class="earn-state">
+          Could not load earnings data.&nbsp;
+          <a href="https://www.nasdaq.com/market-activity/earnings" target="_blank" rel="noopener">
+            View on Nasdaq →
+          </a>
+        </div>`;
       }
 
       function loadWeek() {
