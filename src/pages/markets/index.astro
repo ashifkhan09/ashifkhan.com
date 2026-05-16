@@ -83,7 +83,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
                     {"s":"FOREXCOM:NSXUSD","d":"NASDAQ 100"},
                     {"s":"FOREXCOM:DJI","d":"Dow Jones"},
                     {"s":"CBOE:VIX","d":"VIX Volatility"},
-                    {"s":"NSE:NIFTY","d":"NIFTY 50"},
+                    {"s":"CAPITALCOM:IN50","d":"NIFTY 50"},
                     {"s":"BSE:SENSEX","d":"BSE SENSEX"}
                   ],
                   "originalTitle": "Indices"
@@ -91,12 +91,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
                 {
                   "title": "Commodities",
                   "symbols": [
-                    {"s":"NYMEX:CL1!","d":"WTI Crude Oil"},
+                    {"s":"TVC:USOIL","d":"WTI Crude Oil"},
                     {"s":"FX_IDC:XAUUSD","d":"Gold"},
-                    {"s":"COMEX:SI1!","d":"Silver"},
-                    {"s":"NYMEX:NG1!","d":"Natural Gas"},
-                    {"s":"CBOT:ZC1!","d":"Corn"},
-                    {"s":"CBOT:ZW1!","d":"Wheat"}
+                    {"s":"TVC:SILVER","d":"Silver"},
+                    {"s":"TVC:UKOIL","d":"Brent Crude"},
+                    {"s":"TVC:PLATINUM","d":"Platinum"},
+                    {"s":"TVC:PALLADIUM","d":"Palladium"}
                   ],
                   "originalTitle": "Commodities"
                 },
@@ -113,10 +113,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
                 {
                   "title": "Bonds",
                   "symbols": [
-                    {"s":"FRED:DGS10","d":"US 10Y Yield"},
-                    {"s":"FRED:DGS2","d":"US 2Y Yield"},
-                    {"s":"FRED:DGS30","d":"US 30Y Yield"},
-                    {"s":"CAPITALCOM:IN10Y","d":"India 10Y Bond"}
+                    {"s":"AMEX:TLT","d":"US 20Y+ Bond ETF"},
+                    {"s":"AMEX:IEF","d":"US 7-10Y Bond ETF"},
+                    {"s":"AMEX:SHY","d":"US 1-3Y Bond ETF"},
+                    {"s":"AMEX:EMB","d":"EM Bond ETF"}
                   ],
                   "originalTitle": "Bonds"
                 }
@@ -169,7 +169,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <div class="tradingview-widget-container">
               <div class="tradingview-widget-container__widget"></div>
               <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-              {"symbol":"CAPITALCOM:NATURALGAS","width":"100%","height":"220","locale":"en","dateRange":"6M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true,"largeChartUrl":""}
+              {"symbol":"MCX:NATURALGAS1!","width":"100%","height":"220","locale":"en","dateRange":"6M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true,"largeChartUrl":""}
               </script>
             </div>
           </div>
@@ -199,7 +199,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <div class="tradingview-widget-container">
               <div class="tradingview-widget-container__widget"></div>
               <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-              {"symbol":"CAPITALCOM:COPPER","width":"100%","height":"220","locale":"en","dateRange":"6M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true,"largeChartUrl":""}
+              {"symbol":"MCX:COPPER1!","width":"100%","height":"220","locale":"en","dateRange":"6M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true,"largeChartUrl":""}
               </script>
             </div>
           </div>
@@ -222,63 +222,42 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <section class="mkt-section">
       <div class="mkt-inner">
         <h2 class="mkt-section-title">Crypto</h2>
-        <div class="chart-grid chart-grid--2">
-
-          <div class="chart-card">
-            <div class="tradingview-widget-container">
-              <div class="tradingview-widget-container__widget"></div>
-              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-              {
-                "symbols": [
-                  ["Bitcoin","BITSTAMP:BTCUSD|1D"],
-                  ["Ethereum","BITSTAMP:ETHUSD|1D"],
-                  ["Solana","BINANCE:SOLUSDT|1D"],
-                  ["BNB","BINANCE:BNBUSDT|1D"]
-                ],
-                "chartOnly": false,
-                "width": "100%",
-                "height": "420",
-                "locale": "en",
-                "colorTheme": "dark",
-                "autosize": true,
-                "showVolume": true,
-                "showMA": false,
-                "hideDateRanges": false,
-                "hideMarketStatus": false,
-                "hideSymbolLogo": false,
-                "scalePosition": "right",
-                "scaleMode": "Normal",
-                "fontFamily": "DM Sans, system-ui, sans-serif",
-                "fontSize": "10",
-                "noTimeScale": false,
-                "valuesTracking": "1",
-                "changeMode": "price-and-percent",
-                "chartType": "area",
-                "lineWidth": 2,
-                "lineType": 0,
-                "dateRanges": ["1d|1","1m|30","3m|60","12m|1D","all|1M"]
-              }
-              </script>
-            </div>
+        <div class="chart-card crypto-full-card">
+          <div class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget"></div>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+            {
+              "symbols": [
+                ["Bitcoin","BITSTAMP:BTCUSD|1D"],
+                ["Ethereum","BITSTAMP:ETHUSD|1D"],
+                ["Solana","BINANCE:SOLUSDT|1D"],
+                ["BNB","BINANCE:BNBUSDT|1D"]
+              ],
+              "chartOnly": false,
+              "width": "100%",
+              "height": "480",
+              "locale": "en",
+              "colorTheme": "dark",
+              "autosize": true,
+              "showVolume": true,
+              "showMA": false,
+              "hideDateRanges": false,
+              "hideMarketStatus": false,
+              "hideSymbolLogo": false,
+              "scalePosition": "right",
+              "scaleMode": "Normal",
+              "fontFamily": "DM Sans, system-ui, sans-serif",
+              "fontSize": "10",
+              "noTimeScale": false,
+              "valuesTracking": "1",
+              "changeMode": "price-and-percent",
+              "chartType": "area",
+              "lineWidth": 2,
+              "lineType": 0,
+              "dateRanges": ["1d|1","1m|30","3m|60","12m|1D","all|1M"]
+            }
+            </script>
           </div>
-
-          <div class="chart-card">
-            <div class="tradingview-widget-container" style="height:420px">
-              <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px)"></div>
-              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-crypto-mkt.js" async>
-              {
-                "width": "100%",
-                "height": "420",
-                "defaultColumn": "overview",
-                "screener_type": "crypto_mkt",
-                "displayCurrency": "USD",
-                "colorTheme": "dark",
-                "locale": "en"
-              }
-              </script>
-            </div>
-          </div>
-
         </div>
       </div>
     </section>
@@ -454,7 +433,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
               <div class="tradingview-widget-container">
                 <div class="tradingview-widget-container__widget"></div>
                 <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-                {"symbol":"CAPITALCOM:IN50","width":"100%","height":"220","locale":"en","dateRange":"12M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
+                {"symbol":"NSEIX:NIFTY1!","width":"100%","height":"220","locale":"en","dateRange":"12M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
                 </script>
               </div>
             </div>
@@ -470,21 +449,21 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             </div>
 
             <div class="chart-card">
-              <p class="chart-label">BSE BANKEX</p>
+              <p class="chart-label">NIFTY Bank</p>
               <div class="tradingview-widget-container">
                 <div class="tradingview-widget-container__widget"></div>
                 <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-                {"symbol":"BSE:BANKEX","width":"100%","height":"220","locale":"en","dateRange":"12M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
+                {"symbol":"NSE:BANKNIFTY","width":"100%","height":"220","locale":"en","dateRange":"12M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
                 </script>
               </div>
             </div>
 
             <div class="chart-card">
-              <p class="chart-label">India VIX</p>
+              <p class="chart-label">NIFTY IT</p>
               <div class="tradingview-widget-container">
                 <div class="tradingview-widget-container__widget"></div>
                 <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-                {"symbol":"NSE:INDIAVIX","width":"100%","height":"220","locale":"en","dateRange":"12M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
+                {"symbol":"NSE:IT","width":"100%","height":"220","locale":"en","dateRange":"12M","colorTheme":"dark","trendLineColor":"rgba(200,80,26,1)","underLineColor":"rgba(200,80,26,0.1)","isTransparent":true,"autosize":true}
                 </script>
               </div>
             </div>
@@ -670,24 +649,6 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </div>
     </section>
 
-
-    <!-- ── EARNINGS CALENDAR ── -->
-    <section class="mkt-section mkt-section--alt">
-      <div class="mkt-inner">
-        <h2 class="mkt-section-title">Earnings Calendar</h2>
-        <div class="earn-controls">
-          <div class="earn-week-nav">
-            <button class="earn-nav-btn" id="earn-prev">← Prev</button>
-            <span class="earn-week-label" id="earn-week-label">This Week</span>
-            <button class="earn-nav-btn" id="earn-next">Next →</button>
-          </div>
-          <div class="earn-days" id="earn-days"></div>
-        </div>
-        <div id="earnings-wrap" class="earnings-wrap">
-          <div class="earn-state">Loading earnings data…</div>
-        </div>
-      </div>
-    </section>
 
     <!-- ── MARKET NEWS ── -->
     <section class="mkt-section">
@@ -1019,6 +980,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       .chart-grid--3 { grid-template-columns: 1fr; }
       .chart-grid--2 { grid-template-columns: 1fr; }
     }
+
+    .crypto-full-card { width: 100%; }
 
     /* ── EARNINGS CALENDAR ── */
     .earn-controls { display:flex; flex-direction:column; gap:1rem; margin-bottom:1rem; }
