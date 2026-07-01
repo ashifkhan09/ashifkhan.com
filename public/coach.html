@@ -372,24 +372,40 @@ function searchTerm(name){
 function applyMedia(name){const u=mediaFor(name);
   if(u)document.querySelectorAll('img[data-ex]').forEach(el=>{if(el.getAttribute('data-ex')===name&&!el.getAttribute('src'))el.setAttribute('src',u);});
   if(videoFor(name)&&typeof PL!=='undefined'&&PL&&PL.steps[PL.i]&&PL.steps[PL.i].e&&PL.steps[PL.i].e.n===name){const b=document.getElementById('nowVidBadge');if(b&&!b.innerHTML.trim())b.innerHTML=vidBadge(name);}}
-const _inflight={};
-function ensureMedia(name){
-  if(_mc[name]!==undefined)return;            // already resolved (image url or null = no-image)
-  if(_inflight[name])return;
-  if(typeof fetch!=='function')return;
-  if(typeof navigator!=='undefined'&&navigator.onLine===false)return;
-  const term=searchTerm(name);if(!term){_mc[name]={img:null};_mcSave();return;}
-  _inflight[name]=1;
-  fetch(`${WGER}/api/v2/exercise/search/?language=english&format=json&term=${encodeURIComponent(term)}`)
-   .then(r=>r.json()).then(j=>{const list=(j&&j.suggestions)||[];const s=list.find(x=>x&&x.data&&x.data.image)||list[0];
-     const d=s&&s.data?s.data:null;const img=d&&d.image?absURL(d.image):null;const base=(d&&(d.base_id||d.base))||null;
-     _mc[name]={img:img,video:null,base:base};_mcSave();applyMedia(name);delete _inflight[name];
-     if(base){_inflight[name]=1;fetch(`${WGER}/api/v2/exercisebaseinfo/${base}/?format=json`).then(r=>r.json()).then(info=>{
-       const ims=(info&&info.images)||[];const im=ims.find(x=>x.is_main)||ims[0];const vid=((info&&info.videos)||[])[0];
-       _mc[name]={img:(im&&im.image?absURL(im.image):img),video:(vid&&vid.video?absURL(vid.video):null),base:base};_mcSave();applyMedia(name);delete _inflight[name];}).catch(()=>{delete _inflight[name];});}
-   }).catch(()=>{delete _inflight[name];});}  // network error → don't cache, retry next time
+function applyMediaAll(){document.querySelectorAll('img[data-ex]').forEach(el=>{const nm=el.getAttribute('data-ex');const u=mediaFor(nm);if(u&&!el.getAttribute('src'))el.setAttribute('src',u);});}
+function tok(str){return String(str).toLowerCase().replace(/[^a-z ]/g,' ').split(/\s+/).filter(Boolean);}
+function allExerciseNames(){const s=new Set();
+  Object.values(PROGRAM.sessions).forEach(x=>x.blocks.forEach(b=>b.ex.forEach(e=>s.add(e.n))));
+  Object.values(PROGRAM.home).forEach(x=>x.blocks.forEach(b=>b.ex.forEach(e=>s.add(e.n))));
+  ['MA','ML','MW'].forEach(m=>buildMorning(m).items.forEach(e=>s.add(e.n)));
+  ['A','B','C','D','E'].forEach(id=>cooldownFor(id).ex.forEach(e=>s.add(e.n)));
+  return [...s];}
+function _bestMatch(items,q){const qt=tok(q);if(!qt.length)return null;let b=null,bs=0;items.forEach(t=>{let sc=0;qt.forEach(x=>{if(t.toks.indexOf(x)>=0)sc+=2;else if(t.toks.some(y=>y.indexOf(x)>=0||x.indexOf(y)>=0))sc+=1;});if(t.n===q)sc+=5;sc-=t.toks.length*0.15;if(sc>bs){bs=sc;b=t;}});return bs>=2?b:null;}
+/* Build the exercise-media index ONCE on-device from wger (CC-BY-SA) + free-exercise-db (public domain); cache in localStorage. */
+const MEDIA_VER=2;
+async function buildMediaIndex(){
+  try{
+    if(_mc.__ver===MEDIA_VER)return;
+    if(typeof fetch!=='function')return;
+    if(typeof navigator!=='undefined'&&navigator.onLine===false)return;
+    const fbase='https://cdn.jsdelivr.net/gh/yuhonas/free-exercise-db@main/exercises/';
+    const fdb=await fetch('https://cdn.jsdelivr.net/gh/yuhonas/free-exercise-db@main/dist/exercises.json').then(r=>r.json());
+    const fitems=fdb.filter(e=>e.images&&e.images.length).map(e=>({toks:tok(e.name),n:e.name.toLowerCase(),img:fbase+e.images[0]}));
+    const imgById={},vidById={};
+    for(let o=0;o<4000;o+=500){const j=await fetch(WGER+'/api/v2/exerciseimage/?format=json&limit=500&offset='+o).then(r=>r.json());(j.results||[]).forEach(im=>{if(im.exercise&&im.image){if(!imgById[im.exercise]||im.is_main)imgById[im.exercise]=im.image;}});if(!j.next)break;}
+    for(let o=0;o<2000;o+=500){const j=await fetch(WGER+'/api/v2/video/?format=json&limit=500&offset='+o).then(r=>r.json());(j.results||[]).forEach(v=>{if(v.exercise&&v.video&&!vidById[v.exercise])vidById[v.exercise]=v.video;});if(!j.next)break;}
+    const wt=[];for(let o=0;o<3600;o+=1000){const j=await fetch(WGER+'/api/v2/exercise-translation/?format=json&language=2&limit=1000&offset='+o).then(r=>r.json());(j.results||[]).forEach(t=>{if(t.name&&t.exercise&&imgById[t.exercise])wt.push({toks:tok(t.name),n:t.name.toLowerCase(),id:t.exercise});});if(!j.next)break;}
+    allExerciseNames().forEach(nm=>{
+      if(_mc[nm]&&_mc[nm].img)return;
+      const q=searchTerm(nm).toLowerCase();
+      const w=_bestMatch(wt,q);if(w){_mc[nm]={img:imgById[w.id],video:vidById[w.id]||null};return;}
+      const f=_bestMatch(fitems,q);if(f){_mc[nm]={img:f.img,video:null};return;}
+    });
+    _mc.__ver=MEDIA_VER;_mcSave();applyMediaAll();
+  }catch(e){}
+}
 let _imSeq=0;
-function exArt(name,vis,size,radius){const id='im'+(_imSeq++);const u=mediaFor(name);ensureMedia(name);
+function exArt(name,vis,size,radius){const id='im'+(_imSeq++);const u=mediaFor(name);
   return `<div style="width:${size};height:${size};border-radius:${radius};background:${gradFor(vis)};position:relative;overflow:hidden;flex:0 0 auto">
     <svg viewBox="0 0 24 24" style="color:#0b0b0d;width:56%;height:56%;position:absolute;left:22%;top:22%">${icon(vis)}</svg>
     <img id="${id}" data-ex="${escH(name)}" ${u?`src="${u}"`:''} alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:${u?'1':'0'};transition:opacity .25s" onload="this.style.opacity=1" onerror="this.style.opacity=0"></div>`;}
@@ -980,6 +996,7 @@ function escH(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;'
 /* ================= INIT ================= */
 window.setSelDay=function(d){const dt=dateForWeekday(d);selDate=midnight(dt);viewWeek=Math.max(0,Math.min(7,weekIdxForDate(dt)));renderToday();};
 goToday();
+buildMediaIndex();  // fetch exercise photos/videos once (online), cache on-device
 </script>
 </body>
 </html>
