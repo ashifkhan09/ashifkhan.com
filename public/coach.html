@@ -197,6 +197,15 @@ button{font-family:inherit}
 </head>
 <body>
 
+<!-- LOCK SCREEN -->
+<div id="lockScreen" style="position:fixed;inset:0;z-index:200;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;max-width:520px;margin:0 auto">
+  <div style="font-size:28px;font-weight:800;letter-spacing:.5px">COACH</div>
+  <div class="muted" style="margin:6px 0 22px">Enter your passphrase</div>
+  <input id="gateInput" type="password" class="inp" style="max-width:280px;text-align:center" placeholder="Passphrase" autocomplete="current-password" onkeydown="if(event.key==='Enter')unlockGate()">
+  <button class="btn" style="max-width:280px;margin-top:12px" onclick="unlockGate()">Unlock</button>
+  <div id="gateErr" class="mini" style="color:var(--hard);min-height:16px;margin-top:10px"></div>
+</div>
+
 <!-- TODAY -->
 <div id="tab-today" class="tab">
   <div class="app-head"><div><h1>COACH</h1><div class="sub" id="todayDate"></div></div>
@@ -279,6 +288,12 @@ button{font-family:inherit}
   <div class="section"><h2>Equipment by location</h2><div id="locPills"></div>
     <div class="addrow"><input id="newLoc" placeholder="Add a location (e.g. Climbing gym)"><button class="btn sm" style="width:auto;padding:11px 16px" onclick="addLoc()">Add</button></div></div>
   <div id="eqList"></div>
+  <div class="section"><h2>Data & backup</h2></div>
+  <div class="card">
+    <div class="muted" style="margin-bottom:8px">Your logs live on <b style="color:var(--txt)">this device only</b> (private, not on any server). Export a backup to keep it safe or move to a new phone.</div>
+    <button class="btn sm" onclick="exportData()">⬇︎ Export backup (.json)</button>
+    <div class="addrow" style="margin-top:8px"><input type="file" id="importFile" accept="application/json,.json" style="flex:1;color:var(--mut);font-size:12px"><button class="btn sm" style="width:auto;padding:11px 14px" onclick="importData()">Import</button></div>
+  </div>
 </div>
 
 <!-- PLAYER -->
@@ -994,7 +1009,19 @@ function escH(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;'
 (function normalize(){Object.values(S.locations).forEach(cats=>{Object.keys(cats).forEach(c=>{cats[c]=cats[c].map(x=>typeof x==='string'?{name:x,have:true}:x);});});save();})();
 
 /* ================= INIT ================= */
+/* ---- ACCESS GATE (light client-side lock) + BACKUP/EXPORT ---- */
+const GATE_HASH='e19716a83b9e6ab1238c1d00e45b6beb36e861fe76fb47de3ab54ed5f8fd7c3c';
+async function sha256(s){const b=new TextEncoder().encode(s);const h=await crypto.subtle.digest('SHA-256',b);return [...new Uint8Array(h)].map(x=>x.toString(16).padStart(2,'0')).join('');}
+function initGate(){try{if(localStorage.getItem('coach_gate')===GATE_HASH){const l=document.getElementById('lockScreen');if(l)l.style.display='none';}}catch(e){}}
+async function unlockGate(){const el=document.getElementById('gateInput'),err=document.getElementById('gateErr');
+  try{const h=await sha256(el.value||'');if(h===GATE_HASH){try{localStorage.setItem('coach_gate',GATE_HASH);}catch(e){}document.getElementById('lockScreen').style.display='none';}else{err.textContent='Incorrect passphrase.';el.value='';}}
+  catch(e){err.textContent='Secure hashing needs https — open the hosted site.';}}
+function exportData(){const data={_app:'coach',_ts:Date.now(),state:localStorage.getItem(LS),media:localStorage.getItem('wger_media_v1')};
+  const blob=new Blob([JSON.stringify(data)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='coach-backup-'+todayKey()+'.json';document.body.appendChild(a);a.click();setTimeout(()=>{try{URL.revokeObjectURL(a.href);}catch(e){}a.remove();},0);}
+function importData(){const el=document.getElementById('importFile');const f=el&&el.files&&el.files[0];if(!f){alert('Choose a backup file first.');return;}
+  const r=new FileReader();r.onload=function(){try{const d=JSON.parse(r.result);if(d.state)localStorage.setItem(LS,d.state);if(d.media)localStorage.setItem('wger_media_v1',d.media);alert('Backup imported — reloading.');location.reload();}catch(e){alert('Could not read that backup file.');}};r.readAsText(f);}
 window.setSelDay=function(d){const dt=dateForWeekday(d);selDate=midnight(dt);viewWeek=Math.max(0,Math.min(7,weekIdxForDate(dt)));renderToday();};
+initGate();
 goToday();
 buildMediaIndex();  // fetch exercise photos/videos once (online), cache on-device
 </script>
