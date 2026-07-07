@@ -5,8 +5,8 @@ interface Props {
 }
 
 const {
-  title = 'Ashif Khan — Principal-Level Product Leader · AI Agents & AdTech',
-  description = 'Principal-level product leader building agentic AI systems at Yahoo DSP. 14+ years in AdTech — $10M+ incremental revenue, org-wide AI strategy, and products spanning contextual targeting, yield, and conversational agents.',
+  title = 'Ashif Khan — Senior Product Manager, AI Agent Lead',
+  description = 'Senior Product Manager and AI Agent Lead at Yahoo DSP. 14+ years in AdTech and programmatic advertising. Building agentic AI systems, contextual targeting products, and yield optimization strategies.',
 } = Astro.props;
 
 const { pathname } = Astro.url;
@@ -26,29 +26,23 @@ const h = (anchor: string) => isHome ? anchor : `/${anchor}`;
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://ashifkhan.com" />
-    <meta name="theme-color" content="#07070b" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
-    <div class="page-glow" aria-hidden="true"></div>
-
     <nav class="nav" id="nav">
-      <a href="/" class="nav-logo">
-        <span class="nav-logo-mark"></span>
-        Ashif Khan
-      </a>
-      <div class="nav-links" id="navLinks">
+      <a href="/" class="nav-logo">Ashif Khan</a>
+      <div class="nav-links">
         <a href={h('#about')}>About</a>
         <a href={h('#experience')}>Experience</a>
         <a href={h('#building')}>Building</a>
         <a href="/markets" class={pathname.startsWith('/markets') ? 'nav-link--active' : ''}>Markets</a>
-        <a href="mailto:ashif@ashifkhan.com" class="nav-cta">Get in touch</a>
+        <a href={h('#contact')}>Contact</a>
       </div>
       <button class="nav-menu-btn" id="menuBtn" aria-label="Toggle menu">
         <span></span><span></span>
@@ -60,30 +54,15 @@ const h = (anchor: string) => isHome ? anchor : `/${anchor}`;
     </main>
 
     <footer class="footer" id="contact">
-      <div class="footer-cta-band">
-        <div class="footer-cta-inner">
-          <p class="footer-kicker">// Next chapter</p>
-          <h2 class="footer-headline">
-            Let's build what's <em>next</em>.
-          </h2>
-          <p class="footer-sub">
-            Open to principal-level product leadership roles, advising early-stage AI &amp; AdTech startups, and mentoring PMs navigating the shift to agentic systems.
-          </p>
-          <a href="mailto:ashif@ashifkhan.com" class="footer-btn">
-            ashif@ashifkhan.com
-            <span class="footer-btn-arrow">→</span>
-          </a>
-        </div>
-      </div>
       <div class="footer-inner">
         <div class="footer-left">
           <p class="footer-name">Ashif Khan</p>
-          <p class="footer-role">Product Leader · AI Agents × AdTech</p>
+          <p class="footer-role">Senior Product Manager · AI Agent Lead</p>
         </div>
         <div class="footer-links">
           <a href="mailto:ashif@ashifkhan.com" class="footer-link">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
-            Email
+            ashif@ashifkhan.com
           </a>
           <a href="https://linkedin.com/in/ashifkhan" target="_blank" rel="noopener" class="footer-link">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
@@ -96,7 +75,8 @@ const h = (anchor: string) => isHome ? anchor : `/${anchor}`;
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© {new Date().getFullYear()} Ashif Khan · Built with Astro, deployed on GitHub Pages</p>
+        <p class="footer-tagline">Open to collaborating on AI product ideas, advising early-stage AdTech startups, and mentoring PMs navigating the shift to agentic systems.</p>
+        <p>© {new Date().getFullYear()} Ashif Khan. Built with Astro, deployed on GitHub Pages.</p>
       </div>
     </footer>
 
@@ -104,42 +84,20 @@ const h = (anchor: string) => isHome ? anchor : `/${anchor}`;
       *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
       :root {
-        /* ── Core dark system ── */
-        --bg: #07070b;
-        --bg-2: #0c0d14;
-        --surface: rgba(255, 255, 255, 0.03);
-        --surface-2: rgba(255, 255, 255, 0.055);
-        --text: #f2f1ec;
-        --muted: rgba(242, 241, 236, 0.62);
-        --faint: rgba(242, 241, 236, 0.38);
-        --line: rgba(242, 241, 236, 0.09);
-        --line-med: rgba(242, 241, 236, 0.18);
-
-        /* ── Brand ── */
-        --accent: #ff6a2b;
-        --accent-2: #ffb347;
-        --accent-soft: rgba(255, 106, 43, 0.14);
-        --glow-violet: rgba(124, 92, 255, 0.14);
-        --grad: linear-gradient(100deg, #ff6a2b 0%, #ffb347 100%);
-
-        /* ── Legacy aliases (markets & careercraft pages) ── */
-        --ink: #07070b;
-        --ink-light: rgba(242, 241, 236, 0.62);
-        --ink-faint: rgba(242, 241, 236, 0.38);
-        --paper: #f2f1ec;
-        --paper-warm: #0c0d14;
-        --accent-light: #ffb347;
-        --accent-faint: rgba(255, 106, 43, 0.14);
-        --border: rgba(242, 241, 236, 0.09);
-        --border-med: rgba(242, 241, 236, 0.18);
-
-        /* ── Type ── */
-        --serif: 'Fraunces', Georgia, serif;
-        --sans: 'Inter', system-ui, sans-serif;
-        --mono: 'JetBrains Mono', ui-monospace, monospace;
-
-        --nav-h: 68px;
-        --max-w: 1160px;
+        --ink: #0e0e0d;
+        --ink-light: #4a4945;
+        --ink-faint: #8a8880;
+        --paper: #faf9f7;
+        --paper-warm: #f4f2ed;
+        --accent: #c8501a;
+        --accent-light: #e8773d;
+        --accent-faint: #f5e4db;
+        --border: rgba(14, 14, 13, 0.1);
+        --border-med: rgba(14, 14, 13, 0.2);
+        --serif: 'DM Serif Display', Georgia, serif;
+        --sans: 'DM Sans', system-ui, sans-serif;
+        --nav-h: 64px;
+        --max-w: 1120px;
       }
 
       html { scroll-behavior: smooth; }
@@ -148,31 +106,17 @@ const h = (anchor: string) => isHome ? anchor : `/${anchor}`;
         font-family: var(--sans);
         font-size: 16px;
         line-height: 1.6;
-        color: var(--text);
-        background: var(--bg);
+        color: var(--ink);
+        background: var(--paper);
         -webkit-font-smoothing: antialiased;
-        overflow-x: hidden;
       }
-
-      ::selection { background: rgba(255, 106, 43, 0.35); color: #fff; }
-
-      /* Ambient page glow */
-      .page-glow {
-        position: fixed;
-        inset: 0;
-        z-index: 0;
-        pointer-events: none;
-        background:
-          radial-gradient(900px 600px at 85% -10%, var(--glow-violet), transparent 60%),
-          radial-gradient(700px 500px at -10% 30%, rgba(255, 106, 43, 0.07), transparent 60%);
-      }
-
-      main { position: relative; z-index: 1; }
 
       /* ── NAV ── */
       .nav {
         position: fixed;
-        top: 0; left: 0; right: 0;
+        top: 0;
+        left: 0;
+        right: 0;
         z-index: 100;
         height: var(--nav-h);
         display: flex;
@@ -180,42 +124,21 @@ const h = (anchor: string) => isHome ? anchor : `/${anchor}`;
         justify-content: space-between;
         padding: 0 2rem;
         background: transparent;
-        transition: background 0.35s, border-color 0.35s, transform 0.35s;
+        transition: background 0.3s, border-color 0.3s;
       }
 
       .nav.scrolled {
-        background: rgba(7, 7, 11, 0.72);
-        backdrop-filter: blur(16px) saturate(1.4);
-        -webkit-backdrop-filter: blur(16px) saturate(1.4);
-        border-bottom: 1px solid var(--line);
+        background: rgba(250, 249, 247, 0.92);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
       }
-
-      .nav.nav--hidden { transform: translateY(-100%); }
 
       .nav-logo {
-        display: flex;
-        align-items: center;
-        gap: 10px;
         font-family: var(--serif);
-        font-weight: 500;
-        font-size: 1.2rem;
-        color: var(--text);
+        font-size: 1.25rem;
+        color: var(--ink);
         text-decoration: none;
         letter-spacing: -0.02em;
-      }
-
-      .nav-logo-mark {
-        width: 9px;
-        height: 9px;
-        border-radius: 50%;
-        background: var(--grad);
-        box-shadow: 0 0 12px rgba(255, 106, 43, 0.8);
-        animation: markPulse 3s ease-in-out infinite;
-      }
-
-      @keyframes markPulse {
-        0%, 100% { box-shadow: 0 0 8px rgba(255, 106, 43, 0.6); }
-        50% { box-shadow: 0 0 16px rgba(255, 106, 43, 1); }
       }
 
       .nav-links {
@@ -225,49 +148,16 @@ const h = (anchor: string) => isHome ? anchor : `/${anchor}`;
       }
 
       .nav-links a {
-        position: relative;
         font-size: 0.875rem;
         font-weight: 400;
-        color: var(--muted);
+        color: var(--ink-light);
         text-decoration: none;
         letter-spacing: 0.01em;
         transition: color 0.2s;
       }
 
-      .nav-links a:not(.nav-cta)::after {
-        content: '';
-        position: absolute;
-        left: 0; bottom: -5px;
-        width: 100%;
-        height: 1.5px;
-        background: var(--grad);
-        transform: scaleX(0);
-        transform-origin: right;
-        transition: transform 0.3s cubic-bezier(0.65, 0, 0.35, 1);
-      }
-
-      .nav-links a:not(.nav-cta):hover::after,
-      .nav-links a.nav-link--active::after {
-        transform: scaleX(1);
-        transform-origin: left;
-      }
-
-      .nav-links a:hover { color: var(--text); }
-      .nav-links a.nav-link--active { color: var(--text); }
-
-      .nav-cta {
-        border: 1px solid var(--line-med);
-        padding: 0.5rem 1.1rem;
-        border-radius: 100px;
-        color: var(--text) !important;
-        transition: border-color 0.25s, background 0.25s, box-shadow 0.25s !important;
-      }
-
-      .nav-cta:hover {
-        border-color: var(--accent);
-        background: var(--accent-soft);
-        box-shadow: 0 0 20px rgba(255, 106, 43, 0.25);
-      }
+      .nav-links a:hover { color: var(--ink); }
+      .nav-links a.nav-link--active { color: var(--accent); }
 
       .nav-menu-btn {
         display: none;
@@ -283,92 +173,16 @@ const h = (anchor: string) => isHome ? anchor : `/${anchor}`;
         display: block;
         width: 22px;
         height: 1.5px;
-        background: var(--text);
+        background: var(--ink);
         transition: transform 0.3s;
       }
 
       /* ── FOOTER ── */
       .footer {
-        position: relative;
-        z-index: 1;
-        background: var(--bg);
-        border-top: 1px solid var(--line);
+        background: var(--ink);
+        color: var(--paper);
+        padding: 4rem 2rem 2rem;
       }
-
-      .footer-cta-band {
-        padding: 7rem 2rem;
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .footer-cta-band::before {
-        content: '';
-        position: absolute;
-        left: 50%; top: 50%;
-        width: 700px; height: 400px;
-        transform: translate(-50%, -50%);
-        background: radial-gradient(ellipse, rgba(255, 106, 43, 0.1), transparent 65%);
-        pointer-events: none;
-      }
-
-      .footer-cta-inner { position: relative; max-width: 640px; margin: 0 auto; }
-
-      .footer-kicker {
-        font-family: var(--mono);
-        font-size: 0.75rem;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: var(--accent);
-        margin-bottom: 1.25rem;
-      }
-
-      .footer-headline {
-        font-family: var(--serif);
-        font-weight: 400;
-        font-size: clamp(2.25rem, 5vw, 3.75rem);
-        letter-spacing: -0.02em;
-        line-height: 1.1;
-        margin-bottom: 1.25rem;
-      }
-
-      .footer-headline em {
-        font-style: italic;
-        background: var(--grad);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-      }
-
-      .footer-sub {
-        color: var(--muted);
-        font-weight: 300;
-        max-width: 48ch;
-        margin: 0 auto 2.25rem;
-      }
-
-      .footer-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.75rem;
-        font-size: 0.95rem;
-        font-weight: 500;
-        color: #0a0a0d;
-        background: var(--grad);
-        padding: 0.9rem 1.75rem;
-        border-radius: 100px;
-        text-decoration: none;
-        transition: transform 0.2s, box-shadow 0.2s;
-        box-shadow: 0 4px 30px rgba(255, 106, 43, 0.35);
-      }
-
-      .footer-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 40px rgba(255, 106, 43, 0.5);
-      }
-
-      .footer-btn-arrow { transition: transform 0.2s; }
-      .footer-btn:hover .footer-btn-arrow { transform: translateX(4px); }
 
       .footer-inner {
         max-width: var(--max-w);
@@ -377,55 +191,65 @@ const h = (anchor: string) => isHome ? anchor : `/${anchor}`;
         justify-content: space-between;
         align-items: flex-start;
         gap: 3rem;
-        padding: 2.5rem 2rem;
-        border-top: 1px solid var(--line);
+        padding-bottom: 3rem;
+        border-bottom: 1px solid rgba(250, 249, 247, 0.1);
       }
 
       .footer-name {
         font-family: var(--serif);
-        font-size: 1.35rem;
+        font-size: 1.5rem;
         margin-bottom: 0.25rem;
+        color: var(--paper);
       }
 
-      .footer-role {
-        font-size: 0.85rem;
-        color: var(--faint);
+      .footer-role, .footer-location {
+        font-size: 0.875rem;
+        color: rgba(250, 249, 247, 0.5);
       }
 
-      .footer-links { display: flex; gap: 1.75rem; align-items: center; }
+      .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: flex-end;
+      }
 
       .footer-link {
         display: flex;
         align-items: center;
         gap: 8px;
-        font-size: 0.85rem;
-        color: var(--muted);
+        font-size: 0.875rem;
+        color: rgba(250, 249, 247, 0.6);
         text-decoration: none;
         transition: color 0.2s;
       }
 
-      .footer-link:hover { color: var(--accent-2); }
+      .footer-link:hover { color: var(--paper); }
 
       .footer-bottom {
         max-width: var(--max-w);
         margin: 0 auto;
-        padding: 0 2rem 2rem;
+        padding-top: 1.5rem;
         font-size: 0.75rem;
-        color: var(--faint);
+        color: rgba(250, 249, 247, 0.3);
+      }
+
+      .footer-tagline {
+        color: rgba(250, 249, 247, 0.5);
+        margin-bottom: 0.5rem;
       }
 
       /* ── SECTION SHARED ── */
       .section {
-        padding: 7rem 2rem;
+        padding: 6rem 2rem;
         max-width: var(--max-w);
         margin: 0 auto;
       }
 
       .section-label {
-        font-family: var(--mono);
         font-size: 0.75rem;
         font-weight: 500;
-        letter-spacing: 0.14em;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
         color: var(--accent);
         margin-bottom: 1rem;
@@ -433,89 +257,53 @@ const h = (anchor: string) => isHome ? anchor : `/${anchor}`;
 
       .section-title {
         font-family: var(--serif);
-        font-weight: 400;
-        font-size: clamp(2rem, 4.5vw, 3.25rem);
+        font-size: clamp(2rem, 4vw, 3rem);
         line-height: 1.1;
         letter-spacing: -0.02em;
-        color: var(--text);
+        color: var(--ink);
         margin-bottom: 1.5rem;
-      }
-
-      .section-title em {
-        font-style: italic;
-        background: var(--grad);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-      }
-
-      /* ── SCROLL REVEAL (shared) ── */
-      .reveal {
-        opacity: 0;
-        transform: translateY(28px);
-        transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-        transition-delay: var(--reveal-delay, 0s);
-      }
-
-      .reveal.revealed { opacity: 1; transform: none; }
-
-      @media (prefers-reduced-motion: reduce) {
-        *, *::before, *::after {
-          animation-duration: 0.01ms !important;
-          animation-iteration-count: 1 !important;
-          transition-duration: 0.01ms !important;
-        }
-        html { scroll-behavior: auto; }
-        .reveal { opacity: 1; transform: none; }
       }
 
       /* ── RESPONSIVE ── */
       @media (max-width: 768px) {
-        .nav { padding: 0 1.25rem; }
         .nav-links { display: none; }
         .nav-links.open {
           display: flex;
           flex-direction: column;
           position: fixed;
           inset: 0;
-          background: rgba(7, 7, 11, 0.97);
-          backdrop-filter: blur(20px);
+          background: var(--paper);
           align-items: center;
           justify-content: center;
-          gap: 2.25rem;
+          gap: 2rem;
           font-size: 1.25rem;
           z-index: 99;
         }
         .nav-menu-btn { display: flex; z-index: 101; }
-        .footer-inner { flex-direction: column; gap: 1.5rem; }
-        .footer-cta-band { padding: 5rem 1.25rem; }
-        .section { padding: 4.5rem 1.25rem; }
+        .footer-inner { flex-direction: column; }
+        .footer-links { align-items: flex-start; }
+        .section { padding: 4rem 1.25rem; }
       }
     </style>
 
     <script>
-      // Scroll-aware nav: glass on scroll, hide on scroll-down / show on scroll-up
+      // Scroll-aware nav
       const nav = document.getElementById('nav');
-      let lastY = 0;
       window.addEventListener('scroll', () => {
-        const y = window.scrollY;
-        nav?.classList.toggle('scrolled', y > 20);
-        if (nav) {
-          const menuOpen = document.getElementById('navLinks')?.classList.contains('open');
-          nav.classList.toggle('nav--hidden', !menuOpen && y > 300 && y > lastY);
-        }
-        lastY = y;
-      }, { passive: true });
+        nav?.classList.toggle('scrolled', window.scrollY > 20);
+      });
 
       // Mobile menu
       const menuBtn = document.getElementById('menuBtn');
-      const navLinks = document.getElementById('navLinks');
-      menuBtn?.addEventListener('click', () => navLinks?.classList.toggle('open'));
+      const navLinks = document.querySelector('.nav-links');
+      menuBtn?.addEventListener('click', () => {
+        navLinks?.classList.toggle('open');
+      });
       navLinks?.querySelectorAll('a').forEach(a => {
         a.addEventListener('click', () => navLinks.classList.remove('open'));
       });
 
-      // Scroll reveal with stagger support (--reveal-delay set per element)
+      // Scroll reveal
       const observer = new IntersectionObserver(
         (entries) => entries.forEach(e => {
           if (e.isIntersecting) {
@@ -523,32 +311,9 @@ const h = (anchor: string) => isHome ? anchor : `/${anchor}`;
             observer.unobserve(e.target);
           }
         }),
-        { threshold: 0.12 }
+        { threshold: 0.1 }
       );
       document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-      // Count-up animation for [data-countup] elements
-      const countObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (!entry.isIntersecting) return;
-          const el = entry.target as HTMLElement;
-          countObserver.unobserve(el);
-          const target = parseFloat(el.dataset.countup || '0');
-          const prefix = el.dataset.prefix || '';
-          const suffix = el.dataset.suffix || '';
-          const decimals = parseInt(el.dataset.decimals || '0');
-          const dur = 1600;
-          const start = performance.now();
-          const step = (now: number) => {
-            const p = Math.min((now - start) / dur, 1);
-            const eased = 1 - Math.pow(1 - p, 4);
-            el.textContent = prefix + (target * eased).toFixed(decimals) + suffix;
-            if (p < 1) requestAnimationFrame(step);
-          };
-          requestAnimationFrame(step);
-        });
-      }, { threshold: 0.4 });
-      document.querySelectorAll('[data-countup]').forEach(el => countObserver.observe(el));
     </script>
   </body>
 </html>

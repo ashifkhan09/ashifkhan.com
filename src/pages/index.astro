@@ -7,8 +7,6 @@ const experience = [
     role: 'Senior Product Manager, AI Agent Lead',
     period: 'Mar 2026 – Present',
     location: '',
-    current: true,
-    summary: 'Org-level owner of agentic AI at Yahoo DSP — the strategy, the guardrails, and the standards behind every agent the platform ships.',
     highlights: [
       'Overarching PM for all agentic AI initiatives at Yahoo DSP — owning strategy, guardrails, and UX standards across three parallel product tracks',
       'Driving a RAG-powered conversational help agent to GA, replacing a static keyword-search help center',
@@ -22,7 +20,6 @@ const experience = [
     role: 'Senior Product Manager, Contextual & Audience Targeting',
     period: 'May 2022 – Feb 2026',
     location: '',
-    summary: 'Product owner for contextual targeting and audience products — doubled two revenue lines and shipped Yahoo\'s first internal AI agent.',
     highlights: [
       'Grew contextual targeting revenue from $600K → $1M/month (~$4.8M incremental/year) through pricing strategy, competitive analysis, and UX redesign of the Boolean targeting workflow',
       'Doubled Next Gen Audience product fees from $400K → $800K/month (~$4.8M incremental/year) by shipping long-stalled improvements within one quarter of taking ownership',
@@ -40,7 +37,6 @@ const experience = [
     role: 'Price Yield Manager',
     period: 'Aug 2019 – May 2022',
     location: '',
-    summary: 'Owned pricing and yield for Yahoo\'s audience data products — the analytical groundwork behind the later $4.8M revenue lift.',
     highlights: [
       'Owned pricing strategy and yield management for Yahoo\'s audience data products across DSP and SSP channels',
       'Identified product and pricing gaps alongside the Yield team and partnered with Product to resolve them — the work that led directly to transitioning into a PM role',
@@ -53,7 +49,6 @@ const experience = [
     role: 'Revenue Analytics & Yield Manager',
     period: 'Dec 2018 – Aug 2019',
     location: 'New York, NY',
-    summary: '',
     highlights: [
       'Managed programmatic revenue optimization and partner relationships',
       'Implemented A/B testing methodologies to optimize performance',
@@ -64,7 +59,6 @@ const experience = [
     role: 'Digital Media Yield & Analytics Manager',
     period: 'May 2017 – Dec 2018',
     location: 'New York, NY',
-    summary: '',
     highlights: [
       'Analyzed advertising campaign performance across exchanges',
       'Established relationships with new SSPs and demand partners',
@@ -73,137 +67,76 @@ const experience = [
 ];
 
 const skills = [
-  { group: 'Product Leadership', items: ['Product Strategy', 'Org-Level Roadmaps', 'Design Thinking', 'Rapid Prototyping', 'User Research', 'A/B Testing', 'PRD Authoring', 'Go-to-Market Strategy', 'OKR & KPI Development'] },
+  { group: 'Product', items: ['Product Strategy', 'Roadmap Prioritization', 'Design Thinking', 'Rapid Prototyping', 'User Research', 'A/B Testing', 'PRD Authoring', 'Go-to-Market Strategy', 'OKR & KPI Development'] },
   { group: 'AI & Agentic', items: ['RAG Architecture', 'Agentic Workflow Design', 'LLM Prompt Engineering', 'AI Guardrails', 'Anomaly Detection', 'Knowledge Graph Design'] },
   { group: 'Domain', items: ['AdTech & DSP', 'Contextual Targeting', 'Brand Safety', 'CTV', 'Yield Optimization', 'Dynamic Pricing', 'Programmatic Advertising', 'Supply Path Optimization'] },
   { group: 'Technical', items: ['SQL', 'Data Analytics', 'Machine Learning Concepts', 'API Integration', 'JIRA', 'Confluence', 'Figma (collaboration)'] },
 ];
-
-const pillars = [
-  {
-    num: '01',
-    title: 'Own outcomes, not features',
-    body: 'Every product I\'ve led carries a revenue number, not a feature list. Contextual targeting: $600K → $1M/month. Audience fees: doubled in one quarter. I treat P&L accountability as part of the PM job, not someone else\'s.',
-  },
-  {
-    num: '02',
-    title: 'Set standards others adopt',
-    body: 'Principal-level impact means your thinking outlives your roadmap. The LLM guiding principles I authored — architecture sequencing, guardrails, content governance — were formally adopted across the org and now shape how every team at Yahoo DSP builds with AI.',
-  },
-  {
-    num: '03',
-    title: 'Ship 0→1 in ambiguity',
-    body: 'I built Yahoo\'s first internal AI agent before there was a playbook for it, and I\'m now taking three agentic products from concept toward GA in parallel. Ambiguity is the job — clarity is the deliverable.',
-  },
-];
-
-const marquee = ['Agentic AI', 'RAG Systems', 'Contextual Targeting', 'Yield Optimization', 'CTV', 'Anomaly Detection', 'Pricing Strategy', 'Brand Safety', 'Programmatic', 'LLM Guardrails', '0→1 Products', 'Revenue Ownership'];
 ---
 
 <BaseLayout>
   <!-- ── HERO ── -->
   <section class="hero">
-    <div class="hero-bg" aria-hidden="true">
+    <div class="hero-bg">
       <div class="hero-grid"></div>
-      <div class="orb orb--1"></div>
-      <div class="orb orb--2"></div>
-      <div class="orb orb--3"></div>
-      <div class="hero-noise"></div>
     </div>
-
     <div class="hero-content">
-      <div class="hero-tag">
-        <span class="hero-tag-dot"></span>
-        Principal-level Product Leader · AI Agents × AdTech
-      </div>
-
+      <div class="hero-tag">Senior Product Manager</div>
       <h1 class="hero-headline">
-        <span class="hw" style="--d:0.05s">Building</span>
-        <span class="hw hw--grad" style="--d:0.15s">agentic&nbsp;AI</span>
-        <span class="hw" style="--d:0.25s">that</span>
-        <span class="hw" style="--d:0.32s">moves</span>
-        <span class="hw hw--serif" style="--d:0.42s">revenue.</span>
+        Building agentic AI products at the intersection of <em>AdTech</em> and <em>intelligence</em>
       </h1>
-
-      <div class="hero-type-line">
-        <span class="hero-type-prompt">›</span>
-        <span id="typeTarget"></span>
-        <span class="hero-caret"></span>
-      </div>
-
       <p class="hero-sub">
-        14+ years in AdTech. Today I own the agentic AI strategy for Yahoo DSP —
-        the vision, guardrails, and standards behind three parallel agent products —
-        with <strong>$10M+ in incremental annual revenue</strong> shipped along the way.
+        14 years shipping high-impact products at Yahoo DSP — from contextual targeting and yield optimization to RAG-powered conversational agents and agentic troubleshooting systems.
       </p>
-
       <div class="hero-actions">
-        <a href="#experience" class="btn-primary">See the work <span class="btn-arrow">↓</span></a>
+        <a href="#experience" class="btn-primary">View Experience</a>
         <a href="/resume.pdf" class="btn-ghost" target="_blank">Download Resume ↗</a>
       </div>
-
       <div class="hero-stats">
         <div class="stat">
-          <span class="stat-num"><span data-countup="10" data-prefix="$" data-suffix="M+">$0M+</span></span>
-          <span class="stat-label">Incremental annual revenue</span>
+          <span class="stat-num">~$10M</span>
+          <span class="stat-label">Incremental annual revenue driven</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat">
-          <span class="stat-num"><span data-countup="3">0</span></span>
-          <span class="stat-label">AI agent products owned org-wide</span>
+          <span class="stat-num">8 wks → 1 wk</span>
+          <span class="stat-label">Vendor onboarding time reduction</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat">
-          <span class="stat-num"><span data-countup="14" data-suffix="+">0+</span></span>
-          <span class="stat-label">Years in AdTech &amp; programmatic</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-num"><span data-countup="8" data-suffix="×">0×</span></span>
-          <span class="stat-label">Faster vendor onboarding (8wk → 1wk)</span>
+          <span class="stat-num">2 days → 8 hrs</span>
+          <span class="stat-label">Audience scoring time reduction</span>
         </div>
       </div>
     </div>
-
     <div class="hero-scroll-hint">
       <span>scroll</span>
       <div class="hero-scroll-line"></div>
     </div>
   </section>
 
-  <!-- ── MARQUEE ── -->
-  <div class="marquee-band" aria-hidden="true">
-    <div class="marquee-track">
-      {[...marquee, ...marquee].map(item => (
-        <span class="marquee-item">{item}<span class="marquee-sep">✦</span></span>
-      ))}
-    </div>
-  </div>
-
   <!-- ── ABOUT ── -->
   <section class="about-section" id="about">
     <div class="section">
       <div class="about-grid">
         <div class="about-left reveal">
-          <p class="section-label">// About</p>
-          <h2 class="section-title">Principal scope.<br /><em>Builder's</em> hands.</h2>
+          <p class="section-label">About</p>
+          <h2 class="section-title">PM who builds, ships, and orchestrates</h2>
           <p class="about-body">
-            I operate where most product orgs have a gap: above the single-roadmap PM, below the pure strategist —
-            setting direction across multiple product tracks while staying close enough to the build to keep every decision honest.
+            I'm a Senior Product Manager and AI Agent Lead at Yahoo DSP, with 14 years of experience in digital advertising technology — programmatic platforms, contextual targeting, yield optimization, and, increasingly, agentic AI systems.
           </p>
           <p class="about-body">
-            At Yahoo DSP, that means owning agentic AI end to end: a RAG-powered help agent heading to GA, a conversational
-            campaign troubleshooter, and an anomaly detection product that catches configuration issues before they cost
-            advertisers money. I set the strategy, wrote the guardrails, and authored the LLM principles the whole org now builds by.
+            My current focus is building a suite of conversational agents for Yahoo DSP: a help agent, an agentic campaign troubleshooter, and an anomaly detection system that surfaces issues before they impact delivery. I set the strategy, guardrails, and standards across all three — making sure every agent we ship is grounded in real user problems, not technology for its own sake.
           </p>
           <p class="about-body">
-            Before that, I spent three years as product owner for contextual targeting and audience products — growing contextual
-            revenue from $600K to $1M/month, doubling audience fees, and shipping Yahoo's first internal AI agent. And before
-            product, I ran pricing and yield — which is why every product I touch is accountable to a number.
+            Before the AI Agent Lead role, I spent three years as the product owner for contextual targeting and audience products — growing contextual revenue from $600K to $1M per month, shipping Yahoo's first internal AI audience creation agent, and delivering UI overhauls, CTV products, and geo targeting features across the DSP.
           </p>
-          <a href="mailto:ashif@ashifkhan.com" class="about-cta">Let's connect <span>→</span></a>
+          <p class="about-body">
+            What drives me is the intersection of precision and scale — systems that handle millions of decisions per second while still feeling thoughtful to the user. That's true whether it's a pricing model, a targeting workflow, or a conversational agent that tells an advertiser why their campaign isn't delivering.
+          </p>
+          <a href="mailto:ashif@ashifkhan.com" class="about-cta">Let's connect →</a>
         </div>
-        <div class="about-right reveal" style="--reveal-delay:0.15s">
+        <div class="about-right reveal">
           <div class="skills-block">
             {skills.map(group => (
               <div class="skill-group">
@@ -221,45 +154,24 @@ const marquee = ['Agentic AI', 'RAG Systems', 'Contextual Targeting', 'Yield Opt
     </div>
   </section>
 
-  <!-- ── OPERATING PRINCIPLES ── -->
-  <section class="pillars-section">
-    <div class="section">
-      <div class="reveal">
-        <p class="section-label">// How I operate</p>
-        <h2 class="section-title">What <em>principal-level</em> means to me</h2>
-      </div>
-      <div class="pillars-grid">
-        {pillars.map((p, i) => (
-          <div class="pillar-card glow-card reveal" style={`--reveal-delay:${i * 0.12}s`}>
-            <span class="pillar-num">{p.num}</span>
-            <h3 class="pillar-title">{p.title}</h3>
-            <p class="pillar-body">{p.body}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
   <!-- ── EXPERIENCE ── -->
   <section class="exp-section" id="experience">
     <div class="section">
       <div class="exp-header reveal">
-        <p class="section-label">// Experience</p>
-        <h2 class="section-title">Where I've <em>built</em></h2>
+        <p class="section-label">Experience</p>
+        <h2 class="section-title">Where I've built</h2>
       </div>
       <div class="timeline">
         {experience.map((job, i) => (
-          <div class={`timeline-item reveal ${job.current ? 'timeline-item--current' : ''}`} style={`--reveal-delay:${Math.min(i * 0.08, 0.3)}s`}>
+          <div class={`timeline-item reveal ${i === 0 ? 'timeline-item--current' : ''}`}>
             <div class="timeline-dot"></div>
-            <div class="timeline-card glow-card">
+            <div class="timeline-content">
               <div class="timeline-meta">
                 <span class="timeline-period">{job.period}</span>
-                {job.current && <span class="timeline-badge">Current</span>}
-                {job.location && <span class="timeline-location">{job.location}</span>}
+                <span class="timeline-location">{job.location}</span>
               </div>
               <p class="timeline-company">{job.company}</p>
               <p class="timeline-role">{job.role}</p>
-              {job.summary && <p class="timeline-summary">{job.summary}</p>}
               <ul class="timeline-highlights">
                 {job.highlights.map(h => (
                   <li>{h}</li>
@@ -278,7 +190,7 @@ const marquee = ['Agentic AI', 'RAG Systems', 'Contextual Targeting', 'Yield Opt
             <span class="exp-earlier-year">2016–2017</span>
           </div>
           <div class="exp-earlier-item">
-            <span class="exp-earlier-co">S&amp;P Global Market Intelligence</span>
+            <span class="exp-earlier-co">S&P Global Market Intelligence</span>
             <span class="exp-earlier-role">Research Analyst</span>
             <span class="exp-earlier-year">2011–2012</span>
           </div>
@@ -296,61 +208,59 @@ const marquee = ['Agentic AI', 'RAG Systems', 'Contextual Targeting', 'Yield Opt
   <section class="building-section" id="building">
     <div class="section">
       <div class="reveal">
-        <p class="section-label">// Building</p>
-        <h2 class="section-title">What I'm <em>working on</em></h2>
+        <p class="section-label">Building</p>
+        <h2 class="section-title">What I'm working on</h2>
         <p class="building-sub">
-          Outside of Yahoo, I build to stay sharp — exploring ideas at the intersection of AI, community, and entrepreneurship.
+          Outside of Yahoo, I explore ideas at the intersection of AI, community, and entrepreneurship.
         </p>
       </div>
       <div class="projects-grid">
-        <div class="project-card glow-card reveal">
-          <div class="project-card-top">
-            <div class="project-icon">⚡</div>
-            <span class="project-tag">In progress</span>
-          </div>
+        <div class="project-card reveal">
+          <div class="project-icon">⚡</div>
           <h3 class="project-title">AI Competitor Intelligence Agent</h3>
           <p class="project-desc">
             An automated system that monitors AdTech and contextual targeting trends — surfacing competitive insights that would take hours of manual research. Built on agentic architecture, applying the same principles I use at work.
           </p>
+          <span class="project-tag">In progress</span>
         </div>
-        <div class="project-card glow-card reveal" style="--reveal-delay:0.1s">
-          <div class="project-card-top">
-            <div class="project-icon">📅</div>
-            <span class="project-tag project-tag--live">Live</span>
-          </div>
+        <div class="project-card reveal">
+          <div class="project-icon">📅</div>
           <h3 class="project-title">
-            <a href="https://calendar.ashifkhan.com/" target="_blank" rel="noopener" class="project-title-link">Calendar App ↗</a>
+            <a href="https://calendar.ashifkhan.com/" target="_blank" rel="noopener" class="project-link">Calendar App ↗</a>
           </h3>
           <p class="project-desc">
             A clean, fast scheduling app built for personal use — book time directly without the back-and-forth.
           </p>
+          <span class="project-tag">Live</span>
         </div>
-        <div class="project-card glow-card reveal" style="--reveal-delay:0.05s">
+        <div class="project-card reveal">
+          <div class="project-icon">✍️</div>
+          <h3 class="project-title">Writing on AI Product Management</h3>
+          <p class="project-desc">
+            Sharing frameworks and patterns from building agentic products in AdTech — what works, what doesn't, and how to think about LLMs as product infrastructure rather than features.
+          </p>
+          <span class="project-tag">Coming soon</span>
+        </div>
+        <div class="project-card project-card--live reveal">
           <div class="project-card-top">
             <div class="project-icon">✍️</div>
             <span class="project-tag project-tag--live">Live</span>
           </div>
           <h3 class="project-title">CareerCraft</h3>
           <p class="project-desc">
-            An AI-powered resume rewriter that interviews you about your real impact, then generates an ATS-optimised resume, LinkedIn summary, and personal site content — tailored to your target role.
+            An AI-powered resume rewriter that interviews you about your real impact, then
+            generates an ATS-optimised resume, LinkedIn summary, and personal site content —
+            tailored to your target role.
           </p>
-          <a href="/careercraft" class="project-link">Try it →</a>
+          <a href="/careercraft" class="project-link">
+            Try it →
+          </a>
         </div>
-        <div class="project-card glow-card reveal" style="--reveal-delay:0.15s">
-          <div class="project-card-top">
-            <div class="project-icon">📈</div>
-            <span class="project-tag project-tag--live">Live</span>
-          </div>
-          <h3 class="project-title">
-            <a href="/markets" class="project-title-link">Markets Dashboard ↗</a>
-          </h3>
-          <p class="project-desc">
-            A real-time financial markets dashboard — commodities, crypto, forex, equities, bonds, and live news in one dark-mode view.
+        <div class="project-card project-card--cta reveal">
+          <p class="project-cta-text">
+            Interested in what I'm building, or want to collaborate?
           </p>
-        </div>
-        <div class="project-card project-card--cta reveal" style="--reveal-delay:0.2s">
-          <p class="project-cta-text">Interested in what I'm building, or want to collaborate?</p>
-          <a href="mailto:ashif@ashifkhan.com" class="btn-primary">Get in touch <span class="btn-arrow">→</span></a>
+          <a href="mailto:ashif@ashifkhan.com" class="btn-primary">Get in touch →</a>
         </div>
       </div>
     </div>
@@ -364,71 +274,23 @@ const marquee = ['Agentic AI', 'RAG Systems', 'Contextual Targeting', 'Yield Opt
       display: flex;
       align-items: center;
       overflow: hidden;
-      background: var(--bg);
+      background: var(--ink);
     }
 
-    .hero-bg { position: absolute; inset: 0; pointer-events: none; }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
 
     .hero-grid {
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(242, 241, 236, 0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(242, 241, 236, 0.035) 1px, transparent 1px);
-      background-size: 64px 64px;
-      mask-image: radial-gradient(ellipse 85% 85% at 50% 40%, black 35%, transparent 100%);
-      animation: gridDrift 30s linear infinite;
-    }
-
-    @keyframes gridDrift {
-      from { background-position: 0 0, 0 0; }
-      to { background-position: 64px 64px, 64px 64px; }
-    }
-
-    .orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(90px);
-      opacity: 0.55;
-      will-change: transform;
-    }
-
-    .orb--1 {
-      width: 480px; height: 480px;
-      top: -12%; right: -6%;
-      background: radial-gradient(circle, rgba(124, 92, 255, 0.35), transparent 65%);
-      animation: orbFloat1 14s ease-in-out infinite;
-    }
-
-    .orb--2 {
-      width: 420px; height: 420px;
-      bottom: -18%; left: -8%;
-      background: radial-gradient(circle, rgba(255, 106, 43, 0.28), transparent 65%);
-      animation: orbFloat2 18s ease-in-out infinite;
-    }
-
-    .orb--3 {
-      width: 260px; height: 260px;
-      top: 40%; left: 55%;
-      background: radial-gradient(circle, rgba(255, 179, 71, 0.16), transparent 65%);
-      animation: orbFloat1 22s ease-in-out infinite reverse;
-    }
-
-    @keyframes orbFloat1 {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      50% { transform: translate(-40px, 30px) scale(1.08); }
-    }
-
-    @keyframes orbFloat2 {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      50% { transform: translate(50px, -35px) scale(1.06); }
-    }
-
-    .hero-noise {
-      position: absolute;
-      inset: 0;
-      opacity: 0.5;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        linear-gradient(rgba(250, 249, 247, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(250, 249, 247, 0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
     }
 
     .hero-content {
@@ -436,502 +298,278 @@ const marquee = ['Agentic AI', 'RAG Systems', 'Contextual Targeting', 'Yield Opt
       z-index: 1;
       max-width: var(--max-w);
       margin: 0 auto;
-      padding: calc(var(--nav-h) + 4rem) 2rem 7rem;
+      padding: calc(var(--nav-h) + 4rem) 2rem 6rem;
       width: 100%;
     }
 
     .hero-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--mono);
-      font-size: 0.72rem;
+      display: inline-block;
+      font-size: 0.75rem;
       font-weight: 500;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--accent-2);
-      border: 1px solid rgba(255, 106, 43, 0.35);
-      background: rgba(255, 106, 43, 0.06);
-      padding: 0.45rem 1rem;
+      color: var(--accent-light);
+      border: 1px solid rgba(200, 80, 26, 0.4);
+      padding: 0.35rem 0.85rem;
       border-radius: 100px;
-      margin-bottom: 2.25rem;
+      margin-bottom: 2rem;
       animation: fadeUp 0.8s ease both;
     }
 
-    .hero-tag-dot {
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      background: #34d399;
-      box-shadow: 0 0 8px rgba(52, 211, 153, 0.9);
-      animation: dotPulse 2s ease-in-out infinite;
-    }
-
-    @keyframes dotPulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.35; }
-    }
-
     .hero-headline {
-      font-family: var(--sans);
-      font-weight: 600;
-      font-size: clamp(2.75rem, 7vw, 5.5rem);
-      line-height: 1.05;
-      letter-spacing: -0.035em;
-      color: var(--text);
-      max-width: 16ch;
-      margin-bottom: 1.75rem;
-    }
-
-    .hw {
-      display: inline-block;
-      opacity: 0;
-      transform: translateY(0.6em) rotate(1.5deg);
-      animation: wordUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0s) both;
-    }
-
-    @keyframes wordUp {
-      to { opacity: 1; transform: none; }
-    }
-
-    .hw--grad {
-      background: var(--grad);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .hw--serif {
       font-family: var(--serif);
-      font-style: italic;
-      font-weight: 400;
-      letter-spacing: -0.02em;
-    }
-
-    .hero-type-line {
-      font-family: var(--mono);
-      font-size: 0.9rem;
-      color: var(--muted);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: var(--paper);
+      max-width: 18ch;
       margin-bottom: 1.5rem;
-      min-height: 1.5em;
-      animation: fadeUp 0.8s 0.55s ease both;
+      animation: fadeUp 0.8s 0.1s ease both;
     }
 
-    .hero-type-prompt { color: var(--accent); margin-right: 0.5rem; }
-
-    .hero-caret {
-      display: inline-block;
-      width: 8px;
-      height: 1.05em;
-      background: var(--accent);
-      vertical-align: text-bottom;
-      margin-left: 3px;
-      animation: caretBlink 1s step-end infinite;
+    .hero-headline em {
+      font-style: italic;
+      color: var(--accent-light);
     }
-
-    @keyframes caretBlink { 50% { opacity: 0; } }
 
     .hero-sub {
       font-size: clamp(1rem, 1.5vw, 1.125rem);
-      color: var(--muted);
-      max-width: 54ch;
-      line-height: 1.75;
+      color: rgba(250, 249, 247, 0.55);
+      max-width: 52ch;
+      line-height: 1.7;
       margin-bottom: 2.5rem;
       font-weight: 300;
-      animation: fadeUp 0.8s 0.65s ease both;
+      animation: fadeUp 0.8s 0.2s ease both;
     }
-
-    .hero-sub strong { color: var(--text); font-weight: 500; }
 
     .hero-actions {
       display: flex;
       gap: 1rem;
-      margin-bottom: 4.5rem;
-      flex-wrap: wrap;
-      animation: fadeUp 0.8s 0.75s ease both;
+      margin-bottom: 4rem;
+      animation: fadeUp 0.8s 0.3s ease both;
     }
 
     .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      background: var(--grad);
-      color: #0a0a0d;
-      font-size: 0.9rem;
-      font-weight: 600;
-      padding: 0.85rem 1.6rem;
-      border-radius: 100px;
+      display: inline-block;
+      background: var(--accent);
+      color: var(--paper);
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
       text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 4px 24px rgba(255, 106, 43, 0.3);
+      transition: background 0.2s, transform 0.15s;
     }
 
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 36px rgba(255, 106, 43, 0.45);
-    }
-
-    .btn-arrow { transition: transform 0.2s; }
-    .btn-primary:hover .btn-arrow { transform: translateY(2px); }
+    .btn-primary:hover { background: var(--accent-light); transform: translateY(-1px); }
 
     .btn-ghost {
-      display: inline-flex;
-      align-items: center;
-      border: 1px solid var(--line-med);
-      color: var(--muted);
-      font-size: 0.9rem;
-      padding: 0.85rem 1.6rem;
-      border-radius: 100px;
+      display: inline-block;
+      border: 1px solid rgba(250, 249, 247, 0.2);
+      color: rgba(250, 249, 247, 0.7);
+      font-size: 0.875rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
       text-decoration: none;
-      transition: border-color 0.25s, color 0.25s, background 0.25s;
+      transition: border-color 0.2s, color 0.2s;
     }
 
-    .btn-ghost:hover {
-      border-color: var(--accent);
-      color: var(--text);
-      background: var(--accent-soft);
-    }
+    .btn-ghost:hover { border-color: rgba(250, 249, 247, 0.5); color: var(--paper); }
 
     .hero-stats {
       display: flex;
       align-items: center;
-      gap: 2.25rem;
-      flex-wrap: wrap;
-      animation: fadeUp 0.8s 0.85s ease both;
+      gap: 2rem;
+      animation: fadeUp 0.8s 0.4s ease both;
     }
 
-    .stat { display: flex; flex-direction: column; gap: 0.3rem; }
+    .stat { display: flex; flex-direction: column; gap: 0.25rem; }
 
     .stat-num {
       font-family: var(--serif);
-      font-size: 2rem;
-      color: var(--text);
+      font-size: 1.75rem;
+      color: var(--paper);
       line-height: 1;
       letter-spacing: -0.02em;
-      font-variant-numeric: tabular-nums;
     }
 
     .stat-label {
-      font-family: var(--mono);
-      font-size: 0.62rem;
+      font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: var(--faint);
-      max-width: 18ch;
+      color: rgba(250, 249, 247, 0.4);
     }
 
-    .stat-divider { width: 1px; height: 44px; background: var(--line); }
+    .stat-divider {
+      width: 1px;
+      height: 40px;
+      background: rgba(250, 249, 247, 0.12);
+    }
 
     .hero-scroll-hint {
       position: absolute;
-      bottom: 2.25rem;
+      bottom: 2.5rem;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 0.5rem;
-      animation: fadeUp 1s 1.2s ease both;
+      animation: fadeUp 1s 0.8s ease both;
     }
 
     .hero-scroll-hint span {
-      font-family: var(--mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--faint);
+      color: rgba(250, 249, 247, 0.3);
     }
 
     .hero-scroll-line {
       width: 1px;
-      height: 44px;
-      background: linear-gradient(to bottom, var(--accent), transparent);
+      height: 40px;
+      background: linear-gradient(to bottom, rgba(250,249,247,0.3), transparent);
       animation: scrollPulse 2s ease-in-out infinite;
     }
 
-    @keyframes scrollPulse {
-      0%, 100% { opacity: 0.35; transform: scaleY(1); }
-      50% { opacity: 0.9; transform: scaleY(1.12); }
-    }
-
-    /* ── MARQUEE ── */
-    .marquee-band {
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      background: var(--bg-2);
-      overflow: hidden;
-      padding: 1.1rem 0;
-      position: relative;
-      z-index: 1;
-    }
-
-    .marquee-track {
-      display: flex;
-      width: max-content;
-      animation: marqueeScroll 40s linear infinite;
-    }
-
-    .marquee-band:hover .marquee-track { animation-play-state: paused; }
-
-    @keyframes marqueeScroll {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-
-    .marquee-item {
-      font-family: var(--mono);
-      font-size: 0.75rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--faint);
-      white-space: nowrap;
-      display: inline-flex;
-      align-items: center;
-    }
-
-    .marquee-sep { color: var(--accent); margin: 0 1.75rem; font-size: 0.6rem; }
-
     /* ── ABOUT ── */
-    .about-section { background: var(--bg); position: relative; }
+    .about-section { background: var(--paper-warm); }
 
     .about-grid {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1fr 1fr;
       gap: 5rem;
       align-items: start;
     }
 
     .about-body {
-      color: var(--muted);
-      line-height: 1.8;
+      color: var(--ink-light);
+      line-height: 1.75;
       font-weight: 300;
-      margin-bottom: 1.1rem;
+      margin-bottom: 1rem;
     }
 
     .about-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-top: 0.75rem;
-      font-size: 0.9rem;
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-size: 0.875rem;
       font-weight: 500;
-      color: var(--accent-2);
+      color: var(--accent);
       text-decoration: none;
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 1px;
     }
 
-    .about-cta span { transition: transform 0.2s; }
-    .about-cta:hover span { transform: translateX(5px); }
-
-    .skills-block { display: flex; flex-direction: column; gap: 2rem; }
+    .skills-block {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
 
     .skill-group-label {
-      font-family: var(--mono);
-      font-size: 0.68rem;
+      font-size: 0.7rem;
       font-weight: 500;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--faint);
+      color: var(--ink-faint);
       margin-bottom: 0.75rem;
     }
 
     .skill-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 
     .chip {
-      font-size: 0.8rem;
-      color: var(--muted);
-      background: var(--surface);
-      border: 1px solid var(--line);
+      font-size: 0.8125rem;
+      color: var(--ink-light);
+      background: var(--paper);
+      border: 1px solid var(--border-med);
       padding: 0.375rem 0.875rem;
       border-radius: 100px;
-      transition: border-color 0.25s, color 0.25s, background 0.25s, transform 0.25s;
+      transition: border-color 0.2s, color 0.2s;
     }
 
-    .chip:hover {
-      border-color: rgba(255, 106, 43, 0.5);
-      color: var(--accent-2);
-      background: var(--accent-soft);
-      transform: translateY(-1px);
-    }
-
-    /* ── GLOW CARDS (shared) ── */
-    .glow-card {
-      position: relative;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      overflow: hidden;
-      transition: border-color 0.3s, transform 0.3s, background 0.3s;
-    }
-
-    .glow-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 106, 43, 0.09), transparent 45%);
-      opacity: 0;
-      transition: opacity 0.4s;
-      pointer-events: none;
-    }
-
-    .glow-card:hover { border-color: var(--line-med); transform: translateY(-3px); }
-    .glow-card:hover::before { opacity: 1; }
-
-    /* ── PILLARS ── */
-    .pillars-section { background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-
-    .pillars-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
-      margin-top: 2.5rem;
-    }
-
-    .pillar-card { padding: 2.25rem 2rem; }
-
-    .pillar-num {
-      font-family: var(--mono);
-      font-size: 0.8rem;
-      color: var(--accent);
-      display: block;
-      margin-bottom: 1.25rem;
-    }
-
-    .pillar-title {
-      font-family: var(--serif);
-      font-weight: 500;
-      font-size: 1.35rem;
-      letter-spacing: -0.01em;
-      margin-bottom: 0.85rem;
-      line-height: 1.25;
-    }
-
-    .pillar-body {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.75;
-      font-weight: 300;
-    }
+    .chip:hover { border-color: var(--accent); color: var(--accent); }
 
     /* ── EXPERIENCE ── */
-    .exp-section { background: var(--bg); }
+    .exp-section { background: var(--paper); }
 
     .exp-header { margin-bottom: 3rem; }
 
     .timeline {
       position: relative;
       padding-left: 1.5rem;
-    }
-
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 8px; bottom: 8px;
-      width: 1px;
-      background: linear-gradient(to bottom, var(--accent), rgba(255, 106, 43, 0.05));
+      border-left: 1px solid var(--border);
     }
 
     .timeline-item {
       position: relative;
-      padding: 0 0 2rem 2rem;
+      padding: 0 0 3rem 2.5rem;
     }
 
     .timeline-item:last-child { padding-bottom: 0; }
 
     .timeline-dot {
       position: absolute;
-      left: -0.62rem;
-      top: 26px;
-      width: 11px;
-      height: 11px;
+      left: -2.1rem;
+      top: 6px;
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
-      background: var(--bg);
-      border: 2px solid var(--line-med);
-      z-index: 1;
+      background: var(--border-med);
+      border: 2px solid var(--paper);
     }
 
     .timeline-item--current .timeline-dot {
       background: var(--accent);
-      border-color: rgba(255, 106, 43, 0.4);
-      box-shadow: 0 0 14px rgba(255, 106, 43, 0.7);
-    }
-
-    .timeline-card { padding: 1.75rem 2rem; }
-
-    .timeline-item--current .timeline-card {
-      border-color: rgba(255, 106, 43, 0.3);
-      background: linear-gradient(160deg, rgba(255, 106, 43, 0.05), var(--surface) 45%);
+      border-color: var(--accent-faint);
     }
 
     .timeline-meta {
       display: flex;
-      align-items: center;
-      gap: 0.85rem;
-      margin-bottom: 0.6rem;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
     }
 
     .timeline-period {
-      font-family: var(--mono);
-      font-size: 0.75rem;
-      color: var(--faint);
-    }
-
-    .timeline-badge {
-      font-family: var(--mono);
-      font-size: 0.62rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #34d399;
-      border: 1px solid rgba(52, 211, 153, 0.35);
-      background: rgba(52, 211, 153, 0.07);
-      padding: 0.15rem 0.6rem;
-      border-radius: 100px;
+      font-size: 0.8rem;
+      color: var(--ink-faint);
     }
 
     .timeline-location {
-      font-size: 0.78rem;
-      color: var(--faint);
+      font-size: 0.8rem;
+      color: var(--ink-faint);
+      padding-left: 1rem;
+      border-left: 1px solid var(--border);
     }
 
     .timeline-company {
-      font-family: var(--mono);
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       font-weight: 500;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--accent-2);
+      color: var(--accent);
       margin-bottom: 0.25rem;
     }
 
     .timeline-role {
-      font-size: 1.15rem;
+      font-size: 1.0625rem;
       font-weight: 500;
-      color: var(--text);
-      margin-bottom: 0.5rem;
-      line-height: 1.3;
-    }
-
-    .timeline-summary {
-      font-size: 0.9rem;
-      color: var(--muted);
-      font-style: italic;
-      font-family: var(--serif);
+      color: var(--ink);
       margin-bottom: 1rem;
-      line-height: 1.6;
+      line-height: 1.3;
     }
 
     .timeline-highlights {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 0.55rem;
+      gap: 0.5rem;
     }
 
     .timeline-highlights li {
       font-size: 0.875rem;
-      color: var(--muted);
-      line-height: 1.65;
-      padding-left: 1.1rem;
+      color: var(--ink-light);
+      line-height: 1.6;
+      padding-left: 1rem;
       position: relative;
       font-weight: 300;
     }
@@ -940,27 +578,25 @@ const marquee = ['Agentic AI', 'RAG Systems', 'Contextual Targeting', 'Yield Opt
       content: '';
       position: absolute;
       left: 0;
-      top: 0.6em;
-      width: 5px;
-      height: 5px;
+      top: 0.55em;
+      width: 4px;
+      height: 4px;
       border-radius: 50%;
-      background: var(--accent);
-      opacity: 0.65;
+      background: var(--border-med);
     }
 
     .exp-earlier {
       margin-top: 3rem;
       padding-top: 2rem;
-      border-top: 1px solid var(--line);
+      border-top: 1px solid var(--border);
     }
 
     .exp-earlier-label {
-      font-family: var(--mono);
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       font-weight: 500;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--faint);
+      color: var(--ink-faint);
       margin-bottom: 1.25rem;
     }
 
@@ -973,22 +609,23 @@ const marquee = ['Agentic AI', 'RAG Systems', 'Contextual Targeting', 'Yield Opt
       font-size: 0.875rem;
     }
 
-    .exp-earlier-co { font-weight: 500; color: var(--text); }
-    .exp-earlier-role { color: var(--muted); font-weight: 300; }
+    .exp-earlier-co { font-weight: 500; color: var(--ink); }
+    .exp-earlier-role { color: var(--ink-light); font-weight: 300; }
     .exp-earlier-year {
       margin-left: auto;
-      font-family: var(--mono);
-      font-size: 0.75rem;
-      color: var(--faint);
+      font-size: 0.8rem;
+      color: var(--ink-faint);
     }
 
     /* ── BUILDING ── */
-    .building-section { background: var(--bg-2); border-top: 1px solid var(--line); }
+    .building-section {
+      background: var(--paper-warm);
+    }
 
     .building-sub {
-      color: var(--muted);
+      color: var(--ink-light);
       font-weight: 300;
-      max-width: 52ch;
+      max-width: 50ch;
       margin-bottom: 3rem;
     }
 
@@ -998,59 +635,78 @@ const marquee = ['Agentic AI', 'RAG Systems', 'Contextual Targeting', 'Yield Opt
       gap: 1.25rem;
     }
 
-    .project-card { padding: 2rem; }
+    .project-card {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .project-card:hover {
+      border-color: var(--border-med);
+      transform: translateY(-2px);
+    }
+
+    .project-icon {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-title {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 0.625rem;
+      line-height: 1.3;
+    }
+
+    .project-link {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .project-link:hover { color: var(--accent); }
+
+    .project-desc {
+      font-size: 0.875rem;
+      color: var(--ink-light);
+      line-height: 1.7;
+      font-weight: 300;
+      margin-bottom: 1.25rem;
+    }
+
+    .project-tag {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid rgba(200, 80, 26, 0.3);
+      padding: 0.25rem 0.65rem;
+      border-radius: 100px;
+    }
 
     .project-card-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 1.1rem;
+      margin-bottom: 1rem;
     }
 
-    .project-icon { font-size: 1.5rem; }
-
-    .project-title {
-      font-family: var(--serif);
-      font-weight: 500;
-      font-size: 1.2rem;
-      color: var(--text);
-      margin-bottom: 0.625rem;
-      line-height: 1.3;
-    }
-
-    .project-title-link { color: inherit; text-decoration: none; transition: color 0.2s; }
-    .project-title-link:hover { color: var(--accent-2); }
-
-    .project-desc {
-      font-size: 0.875rem;
-      color: var(--muted);
-      line-height: 1.7;
-      font-weight: 300;
-    }
-
-    .project-tag {
-      font-family: var(--mono);
-      font-size: 0.62rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--accent-2);
-      border: 1px solid rgba(255, 106, 43, 0.3);
-      padding: 0.25rem 0.65rem;
-      border-radius: 100px;
+    .project-card-top .project-icon {
+      margin-bottom: 0;
     }
 
     .project-tag--live {
-      color: #34d399;
-      border-color: rgba(52, 211, 153, 0.35);
+      color: #059669;
+      border-color: rgba(5, 150, 105, 0.3);
     }
 
     .project-link {
-      display: inline-block;
-      margin-top: 1.1rem;
       font-size: 0.875rem;
       font-weight: 500;
-      color: var(--accent-2);
+      color: var(--accent);
       text-decoration: none;
       transition: opacity 0.15s;
     }
@@ -1058,23 +714,33 @@ const marquee = ['Agentic AI', 'RAG Systems', 'Contextual Targeting', 'Yield Opt
     .project-link:hover { opacity: 0.75; }
 
     .project-card--cta {
-      background: linear-gradient(150deg, rgba(255, 106, 43, 0.12), rgba(124, 92, 255, 0.08));
-      border: 1px solid rgba(255, 106, 43, 0.25);
-      border-radius: 16px;
+      background: var(--ink);
+      border-color: transparent;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
       gap: 1.5rem;
-      padding: 2rem;
     }
 
     .project-cta-text {
       font-family: var(--serif);
       font-size: 1.5rem;
-      color: var(--text);
-      line-height: 1.35;
-      letter-spacing: -0.01em;
+      color: var(--paper);
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.revealed {
+      opacity: 1;
+      transform: none;
     }
 
     /* ── ANIMATIONS ── */
@@ -1083,70 +749,18 @@ const marquee = ['Agentic AI', 'RAG Systems', 'Contextual Targeting', 'Yield Opt
       to { opacity: 1; transform: none; }
     }
 
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; transform: scaleY(1); }
+      50% { opacity: 0.7; transform: scaleY(1.1); }
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
-      .hero-stats { gap: 1.25rem; }
-      .stat-divider { display: none; }
+      .hero-stats { flex-wrap: wrap; gap: 1.25rem; }
       .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .pillars-grid { grid-template-columns: 1fr; }
       .projects-grid { grid-template-columns: 1fr; }
       .exp-earlier-item { flex-wrap: wrap; }
       .exp-earlier-year { margin-left: 0; }
-      .timeline { padding-left: 1rem; }
-      .timeline-item { padding-left: 1.25rem; }
-      .timeline-card { padding: 1.4rem 1.25rem; }
     }
   </style>
-
-  <script>
-    // Typewriter rotation in hero
-    const phrases = [
-      'RAG help agent → GA at Yahoo DSP',
-      'agentic campaign troubleshooting',
-      'anomaly detection before impact',
-      'contextual targeting: $600K → $1M/mo',
-      'LLM guardrails adopted org-wide',
-    ];
-    const target = document.getElementById('typeTarget');
-    let pi = 0, ci = 0, deleting = false;
-    const tick = () => {
-      if (!target) return;
-      const phrase = phrases[pi];
-      if (!deleting) {
-        ci++;
-        target.textContent = phrase.slice(0, ci);
-        if (ci === phrase.length) { deleting = true; setTimeout(tick, 2200); return; }
-        setTimeout(tick, 45 + Math.random() * 40);
-      } else {
-        ci--;
-        target.textContent = phrase.slice(0, ci);
-        if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; setTimeout(tick, 350); return; }
-        setTimeout(tick, 22);
-      }
-    };
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduced && target) { target.textContent = phrases[0]; }
-    else { setTimeout(tick, 1100); }
-
-    // Mouse-follow glow on cards
-    document.querySelectorAll<HTMLElement>('.glow-card').forEach(card => {
-      card.addEventListener('mousemove', (e) => {
-        const r = card.getBoundingClientRect();
-        card.style.setProperty('--mx', `${e.clientX - r.left}px`);
-        card.style.setProperty('--my', `${e.clientY - r.top}px`);
-      });
-    });
-
-    // Subtle parallax on hero orbs
-    if (!reduced) {
-      const orbs = document.querySelectorAll<HTMLElement>('.orb');
-      window.addEventListener('scroll', () => {
-        const y = window.scrollY;
-        if (y > window.innerHeight) return;
-        orbs.forEach((orb, i) => {
-          orb.style.translate = `0 ${y * (0.08 + i * 0.05)}px`;
-        });
-      }, { passive: true });
-    }
-  </script>
 </BaseLayout>
