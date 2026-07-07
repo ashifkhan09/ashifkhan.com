@@ -7,7 +7,20 @@ import FactReview from '../../../components/careercraft/FactReview.tsx';
   title="CareerCraft — Review & Generate"
   description="Review your confirmed facts, then generate your rewritten resume, LinkedIn update, and site content."
 >
-  <div style="padding-top: var(--nav-h); min-height: 100vh; background: var(--paper);">
+  <div class="cc-dark" style="padding-top: var(--nav-h); min-height: 100vh; background: var(--bg);">
     <FactReview client:load />
   </div>
 </BaseLayout>
+
+<style is:global>
+  .cc-dark {
+    --paper: #0e0f16;
+    --paper-warm: #151721;
+    --ink: #f2f1ec;
+    --ink-light: rgba(242, 241, 236, 0.65);
+    --ink-faint: rgba(242, 241, 236, 0.42);
+    --border: rgba(242, 241, 236, 0.12);
+    --border-med: rgba(242, 241, 236, 0.22);
+    --accent-faint: rgba(255, 106, 43, 0.14);
+  }
+</style>
