@@ -281,6 +281,19 @@ const {
         .footer-links { align-items: flex-start; }
         .section { padding: 4rem 1.25rem; }
       }
+
+      /* ── SHARED COMPONENTS ── */
+      .chip {
+        font-size: 0.8125rem;
+        color: var(--ink-light);
+        background: var(--paper);
+        border: 1px solid var(--border-med);
+        padding: 0.375rem 0.875rem;
+        border-radius: 100px;
+        transition: border-color 0.2s, color 0.2s;
+      }
+
+      .chip:hover { border-color: var(--accent); color: var(--accent); }
     </style>
 
     <script>
