@@ -108,6 +108,21 @@ const bio = [
     </div>
   </section>
 
+  <!-- ── THE TRAIL ── -->
+  <div class="trail" id="trail">
+    <div class="trail-track">
+      <div class="trail-progress" id="trailProgress"></div>
+    </div>
+
+    <div class="trail-waypoint" data-waypoint="match">
+      <span class="trail-dot"></span>
+      <span class="trail-label">Match</span>
+      <div class="prompt-card">
+        <p class="prompt-question">{prompts[0].question}</p>
+        <p class="prompt-answer">{prompts[0].answer}</p>
+      </div>
+    </div>
+
   <style>
     .trailhead {
       display: grid;
@@ -201,6 +216,118 @@ const bio = [
 
     .field-stat-icon {
       font-size: 0.9rem;
+    }
+
+    /* ── TRAIL ── */
+    .trail {
+      position: relative;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 5rem 2rem 5rem 4rem;
+      background: var(--paper);
+    }
+
+    .trail-track {
+      position: absolute;
+      left: 2rem;
+      top: 5rem;
+      bottom: 5rem;
+      width: 2px;
+      background: var(--border);
+    }
+
+    .trail-progress {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 2px;
+      height: 0%;
+      background: var(--accent);
+    }
+
+    .trail-waypoint {
+      position: relative;
+      margin-bottom: 4rem;
+      padding-left: 2rem;
+    }
+
+    .trail-waypoint:last-child {
+      margin-bottom: 0;
+    }
+
+    .trail-dot {
+      position: absolute;
+      left: -2.4rem;
+      top: 0.15rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--paper);
+      border: 2px solid var(--border-med);
+      transition: background 0.3s, border-color 0.3s, transform 0.3s;
+    }
+
+    .trail-waypoint.lit .trail-dot {
+      background: var(--accent);
+      border-color: var(--accent);
+      transform: scale(1.2);
+    }
+
+    .trail-label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 1rem;
+      transition: color 0.3s;
+    }
+
+    .trail-waypoint.lit .trail-label {
+      color: var(--accent);
+    }
+
+    .prompt-card {
+      background: var(--paper-warm);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      max-width: 60ch;
+    }
+
+    .prompt-question {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--ink-faint);
+      margin-bottom: 0.75rem;
+    }
+
+    .prompt-answer {
+      font-family: var(--serif);
+      font-size: 1.375rem;
+      line-height: 1.4;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+    }
+
+    @media (max-width: 768px) {
+      .trail {
+        padding: 3rem 1.25rem 3rem 3rem;
+      }
+      .trail-track {
+        left: 1.25rem;
+      }
+      .trail-dot {
+        left: -1.65rem;
+      }
+      .prompt-card {
+        padding: 1.5rem;
+      }
+      .prompt-answer {
+        font-size: 1.125rem;
+      }
     }
   </style>
 </BaseLayout>
