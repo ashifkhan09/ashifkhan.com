@@ -469,4 +469,70 @@ const bio = [
       }
     }
   </style>
+
+  <script define:vars={{ photos }}>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const closeBtn = document.getElementById('lightboxClose');
+    const prevBtn = document.getElementById('lightboxPrev');
+    const nextBtn = document.getElementById('lightboxNext');
+    const thumbs = document.querySelectorAll('.route-thumb');
+    let currentIndex = 0;
+
+    function showPhoto() {
+      const photo = photos[currentIndex];
+      lightboxImg.src = photo.full;
+      lightboxImg.alt = photo.alt;
+    }
+
+    function openLightbox(index) {
+      currentIndex = index;
+      showPhoto();
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    function nextPhoto() {
+      currentIndex = (currentIndex + 1) % photos.length;
+      showPhoto();
+    }
+
+    function prevPhoto() {
+      currentIndex = (currentIndex - 1 + photos.length) % photos.length;
+      showPhoto();
+    }
+
+    thumbs.forEach((btn, i) => btn.addEventListener('click', () => openLightbox(i)));
+    closeBtn?.addEventListener('click', closeLightbox);
+    nextBtn?.addEventListener('click', nextPhoto);
+    prevBtn?.addEventListener('click', prevPhoto);
+
+    lightbox?.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox?.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') nextPhoto();
+      if (e.key === 'ArrowLeft') prevPhoto();
+    });
+
+    let touchStartX = 0;
+    lightboxImg?.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+    });
+    lightboxImg?.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if (dx > 50) prevPhoto();
+      if (dx < -50) nextPhoto();
+    });
+  </script>
 </BaseLayout>
