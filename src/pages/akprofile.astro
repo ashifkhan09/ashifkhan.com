@@ -134,6 +134,33 @@ const bio = [
       </div>
     </div>
 
+    <div class="trail-waypoint" data-waypoint="conversation">
+      <span class="trail-dot"></span>
+      <span class="trail-label">First conversation</span>
+      <div class="prompt-card">
+        <p class="prompt-question">{prompts[1].question}</p>
+        <p class="prompt-answer">{prompts[1].answer}</p>
+      </div>
+    </div>
+
+    <div class="faith-block">
+      <p class="faith-label">My Faith</p>
+      <div class="chip-grid">
+        {faithChips.map((chip) => (
+          <span class="chip">{chip}</span>
+        ))}
+      </div>
+    </div>
+
+    <div class="trail-waypoint" data-waypoint="date">
+      <span class="trail-dot"></span>
+      <span class="trail-label">First date</span>
+      <div class="prompt-card">
+        <p class="prompt-question">{prompts[2].question}</p>
+        <p class="prompt-answer">{prompts[2].answer}</p>
+      </div>
+    </div>
+
     <div class="lightbox" id="lightbox" aria-hidden="true">
       <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
       <button class="lightbox-prev" id="lightboxPrev" aria-label="Previous photo">‹</button>
@@ -467,6 +494,27 @@ const bio = [
       .route-thumb {
         width: 150px;
       }
+    }
+
+    /* ── FAITH / CHIP GRID ── */
+    .faith-block {
+      margin-bottom: 4rem;
+    }
+
+    .faith-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 1rem;
+    }
+
+    .chip-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      max-width: 60ch;
     }
   </style>
 
