@@ -2,11 +2,13 @@
 interface Props {
   title?: string;
   description?: string;
+  noindex?: boolean;
 }
 
 const {
   title = 'Ashif Khan — Senior Product Manager, AI Agent Lead',
   description = 'Senior Product Manager and AI Agent Lead at Yahoo DSP. 14+ years in AdTech and programmatic advertising. Building agentic AI systems, contextual targeting products, and yield optimization strategies.',
+  noindex = false,
 } = Astro.props;
 ---
 
@@ -23,6 +25,7 @@ const {
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://ashifkhan.com" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
