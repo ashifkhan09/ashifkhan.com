@@ -168,6 +168,34 @@ const bio = [
       ))}
     </div>
 
+    <div class="trail-waypoint" data-waypoint="family">
+      <span class="trail-dot"></span>
+      <span class="trail-label">Meet the family</span>
+      <div class="prompt-card">
+        <p class="prompt-question">{prompts[3].question}</p>
+        <p class="prompt-answer">{prompts[3].answer}</p>
+      </div>
+    </div>
+
+    <div class="interests-block">
+      <div class="faith-block">
+        <p class="faith-label">Interests</p>
+        <div class="chip-grid">
+          {interestChips.map((chip) => (
+            <span class="chip">{chip}</span>
+          ))}
+        </div>
+      </div>
+      <div class="faith-block">
+        <p class="faith-label">Personality</p>
+        <div class="chip-grid">
+          {personalityChips.map((chip) => (
+            <span class="chip">{chip}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+
     <div class="lightbox" id="lightbox" aria-hidden="true">
       <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
       <button class="lightbox-prev" id="lightboxPrev" aria-label="Previous photo">‹</button>
@@ -548,6 +576,10 @@ const bio = [
 
     .bio-paragraph:last-child {
       margin-bottom: 0;
+    }
+
+    .interests-block .faith-block:last-child {
+      margin-bottom: 4rem;
     }
   </style>
 
