@@ -161,6 +161,13 @@ const bio = [
       </div>
     </div>
 
+    <div class="bio-block">
+      <p class="bio-label">About</p>
+      {bio.map((paragraph) => (
+        <p class="bio-paragraph">{paragraph}</p>
+      ))}
+    </div>
+
     <div class="lightbox" id="lightbox" aria-hidden="true">
       <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
       <button class="lightbox-prev" id="lightboxPrev" aria-label="Previous photo">‹</button>
@@ -515,6 +522,32 @@ const bio = [
       flex-wrap: wrap;
       gap: 0.5rem;
       max-width: 60ch;
+    }
+
+    /* ── BIO ── */
+    .bio-block {
+      margin-bottom: 4rem;
+      max-width: 60ch;
+    }
+
+    .bio-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 1rem;
+    }
+
+    .bio-paragraph {
+      color: var(--ink-light);
+      line-height: 1.75;
+      font-weight: 300;
+      margin-bottom: 1rem;
+    }
+
+    .bio-paragraph:last-child {
+      margin-bottom: 0;
     }
   </style>
 
