@@ -1,0 +1,171 @@
+---
+import { getImage } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import photo1 from '../assets/akprofile/photo-1.jpg';
+import photo2 from '../assets/akprofile/photo-2.jpg';
+import photo3 from '../assets/akprofile/photo-3.jpg';
+import photo4 from '../assets/akprofile/photo-4.jpg';
+import photo5 from '../assets/akprofile/photo-5.jpg';
+import photo6 from '../assets/akprofile/photo-6.jpg';
+
+const photoSources = [photo1, photo2, photo3, photo4, photo5, photo6];
+const photos = await Promise.all(
+  photoSources.map(async (src, i) => {
+    const thumb = await getImage({ src, width: 480, height: 640, format: 'webp' });
+    const full = await getImage({ src, width: 1400, format: 'webp' });
+    return {
+      thumb: thumb.src,
+      full: full.src,
+      alt: `Placeholder photo ${i + 1} — replace with a real photo`,
+    };
+  })
+);
+
+const profile = {
+  name: 'Ashif Khan',
+  age: 40,
+  tag: 'Product Manager · Raleigh, NC · probably on a trail this weekend',
+};
+
+const fieldStats = [
+  { icon: '📏', label: "5'10\"" },
+  { icon: '📍', label: 'North Hills' },
+  { icon: '🕌', label: 'Occasionally practising' },
+  { icon: '👶', label: "Doesn't have children" },
+  { icon: '🍷', label: "Doesn't drink" },
+];
+
+const prompts = [
+  {
+    question: "Where I'm happiest",
+    answer:
+      'Placeholder answer — replace me with something true about the trails, coffee shops, or quiet mornings that actually make you happy.',
+  },
+  {
+    question: "What I'm building this year",
+    answer:
+      "Placeholder answer — replace me. Talk about a goal, habit, or project you're actually working on.",
+  },
+  {
+    question: 'What my faith looks like, day to day',
+    answer:
+      'Placeholder answer — replace me with something specific and honest, not a chip list.',
+  },
+  {
+    question: "What I'm looking for",
+    answer:
+      'Placeholder answer — replace me with what actually matters to you in a partner.',
+  },
+];
+
+const faithChips = [
+  'Sunni',
+  'Occasionally practising',
+  'Fasting',
+  'Friday Prayer',
+  'Only eats halal food',
+  'Frequent Dua',
+  'Good Akhlaq',
+  'Non-smoker',
+];
+
+const interestChips = ['Hiking', 'Cycling', 'Running', 'Calisthenics', 'Boxing', 'Yoga'];
+
+const personalityChips = ['Calm', 'Affectionate', 'Curious', 'Family-oriented', 'Adventurous'];
+
+const bio = [
+  'Placeholder bio paragraph one — replace with a couple of sentences about who you are day to day.',
+  "Placeholder bio paragraph two — replace with what you're looking for and why this trail metaphor actually fits your life.",
+];
+---
+
+<BaseLayout
+  title="Ashif Khan"
+  description="A private profile page."
+  noindex={true}
+>
+  <!-- ── TRAILHEAD (HERO) ── -->
+  <section class="trailhead">
+    <div class="trailhead-photo">
+      <img src={photos[0].thumb} alt={photos[0].alt} />
+    </div>
+    <div class="trailhead-content">
+      <div class="trailhead-seal">✓</div>
+      <h1 class="trailhead-name">{profile.name}, <span class="trailhead-age">{profile.age}</span></h1>
+      <p class="trailhead-tag">{profile.tag}</p>
+    </div>
+  </section>
+
+  <style>
+    .trailhead {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 70vh;
+      background: var(--ink);
+    }
+
+    .trailhead-photo {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .trailhead-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .trailhead-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 4rem;
+    }
+
+    .trailhead-seal {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1.5px solid var(--accent-light);
+      color: var(--accent-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .trailhead-name {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      color: var(--paper);
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .trailhead-age {
+      color: var(--accent-light);
+    }
+
+    .trailhead-tag {
+      color: rgba(250, 249, 247, 0.6);
+      font-size: 1.0625rem;
+      font-weight: 300;
+      max-width: 40ch;
+    }
+
+    @media (max-width: 768px) {
+      .trailhead {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+      .trailhead-photo {
+        aspect-ratio: 3 / 4;
+      }
+      .trailhead-content {
+        padding: 2.5rem 1.5rem;
+      }
+    }
+  </style>
+</BaseLayout>
