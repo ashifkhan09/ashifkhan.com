@@ -294,6 +294,33 @@ const {
       }
 
       .chip:hover { border-color: var(--accent); color: var(--accent); }
+
+      .btn-primary {
+        display: inline-block;
+        background: var(--accent);
+        color: var(--paper);
+        font-size: 0.875rem;
+        font-weight: 500;
+        padding: 0.75rem 1.5rem;
+        border-radius: 6px;
+        text-decoration: none;
+        transition: background 0.2s, transform 0.15s;
+      }
+
+      .btn-primary:hover { background: var(--accent-light); transform: translateY(-1px); }
+
+      .btn-ghost {
+        display: inline-block;
+        border: 1px solid rgba(250, 249, 247, 0.2);
+        color: rgba(250, 249, 247, 0.7);
+        font-size: 0.875rem;
+        padding: 0.75rem 1.5rem;
+        border-radius: 6px;
+        text-decoration: none;
+        transition: border-color 0.2s, color 0.2s;
+      }
+
+      .btn-ghost:hover { border-color: rgba(250, 249, 247, 0.5); color: var(--paper); }
     </style>
 
     <script>
