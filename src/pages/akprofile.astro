@@ -33,7 +33,6 @@ const profile = {
 const fieldStats = [
   { icon: '📏', label: "5'10\"" },
   { icon: '📍', label: 'NYC and Raleigh' },
-  { icon: '🕌', label: 'Occasionally practising' },
   { icon: '🍷', label: "Doesn't drink" },
   { icon: '🚬', label: "Doesn't smoke" },
 ];
@@ -779,27 +778,41 @@ const bio = [
       );
       window.addEventListener('resize', updateWordRects);
 
-      let mouseX = -9999;
-      let mouseY = -9999;
+      // Real cursor position when the mouse is actively moving; otherwise we fall back
+      // to a fixed reading line near the top of the viewport, so the effect still runs
+      // off scroll position alone (e.g. scrolling with a trackpad, cursor never moving).
+      let mouseX = window.innerWidth / 2;
+      let mouseY = window.innerHeight * 0.4;
+      let lastMouseMoveTime = 0;
+      const MOUSE_IDLE_MS = 700;
+
       window.addEventListener(
         'mousemove',
         (e) => {
           mouseX = e.clientX;
           mouseY = e.clientY;
+          lastMouseMoveTime = performance.now();
         },
         { passive: true }
       );
+
+      function isMouseActive() {
+        return performance.now() - lastMouseMoveTime < MOUSE_IDLE_MS;
+      }
 
       const WORD_RADIUS = 150;
       const WORD_MAX_BOOST = 0.7;
 
       function animateWords() {
+        const active = isMouseActive();
+        const focusX = active ? mouseX : window.innerWidth / 2;
+        const focusY = active ? mouseY : window.innerHeight * 0.4;
         for (let i = 0; i < words.length; i++) {
           const rect = wordRects[i];
           if (!rect) continue;
           const cx = rect.left + rect.width / 2;
           const cy = rect.top + rect.height / 2;
-          const dist = Math.hypot(mouseX - cx, mouseY - cy);
+          const dist = Math.hypot(focusX - cx, focusY - cy);
           const target = dist < WORD_RADIUS ? 1 + (1 - dist / WORD_RADIUS) * WORD_MAX_BOOST : 1;
           wordScale[i] += (target - wordScale[i]) * 0.28;
           if (Math.abs(wordScale[i] - 1) > 0.001) {
@@ -822,25 +835,45 @@ const bio = [
       let waveCurrentY = 50;
       let waveAmp = 0;
       let waveTargetAmp = 0;
+      let trailMouseActive = false;
 
       window.addEventListener(
         'mousemove',
         (e) => {
           if (!trackEl) return;
           const rect = trackEl.getBoundingClientRect();
-          const nearX = e.clientX > rect.left - 80 && e.clientX < rect.left + rect.width + 80;
+          const nearX = e.clientX > rect.left - 100 && e.clientX < rect.left + rect.width + 100;
           const withinY = e.clientY > rect.top && e.clientY < rect.bottom;
-          if (nearX && withinY && rect.height > 0) {
+          trailMouseActive = nearX && withinY && rect.height > 0;
+          if (trailMouseActive) {
             waveTargetY = ((e.clientY - rect.top) / rect.height) * 100;
-            waveTargetAmp = 11;
-          } else {
-            waveTargetAmp = 0;
           }
         },
         { passive: true }
       );
 
+      // While the mouse isn't actively hovering the trail, ripple gently at a
+      // fixed reading line so the wave still reacts as the page scrolls.
+      function updateTrailWaveTarget() {
+        if (trailMouseActive || !trackEl) return;
+        const rect = trackEl.getBoundingClientRect();
+        if (rect.height <= 0) {
+          waveTargetAmp = 0;
+          return;
+        }
+        const focusY = window.innerHeight * 0.4;
+        const pct = ((focusY - rect.top) / rect.height) * 100;
+        if (pct >= -10 && pct <= 110) {
+          waveTargetY = Math.min(100, Math.max(0, pct));
+          waveTargetAmp = 7;
+        } else {
+          waveTargetAmp = 0;
+        }
+      }
+
       function renderTrailWave() {
+        updateTrailWaveTarget();
+        if (trailMouseActive) waveTargetAmp = 11;
         if (basePath && progressPath) {
           waveCurrentY += (waveTargetY - waveCurrentY) * 0.18;
           waveAmp += (waveTargetAmp - waveAmp) * 0.14;
