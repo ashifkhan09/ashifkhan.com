@@ -7,8 +7,12 @@ import photo3 from '../assets/akprofile/photo-3.jpg';
 import photo4 from '../assets/akprofile/photo-4.jpg';
 import photo5 from '../assets/akprofile/photo-5.jpg';
 import photo6 from '../assets/akprofile/photo-6.jpg';
+import photo7 from '../assets/akprofile/photo-7.jpg';
+import photo8 from '../assets/akprofile/photo-8.jpg';
+import photo9 from '../assets/akprofile/photo-9.jpg';
+import photo10 from '../assets/akprofile/photo-10.jpg';
 
-const photoSources = [photo1, photo2, photo3, photo4, photo5, photo6];
+const photoSources = [photo1, photo2, photo3, photo4, photo5, photo6, photo7, photo8, photo9, photo10];
 const photos = await Promise.all(
   photoSources.map(async (src, i) => {
     const thumb = await getImage({ src, width: 480, height: 640, format: 'webp' });
@@ -16,7 +20,7 @@ const photos = await Promise.all(
     return {
       thumb: thumb.src,
       full: full.src,
-      alt: `Placeholder photo ${i + 1} — replace with a real photo`,
+      alt: `Photo ${i + 1}`,
     };
   })
 );
@@ -24,7 +28,7 @@ const photos = await Promise.all(
 const profile = {
   name: 'Ashif Khan',
   age: 40,
-  tag: 'Product Manager · Raleigh, NC · probably on a trail this weekend',
+  tag: 'Raleigh, NC · adventurer by choice · probably on a trail this weekend',
 };
 
 const fieldStats = [
@@ -39,43 +43,47 @@ const prompts = [
   {
     question: "Where I'm happiest",
     answer:
-      'Placeholder answer — replace me with something true about the trails, coffee shops, or quiet mornings that actually make you happy.',
+      "On a trail somewhere, or in a quiet evening with people I love — not much beats stepping outside after a hike and just looking up. [DRAFT — edit me]",
   },
   {
     question: "What I'm building this year",
     answer:
-      "Placeholder answer — replace me. Talk about a goal, habit, or project you're actually working on.",
+      'A life that feels calm, meaningful, and a little adventurous — less noise, more time outdoors and with the people who matter. [DRAFT — edit me]',
   },
   {
     question: 'What my faith looks like, day to day',
     answer:
-      'Placeholder answer — replace me with something specific and honest, not a chip list.',
+      'Faith shows up in small, steady things for me — prayer, dua, trying to keep good akhlaq, choosing halal without making it complicated. Still learning, still working on being better at it every day. [DRAFT — edit me]',
   },
   {
     question: "What I'm looking for",
     answer:
-      'Placeholder answer — replace me with what actually matters to you in a partner.',
+      "Kindness, sincerity in faith, and emotional maturity — the rest gets easier with those three. Someone who treats disagreements like a team working it out, not a fight to win. [DRAFT — edit me]",
   },
 ];
 
 const faithChips = [
   'Sunni',
   'Occasionally practising',
+  'Prays a few times a day',
   'Fasting',
   'Friday Prayer',
   'Only eats halal food',
   'Frequent Dua',
   'Good Akhlaq',
+  'Charity Work',
+  'Completed Umrah',
+  'Learning Arabic',
   'Non-smoker',
 ];
 
-const interestChips = ['Hiking', 'Cycling', 'Running', 'Calisthenics', 'Boxing', 'Yoga'];
+const interestChips = ['Boxing', 'Calisthenics', 'Cricket', 'Cycling', 'Running', 'Soccer', 'Swimming', 'Tennis', 'Volleyball', 'Yoga'];
 
-const personalityChips = ['Calm', 'Affectionate', 'Curious', 'Family-oriented', 'Adventurous'];
+const personalityChips = ['Affectionate', 'Carefree', 'Cheerful', 'Entrepreneurial', 'Family-oriented'];
 
 const bio = [
-  'Placeholder bio paragraph one — replace with a couple of sentences about who you are day to day.',
-  "Placeholder bio paragraph two — replace with what you're looking for and why this trail metaphor actually fits your life.",
+  "It's the simple things — a quiet morning, a good trail, a conversation that doesn't need to be rushed. I split my time between staying active outdoors, catching up with close friends over coffee, and just as easily settling into a quiet evening at home. Family, faith, and steady growth sit at the center of how I try to live. [DRAFT — edit me]",
+  "What I'm building toward is a peaceful home — two people helping each other grow, showing up with patience more than perfection, and choosing to be on the same team even when things get hard. I'd rather spend a night under the stars after a hike than chase noise, and I'm looking for someone who wants that kind of quiet, steady life too. [DRAFT — edit me]",
 ];
 ---
 
