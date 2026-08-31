@@ -27,15 +27,13 @@ const photos = await Promise.all(
 
 const profile = {
   name: 'Ashif Khan',
-  age: 38,
-  tag: 'Raleigh, NC · adventurer by choice · probably on a trail this weekend',
+  tag: 'NYC ↔ Raleigh, usually somewhere between a trail and a bookshelf',
 };
 
 const fieldStats = [
   { icon: '📏', label: "5'10\"" },
-  { icon: '📍', label: 'North Hills' },
+  { icon: '📍', label: 'NYC and Raleigh' },
   { icon: '🕌', label: 'Occasionally practising' },
-  { icon: '👶', label: "Doesn't have children" },
   { icon: '🍷', label: "Doesn't drink" },
   { icon: '🚬', label: "Doesn't smoke" },
 ];
@@ -44,29 +42,28 @@ const prompts = [
   {
     question: "Where I'm happiest",
     answer:
-      "On a trail somewhere, or in a quiet evening with people I love — not much beats stepping outside after a hike and just looking up. [DRAFT — edit me]",
+      "On a trail somewhere, on the back of my motorcycle with no particular destination, deep in a good book, or curled up for a movie night with people I love.",
   },
   {
     question: "What I'm building this year",
     answer:
-      'A life that feels calm, meaningful, and a little adventurous — less noise, more time outdoors and with the people who matter. [DRAFT — edit me]',
+      'A life that feels calm, meaningful, and a little adventurous — less noise, more time outdoors and with the people who matter.',
   },
   {
     question: 'What my faith looks like, day to day',
     answer:
-      'Faith shows up in small, steady things for me — prayer, dua, trying to keep good akhlaq, choosing halal without making it complicated. Still learning, still working on being better at it every day. [DRAFT — edit me]',
+      'Faith shows up in small, steady things for me — prayer, dua, trying to keep good akhlaq, choosing halal without making it complicated. Still learning, still working on being better at it every day.',
   },
   {
     question: "What I'm looking for",
     answer:
-      "Kindness, sincerity in faith, and emotional maturity — the rest gets easier with those three. Someone who treats disagreements like a team working it out, not a fight to win. [DRAFT — edit me]",
+      "Kindness, sincerity in faith, and emotional maturity, the rest gets easier with those three. Someone who treats disagreements like a team working things out, not a fight to win, and who brings a sense of peace into a room rather than chaos.",
   },
 ];
 
 const faithChips = [
   'Sunni',
   'Occasionally practising',
-  'Prays a few times a day',
   'Fasting',
   'Friday Prayer',
   'Only eats halal food',
@@ -74,17 +71,16 @@ const faithChips = [
   'Good Akhlaq',
   'Charity Work',
   'Completed Umrah',
-  'Learning Arabic',
-  'Non-smoker',
+  'Learning Arabic Speaking',
 ];
 
-const interestChips = ['Boxing', 'Calisthenics', 'Cricket', 'Cycling', 'Running', 'Soccer', 'Swimming', 'Tennis', 'Volleyball', 'Yoga'];
+const interestChips = ['Boxing', 'Calisthenics', 'Cricket', 'Running', 'Swimming', 'Tennis', 'Volleyball', 'Yoga', 'Pickleball', 'Bouldering'];
 
 const personalityChips = ['Affectionate', 'Carefree', 'Cheerful', 'Entrepreneurial', 'Family-oriented'];
 
 const bio = [
-  "It's the simple things — a quiet morning, a good trail, a conversation that doesn't need to be rushed. I split my time between staying active outdoors, catching up with close friends over coffee, and just as easily settling into a quiet evening at home. Family, faith, and steady growth sit at the center of how I try to live. [DRAFT — edit me]",
-  "What I'm building toward is a peaceful home — two people helping each other grow, showing up with patience more than perfection, and choosing to be on the same team even when things get hard. I'd rather spend a night under the stars after a hike than chase noise, and I'm looking for someone who wants that kind of quiet, steady life too. [DRAFT — edit me]",
+  "It's the simple things, a quiet morning, a good trail, a conversation that doesn't need to be rushed. I split my time between staying active outdoors, catching up with close friends over coffee, and just as easily settling into a quiet evening at home. Family, faith, and steady growth sit at the center of how I try to live.",
+  "What I'm building toward is a peaceful home, two people helping each other grow, showing up with patience more than perfection, and choosing to be on the same team even when things get hard. I'd rather spend a night under the stars after a hike than chase noise, and I'm looking for someone who wants that kind of quiet, steady life too.",
 ];
 ---
 
@@ -100,7 +96,7 @@ const bio = [
     </div>
     <div class="trailhead-content">
       <div class="trailhead-seal">✓</div>
-      <h1 class="trailhead-name">{profile.name}, <span class="trailhead-age">{profile.age}</span></h1>
+      <h1 class="trailhead-name">{profile.name}</h1>
       <p class="trailhead-tag">{profile.tag}</p>
     </div>
   </section>
@@ -268,10 +264,6 @@ const bio = [
       color: var(--paper);
       letter-spacing: -0.02em;
       margin-bottom: 1rem;
-    }
-
-    .trailhead-age {
-      color: var(--accent-light);
     }
 
     .trailhead-tag {
