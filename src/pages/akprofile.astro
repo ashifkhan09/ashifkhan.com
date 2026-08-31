@@ -1,0 +1,706 @@
+---
+import { getImage } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import photo1 from '../assets/akprofile/photo-1.jpg';
+import photo2 from '../assets/akprofile/photo-2.jpg';
+import photo3 from '../assets/akprofile/photo-3.jpg';
+import photo4 from '../assets/akprofile/photo-4.jpg';
+import photo5 from '../assets/akprofile/photo-5.jpg';
+import photo6 from '../assets/akprofile/photo-6.jpg';
+
+const photoSources = [photo1, photo2, photo3, photo4, photo5, photo6];
+const photos = await Promise.all(
+  photoSources.map(async (src, i) => {
+    const thumb = await getImage({ src, width: 480, height: 640, format: 'webp' });
+    const full = await getImage({ src, width: 1400, format: 'webp' });
+    return {
+      thumb: thumb.src,
+      full: full.src,
+      alt: `Placeholder photo ${i + 1} — replace with a real photo`,
+    };
+  })
+);
+
+const profile = {
+  name: 'Ashif Khan',
+  age: 40,
+  tag: 'Product Manager · Raleigh, NC · probably on a trail this weekend',
+};
+
+const fieldStats = [
+  { icon: '📏', label: "5'10\"" },
+  { icon: '📍', label: 'North Hills' },
+  { icon: '🕌', label: 'Occasionally practising' },
+  { icon: '👶', label: "Doesn't have children" },
+  { icon: '🍷', label: "Doesn't drink" },
+];
+
+const prompts = [
+  {
+    question: "Where I'm happiest",
+    answer:
+      'Placeholder answer — replace me with something true about the trails, coffee shops, or quiet mornings that actually make you happy.',
+  },
+  {
+    question: "What I'm building this year",
+    answer:
+      "Placeholder answer — replace me. Talk about a goal, habit, or project you're actually working on.",
+  },
+  {
+    question: 'What my faith looks like, day to day',
+    answer:
+      'Placeholder answer — replace me with something specific and honest, not a chip list.',
+  },
+  {
+    question: "What I'm looking for",
+    answer:
+      'Placeholder answer — replace me with what actually matters to you in a partner.',
+  },
+];
+
+const faithChips = [
+  'Sunni',
+  'Occasionally practising',
+  'Fasting',
+  'Friday Prayer',
+  'Only eats halal food',
+  'Frequent Dua',
+  'Good Akhlaq',
+  'Non-smoker',
+];
+
+const interestChips = ['Hiking', 'Cycling', 'Running', 'Calisthenics', 'Boxing', 'Yoga'];
+
+const personalityChips = ['Calm', 'Affectionate', 'Curious', 'Family-oriented', 'Adventurous'];
+
+const bio = [
+  'Placeholder bio paragraph one — replace with a couple of sentences about who you are day to day.',
+  "Placeholder bio paragraph two — replace with what you're looking for and why this trail metaphor actually fits your life.",
+];
+---
+
+<BaseLayout
+  title="Ashif Khan"
+  description="A private profile page."
+  noindex={true}
+>
+  <!-- ── TRAILHEAD (HERO) ── -->
+  <section class="trailhead">
+    <div class="trailhead-photo">
+      <img src={photos[0].full} alt={photos[0].alt} />
+    </div>
+    <div class="trailhead-content">
+      <div class="trailhead-seal">✓</div>
+      <h1 class="trailhead-name">{profile.name}, <span class="trailhead-age">{profile.age}</span></h1>
+      <p class="trailhead-tag">{profile.tag}</p>
+    </div>
+  </section>
+
+  <!-- ── FIELD STATS ── -->
+  <section class="field-stats">
+    <div class="section field-stats-inner">
+      {fieldStats.map((stat) => (
+        <span class="chip field-stat-chip">
+          <span class="field-stat-icon">{stat.icon}</span>
+          {stat.label}
+        </span>
+      ))}
+    </div>
+  </section>
+
+  <!-- ── THE TRAIL ── -->
+  <div class="trail" id="trail">
+    <div class="trail-track">
+      <div class="trail-progress" id="trailProgress"></div>
+    </div>
+
+    <div class="trail-waypoint" data-waypoint="match">
+      <span class="trail-dot"></span>
+      <span class="trail-label">Match</span>
+      <div class="prompt-card">
+        <p class="prompt-question">{prompts[0].question}</p>
+        <p class="prompt-answer">{prompts[0].answer}</p>
+      </div>
+    </div>
+
+    <div class="route">
+      <p class="route-label">The Route</p>
+      <div class="route-strip" id="routeStrip">
+        {photos.map((photo, i) => (
+          <button class="route-thumb" data-index={i} aria-label={`Open photo ${i + 1} of ${photos.length}`}>
+            <img src={photo.thumb} alt={photo.alt} loading="lazy" />
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <div class="trail-waypoint" data-waypoint="conversation">
+      <span class="trail-dot"></span>
+      <span class="trail-label">First conversation</span>
+      <div class="prompt-card">
+        <p class="prompt-question">{prompts[1].question}</p>
+        <p class="prompt-answer">{prompts[1].answer}</p>
+      </div>
+    </div>
+
+    <div class="faith-block">
+      <p class="faith-label">My Faith</p>
+      <div class="chip-grid">
+        {faithChips.map((chip) => (
+          <span class="chip">{chip}</span>
+        ))}
+      </div>
+    </div>
+
+    <div class="trail-waypoint" data-waypoint="date">
+      <span class="trail-dot"></span>
+      <span class="trail-label">First date</span>
+      <div class="prompt-card">
+        <p class="prompt-question">{prompts[2].question}</p>
+        <p class="prompt-answer">{prompts[2].answer}</p>
+      </div>
+    </div>
+
+    <div class="bio-block">
+      <p class="bio-label">About</p>
+      {bio.map((paragraph) => (
+        <p class="bio-paragraph">{paragraph}</p>
+      ))}
+    </div>
+
+    <div class="trail-waypoint" data-waypoint="family">
+      <span class="trail-dot"></span>
+      <span class="trail-label">Meet the family</span>
+      <div class="prompt-card">
+        <p class="prompt-question">{prompts[3].question}</p>
+        <p class="prompt-answer">{prompts[3].answer}</p>
+      </div>
+    </div>
+
+    <div class="interests-block">
+      <div class="faith-block">
+        <p class="faith-label">Interests</p>
+        <div class="chip-grid">
+          {interestChips.map((chip) => (
+            <span class="chip">{chip}</span>
+          ))}
+        </div>
+      </div>
+      <div class="faith-block">
+        <p class="faith-label">Personality</p>
+        <div class="chip-grid">
+          {personalityChips.map((chip) => (
+            <span class="chip">{chip}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div class="trail-waypoint" data-waypoint="forever">
+      <span class="trail-dot"></span>
+      <span class="trail-label">Forever</span>
+      <div class="cta-block">
+        <p class="cta-text">If this trail looks like one you'd want to walk too —</p>
+        <a href="mailto:ashif@ashifkhan.com" class="btn-primary">Get in touch →</a>
+      </div>
+    </div>
+  </div>
+
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
+      <button class="lightbox-prev" id="lightboxPrev" aria-label="Previous photo">‹</button>
+      <img class="lightbox-img" id="lightboxImg" src="" alt="" />
+      <button class="lightbox-next" id="lightboxNext" aria-label="Next photo">›</button>
+    </div>
+
+  <style>
+    .trailhead {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 70vh;
+      background: var(--ink);
+    }
+
+    .trailhead-photo {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .trailhead-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .trailhead-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 4rem;
+    }
+
+    .trailhead-seal {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1.5px solid var(--accent-light);
+      color: var(--accent-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .trailhead-name {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      color: var(--paper);
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .trailhead-age {
+      color: var(--accent-light);
+    }
+
+    .trailhead-tag {
+      color: rgba(250, 249, 247, 0.6);
+      font-size: 1.0625rem;
+      font-weight: 300;
+      max-width: 40ch;
+    }
+
+    @media (max-width: 768px) {
+      .trailhead {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+      .trailhead-photo {
+        aspect-ratio: 3 / 4;
+      }
+      .trailhead-content {
+        padding: 2.5rem 1.5rem;
+      }
+    }
+
+    /* ── FIELD STATS ── */
+    .field-stats {
+      background: var(--paper-warm);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .field-stats-inner {
+      padding: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .field-stat-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .field-stat-icon {
+      font-size: 0.9rem;
+    }
+
+    /* ── TRAIL ── */
+    .trail {
+      position: relative;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 5rem 2rem 5rem 4rem;
+      background: var(--paper);
+    }
+
+    .trail-track {
+      position: absolute;
+      left: 2rem;
+      top: 5rem;
+      bottom: 5rem;
+      width: 2px;
+      background: var(--border);
+    }
+
+    .trail-progress {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 2px;
+      height: 0%;
+      background: var(--accent);
+    }
+
+    .trail-waypoint {
+      position: relative;
+      margin-bottom: 4rem;
+      padding-left: 2rem;
+    }
+
+    .trail-waypoint:last-child {
+      margin-bottom: 0;
+    }
+
+    .trail-dot {
+      position: absolute;
+      left: -2.4rem;
+      top: 0.15rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--paper);
+      border: 2px solid var(--border-med);
+      transition: background 0.3s, border-color 0.3s, transform 0.3s;
+    }
+
+    .trail-waypoint.lit .trail-dot {
+      background: var(--accent);
+      border-color: var(--accent);
+      transform: scale(1.2);
+    }
+
+    .trail-label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 1rem;
+      transition: color 0.3s;
+    }
+
+    .trail-waypoint.lit .trail-label {
+      color: var(--accent);
+    }
+
+    .prompt-card {
+      background: var(--paper-warm);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      max-width: 60ch;
+    }
+
+    .prompt-question {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--ink-faint);
+      margin-bottom: 0.75rem;
+    }
+
+    .prompt-answer {
+      font-family: var(--serif);
+      font-size: 1.375rem;
+      line-height: 1.4;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+    }
+
+    @media (max-width: 768px) {
+      .trail {
+        padding: 3rem 1.25rem 3rem 3rem;
+      }
+      .trail-track {
+        left: 1.25rem;
+      }
+      .trail-dot {
+        left: -1.65rem;
+      }
+      .prompt-card {
+        padding: 1.5rem;
+      }
+      .prompt-answer {
+        font-size: 1.125rem;
+      }
+    }
+
+    /* ── ROUTE (GALLERY) ── */
+    .route {
+      margin: 0 -4rem 0 -4rem;
+      padding: 0 4rem;
+    }
+
+    .route-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 1rem;
+    }
+
+    .route-strip {
+      display: flex;
+      gap: 0.75rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 0.5rem;
+    }
+
+    .route-thumb {
+      flex: 0 0 auto;
+      width: 200px;
+      aspect-ratio: 3 / 4;
+      border: none;
+      border-radius: 10px;
+      overflow: hidden;
+      padding: 0;
+      cursor: pointer;
+      scroll-snap-align: start;
+      background: var(--paper-warm);
+      transition: transform 0.2s;
+    }
+
+    .route-thumb:hover {
+      transform: translateY(-3px);
+    }
+
+    .route-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(14, 14, 13, 0.94);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s;
+      z-index: 200;
+    }
+
+    .lightbox.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .lightbox-img {
+      max-width: min(90vw, 900px);
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .lightbox-close,
+    .lightbox-prev,
+    .lightbox-next {
+      position: absolute;
+      background: none;
+      border: none;
+      color: var(--paper);
+      font-size: 2rem;
+      cursor: pointer;
+      padding: 0.5rem 1rem;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+
+    .lightbox-close:hover,
+    .lightbox-prev:hover,
+    .lightbox-next:hover {
+      opacity: 1;
+    }
+
+    .lightbox-close {
+      top: 1.5rem;
+      right: 1.5rem;
+    }
+
+    .lightbox-prev {
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .lightbox-next {
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    @media (max-width: 768px) {
+      .route {
+        margin: 0 -1.25rem;
+        padding: 0 1.25rem;
+      }
+      .route-thumb {
+        width: 150px;
+      }
+    }
+
+    /* ── FAITH / CHIP GRID ── */
+    .faith-block {
+      margin-bottom: 4rem;
+    }
+
+    .faith-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 1rem;
+    }
+
+    .chip-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      max-width: 60ch;
+    }
+
+    /* ── BIO ── */
+    .bio-block {
+      margin-bottom: 4rem;
+      max-width: 60ch;
+    }
+
+    .bio-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 1rem;
+    }
+
+    .bio-paragraph {
+      color: var(--ink-light);
+      line-height: 1.75;
+      font-weight: 300;
+      margin-bottom: 1rem;
+    }
+
+    .bio-paragraph:last-child {
+      margin-bottom: 0;
+    }
+
+    .interests-block .faith-block:last-child {
+      margin-bottom: 4rem;
+    }
+
+    /* ── CTA ── */
+    .cta-block {
+      max-width: 60ch;
+    }
+
+    .cta-text {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      color: var(--ink);
+      line-height: 1.3;
+      margin-bottom: 1.5rem;
+    }
+  </style>
+
+  <script define:vars={{ photos }}>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const closeBtn = document.getElementById('lightboxClose');
+    const prevBtn = document.getElementById('lightboxPrev');
+    const nextBtn = document.getElementById('lightboxNext');
+    const thumbs = document.querySelectorAll('.route-thumb');
+    let currentIndex = 0;
+
+    function showPhoto() {
+      const photo = photos[currentIndex];
+      lightboxImg.src = photo.full;
+      lightboxImg.alt = photo.alt;
+    }
+
+    function openLightbox(index) {
+      currentIndex = index;
+      showPhoto();
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    function nextPhoto() {
+      currentIndex = (currentIndex + 1) % photos.length;
+      showPhoto();
+    }
+
+    function prevPhoto() {
+      currentIndex = (currentIndex - 1 + photos.length) % photos.length;
+      showPhoto();
+    }
+
+    thumbs.forEach((btn, i) => btn.addEventListener('click', () => openLightbox(i)));
+    closeBtn?.addEventListener('click', closeLightbox);
+    nextBtn?.addEventListener('click', nextPhoto);
+    prevBtn?.addEventListener('click', prevPhoto);
+
+    lightbox?.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox?.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') nextPhoto();
+      if (e.key === 'ArrowLeft') prevPhoto();
+    });
+
+    let touchStartX = 0;
+    lightboxImg?.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+    });
+    lightboxImg?.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if (dx > 50) prevPhoto();
+      if (dx < -50) nextPhoto();
+    });
+  </script>
+
+  <script>
+    const trail = document.getElementById('trail');
+    const trailProgress = document.getElementById('trailProgress');
+
+    function updateTrailProgress() {
+      if (!trail || !trailProgress) return;
+      const rect = trail.getBoundingClientRect();
+      const total = rect.height;
+      if (total <= 0) return;
+      const viewed = Math.min(Math.max(window.innerHeight * 0.5 - rect.top, 0), total);
+      const pct = (viewed / total) * 100;
+      trailProgress.style.height = pct + '%';
+    }
+
+    window.addEventListener('scroll', updateTrailProgress, { passive: true });
+    window.addEventListener('resize', updateTrailProgress);
+    updateTrailProgress();
+
+    const waypointObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('lit');
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    document.querySelectorAll('.trail-waypoint').forEach((el) => waypointObserver.observe(el));
+  </script>
+</BaseLayout>
