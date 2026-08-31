@@ -63,7 +63,6 @@ const prompts = [
 
 const faithChips = [
   'Sunni',
-  'Occasionally practising',
   'Fasting',
   'Friday Prayer',
   'Only eats halal food',
@@ -791,8 +790,8 @@ const bio = [
         { passive: true }
       );
 
-      const WORD_RADIUS = 90;
-      const WORD_MAX_BOOST = 0.4;
+      const WORD_RADIUS = 150;
+      const WORD_MAX_BOOST = 0.7;
 
       function animateWords() {
         for (let i = 0; i < words.length; i++) {
@@ -802,7 +801,7 @@ const bio = [
           const cy = rect.top + rect.height / 2;
           const dist = Math.hypot(mouseX - cx, mouseY - cy);
           const target = dist < WORD_RADIUS ? 1 + (1 - dist / WORD_RADIUS) * WORD_MAX_BOOST : 1;
-          wordScale[i] += (target - wordScale[i]) * 0.18;
+          wordScale[i] += (target - wordScale[i]) * 0.28;
           if (Math.abs(wordScale[i] - 1) > 0.001) {
             words[i].style.transform = `scale(${wordScale[i].toFixed(3)})`;
           } else if (wordScale[i] !== 1) {
@@ -833,7 +832,7 @@ const bio = [
           const withinY = e.clientY > rect.top && e.clientY < rect.bottom;
           if (nearX && withinY && rect.height > 0) {
             waveTargetY = ((e.clientY - rect.top) / rect.height) * 100;
-            waveTargetAmp = 8;
+            waveTargetAmp = 11;
           } else {
             waveTargetAmp = 0;
           }
@@ -843,11 +842,11 @@ const bio = [
 
       function renderTrailWave() {
         if (basePath && progressPath) {
-          waveCurrentY += (waveTargetY - waveCurrentY) * 0.12;
-          waveAmp += (waveTargetAmp - waveAmp) * 0.08;
+          waveCurrentY += (waveTargetY - waveCurrentY) * 0.18;
+          waveAmp += (waveTargetAmp - waveAmp) * 0.14;
 
           const steps = 48;
-          const sigma = 9;
+          const sigma = 11;
           let d = '';
           for (let i = 0; i <= steps; i++) {
             const y = (100 / steps) * i;
@@ -884,8 +883,8 @@ const bio = [
         });
 
         const thumbScale = thumbButtons.map(() => 1);
-        const THUMB_RADIUS = 160;
-        const THUMB_MAX_BOOST = 0.22;
+        const THUMB_RADIUS = 220;
+        const THUMB_MAX_BOOST = 0.32;
 
         function animateThumbs() {
           for (let i = 0; i < thumbButtons.length; i++) {
@@ -893,7 +892,7 @@ const bio = [
             const cx = rect.left + rect.width / 2;
             const dist = stripActive ? Math.abs(thumbMouseX - cx) : Infinity;
             const target = dist < THUMB_RADIUS ? 1 + (1 - dist / THUMB_RADIUS) * THUMB_MAX_BOOST : 1;
-            thumbScale[i] += (target - thumbScale[i]) * 0.15;
+            thumbScale[i] += (target - thumbScale[i]) * 0.22;
             if (Math.abs(thumbScale[i] - 1) > 0.001) {
               const lift = (thumbScale[i] - 1) * 40;
               thumbButtons[i].style.transform = `translateY(${(-lift).toFixed(2)}px) scale(${thumbScale[i].toFixed(3)})`;
