@@ -115,13 +115,7 @@ const bio = [
   <!-- ── THE TRAIL ── -->
   <div class="trail" id="trail">
     <div class="trail-track">
-      <svg class="trail-wave-svg" viewBox="0 0 24 100" preserveAspectRatio="none" aria-hidden="true">
-        <path id="trailBasePath" class="trail-wave-path trail-wave-path--base" d="M12,0 L12,100" />
-        <clipPath id="trailProgressClip">
-          <rect id="trailProgressClipRect" x="0" y="0" width="24" height="0" />
-        </clipPath>
-        <path id="trailProgressPath" class="trail-wave-path trail-wave-path--progress" d="M12,0 L12,100" clip-path="url(#trailProgressClip)" />
-      </svg>
+      <div class="trail-progress" id="trailProgress"></div>
     </div>
 
     <div class="trail-waypoint" data-waypoint="match">
@@ -129,7 +123,7 @@ const bio = [
       <span class="trail-label">Match</span>
       <div class="prompt-card reveal">
         <p class="prompt-question">{prompts[0].question}</p>
-        <p class="prompt-answer">{prompts[0].answer}</p>
+        <p class="prompt-answer stagger-text">{prompts[0].answer}</p>
       </div>
     </div>
 
@@ -149,7 +143,7 @@ const bio = [
       <span class="trail-label">First conversation</span>
       <div class="prompt-card reveal">
         <p class="prompt-question">{prompts[1].question}</p>
-        <p class="prompt-answer">{prompts[1].answer}</p>
+        <p class="prompt-answer stagger-text">{prompts[1].answer}</p>
       </div>
     </div>
 
@@ -167,14 +161,14 @@ const bio = [
       <span class="trail-label">First date</span>
       <div class="prompt-card reveal">
         <p class="prompt-question">{prompts[2].question}</p>
-        <p class="prompt-answer">{prompts[2].answer}</p>
+        <p class="prompt-answer stagger-text">{prompts[2].answer}</p>
       </div>
     </div>
 
     <div class="bio-block reveal">
       <p class="bio-label">About</p>
       {bio.map((paragraph) => (
-        <p class="bio-paragraph">{paragraph}</p>
+        <p class="bio-paragraph stagger-text">{paragraph}</p>
       ))}
     </div>
 
@@ -183,7 +177,7 @@ const bio = [
       <span class="trail-label">Meet the family</span>
       <div class="prompt-card reveal">
         <p class="prompt-question">{prompts[3].question}</p>
-        <p class="prompt-answer">{prompts[3].answer}</p>
+        <p class="prompt-answer stagger-text">{prompts[3].answer}</p>
       </div>
     </div>
 
@@ -369,7 +363,10 @@ const bio = [
       max-width: var(--max-w);
       margin: 0 auto;
       padding: 8rem 2rem 8rem 4rem;
-      background: var(--paper);
+      background:
+        radial-gradient(60% 40% at 8% 0%, rgba(200, 80, 26, 0.06), transparent 70%),
+        radial-gradient(50% 35% at 100% 60%, rgba(200, 80, 26, 0.04), transparent 70%),
+        var(--paper);
     }
 
     .trail :global(.reveal) {
@@ -379,31 +376,22 @@ const bio = [
 
     .trail-track {
       position: absolute;
-      left: calc(2rem - 11px);
+      left: 2rem;
       top: 5rem;
       bottom: 5rem;
-      width: 24px;
+      width: 2px;
+      background: var(--border);
       pointer-events: none;
     }
 
-    .trail-wave-svg {
-      width: 100%;
-      height: 100%;
-      overflow: visible;
-    }
-
-    .trail-wave-path {
-      fill: none;
-      stroke-width: 2;
-      stroke-linecap: round;
-    }
-
-    .trail-wave-path--base {
-      stroke: var(--border);
-    }
-
-    .trail-wave-path--progress {
-      stroke: var(--accent);
+    .trail-progress {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 2px;
+      height: 0%;
+      background: linear-gradient(180deg, var(--accent-light), var(--accent));
+      box-shadow: 0 0 16px 1px rgba(200, 80, 26, 0.35);
     }
 
     .trail-waypoint {
@@ -483,7 +471,7 @@ const bio = [
         margin-bottom: 4rem;
       }
       .trail-track {
-        left: calc(1.25rem - 11px);
+        left: 1.25rem;
       }
       .trail-dot {
         left: -1.65rem;
@@ -744,10 +732,61 @@ const bio = [
       transform: translateY(-1px);
     }
 
-    /* ── MAGNETIC TEXT ── */
-    .mword {
+    /* ── SCROLL-TRIGGERED TEXT ── */
+    /* One-shot: word spans start blurred/offset, resolve to normal once
+       the paragraph's IntersectionObserver adds .in-view. No continuous
+       loop, no mouse dependency - same mechanism as .reveal. */
+    .stagger-text .sword {
       display: inline-block;
-      will-change: transform;
+      opacity: 0;
+      transform: translateY(0.4em);
+      filter: blur(6px);
+      transition: opacity 0.6s var(--ease-premium), transform 0.6s var(--ease-premium), filter 0.6s var(--ease-premium);
+      transition-delay: calc(var(--i) * 28ms);
+    }
+
+    .stagger-text.in-view .sword {
+      opacity: 1;
+      transform: none;
+      filter: blur(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .stagger-text .sword {
+        transition: none;
+        opacity: 1;
+        transform: none;
+        filter: none;
+      }
+    }
+
+    /* ── SCROLL-TRIGGERED PHOTOS ── */
+    .route-thumb img {
+      filter: grayscale(1) saturate(1);
+      opacity: 0;
+      transform: scale(1.08);
+      transition: filter 0.9s var(--ease-premium), opacity 0.7s var(--ease-premium), transform 0.9s var(--ease-premium);
+      transition-delay: calc(var(--i) * 70ms);
+    }
+
+    .route-thumb.in-view img {
+      filter: grayscale(0) saturate(1);
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .route-thumb:hover img {
+      filter: grayscale(0) saturate(1.25);
+      transform: scale(1.04);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .route-thumb img {
+        transition: filter 0.3s, transform 0.3s;
+        opacity: 1;
+        transform: none;
+        filter: grayscale(0);
+      }
     }
   </style>
 
@@ -819,16 +858,16 @@ const bio = [
 
   <script>
     const trail = document.getElementById('trail');
-    const trailProgressClipRect = document.getElementById('trailProgressClipRect');
+    const trailProgress = document.getElementById('trailProgress');
 
     function updateTrailProgress() {
-      if (!trail || !trailProgressClipRect) return;
+      if (!trail || !trailProgress) return;
       const rect = trail.getBoundingClientRect();
       const total = rect.height;
       if (total <= 0) return;
       const viewed = Math.min(Math.max(window.innerHeight * 0.5 - rect.top, 0), total);
       const pct = (viewed / total) * 100;
-      trailProgressClipRect.setAttribute('height', pct.toFixed(2));
+      trailProgress.style.height = pct.toFixed(2) + '%';
     }
 
     window.addEventListener('scroll', updateTrailProgress, { passive: true });
@@ -850,214 +889,60 @@ const bio = [
   </script>
 
   <script>
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    if (!prefersReducedMotion) {
-      // ── Magnetic text: nearby words gently scale up toward the cursor ──
-      function wrapWords(el) {
-        const text = el.textContent;
-        el.textContent = '';
-        const frag = document.createDocumentFragment();
-        text.split(/(\s+)/).forEach((chunk) => {
-          if (chunk.trim() === '') {
-            frag.appendChild(document.createTextNode(chunk));
-          } else {
-            const span = document.createElement('span');
-            span.className = 'mword';
-            span.textContent = chunk;
-            frag.appendChild(span);
-          }
-        });
-        el.appendChild(frag);
-      }
-
-      document
-        .querySelectorAll('.trailhead-name, .trailhead-tag, .prompt-answer, .bio-paragraph, .cta-text')
-        .forEach(wrapWords);
-
-      const words = Array.from(document.querySelectorAll('.mword'));
-      const wordScale = words.map(() => 1);
-      let wordRects = [];
-      let rectsTicking = false;
-
-      function updateWordRects() {
-        wordRects = words.map((w) => w.getBoundingClientRect());
-        rectsTicking = false;
-      }
-      updateWordRects();
-
-      window.addEventListener(
-        'scroll',
-        () => {
-          if (!rectsTicking) {
-            rectsTicking = true;
-            requestAnimationFrame(updateWordRects);
-          }
-        },
-        { passive: true }
-      );
-      window.addEventListener('resize', updateWordRects);
-
-      // Real cursor position when the mouse is actively moving; otherwise we fall back
-      // to a fixed reading line near the top of the viewport, so the effect still runs
-      // off scroll position alone (e.g. scrolling with a trackpad, cursor never moving).
-      let mouseX = window.innerWidth / 2;
-      let mouseY = window.innerHeight * 0.4;
-      let lastMouseMoveTime = 0;
-      const MOUSE_IDLE_MS = 700;
-
-      window.addEventListener(
-        'mousemove',
-        (e) => {
-          mouseX = e.clientX;
-          mouseY = e.clientY;
-          lastMouseMoveTime = performance.now();
-        },
-        { passive: true }
-      );
-
-      function isMouseActive() {
-        return performance.now() - lastMouseMoveTime < MOUSE_IDLE_MS;
-      }
-
-      const WORD_RADIUS = 150;
-      const WORD_MAX_BOOST = 0.7;
-
-      function animateWords() {
-        const active = isMouseActive();
-        const focusX = active ? mouseX : window.innerWidth / 2;
-        const focusY = active ? mouseY : window.innerHeight * 0.4;
-        for (let i = 0; i < words.length; i++) {
-          const rect = wordRects[i];
-          if (!rect) continue;
-          const cx = rect.left + rect.width / 2;
-          const cy = rect.top + rect.height / 2;
-          const dist = Math.hypot(focusX - cx, focusY - cy);
-          const target = dist < WORD_RADIUS ? 1 + (1 - dist / WORD_RADIUS) * WORD_MAX_BOOST : 1;
-          wordScale[i] += (target - wordScale[i]) * 0.28;
-          if (Math.abs(wordScale[i] - 1) > 0.001) {
-            words[i].style.transform = `scale(${wordScale[i].toFixed(3)})`;
-          } else if (wordScale[i] !== 1) {
-            words[i].style.transform = '';
-            wordScale[i] = 1;
-          }
-        }
-        requestAnimationFrame(animateWords);
-      }
-      requestAnimationFrame(animateWords);
-
-      // ── Trail wave: the trail line ripples toward the cursor, like water ──
-      const trackEl = document.querySelector('.trail-track');
-      const basePath = document.getElementById('trailBasePath');
-      const progressPath = document.getElementById('trailProgressPath');
-
-      let waveTargetY = 50;
-      let waveCurrentY = 50;
-      let waveAmp = 0;
-      let waveTargetAmp = 0;
-      let trailMouseActive = false;
-
-      window.addEventListener(
-        'mousemove',
-        (e) => {
-          if (!trackEl) return;
-          const rect = trackEl.getBoundingClientRect();
-          const nearX = e.clientX > rect.left - 100 && e.clientX < rect.left + rect.width + 100;
-          const withinY = e.clientY > rect.top && e.clientY < rect.bottom;
-          trailMouseActive = nearX && withinY && rect.height > 0;
-          if (trailMouseActive) {
-            waveTargetY = ((e.clientY - rect.top) / rect.height) * 100;
-          }
-        },
-        { passive: true }
-      );
-
-      // While the mouse isn't actively hovering the trail, ripple gently at a
-      // fixed reading line so the wave still reacts as the page scrolls.
-      function updateTrailWaveTarget() {
-        if (trailMouseActive || !trackEl) return;
-        const rect = trackEl.getBoundingClientRect();
-        if (rect.height <= 0) {
-          waveTargetAmp = 0;
-          return;
-        }
-        const focusY = window.innerHeight * 0.4;
-        const pct = ((focusY - rect.top) / rect.height) * 100;
-        if (pct >= -10 && pct <= 110) {
-          waveTargetY = Math.min(100, Math.max(0, pct));
-          waveTargetAmp = 7;
+    // ── Word-by-word text reveal ──
+    // One-shot: wrap each word in a span carrying its index, then let a single
+    // IntersectionObserver flip .in-view on the paragraph when it scrolls into
+    // view. CSS transition-delay (keyed off --i) staggers the words. No
+    // continuous loop, no mouse dependency - this is the same proven pattern
+    // as the site-wide .reveal fade-in and the trail-dot "lit" state.
+    document.querySelectorAll('.stagger-text').forEach((el) => {
+      const text = el.textContent;
+      el.textContent = '';
+      const frag = document.createDocumentFragment();
+      let wordIndex = 0;
+      text.split(/(\s+)/).forEach((chunk) => {
+        if (chunk.trim() === '') {
+          frag.appendChild(document.createTextNode(chunk));
         } else {
-          waveTargetAmp = 0;
+          const span = document.createElement('span');
+          span.className = 'sword';
+          span.style.setProperty('--i', String(wordIndex++));
+          span.textContent = chunk;
+          frag.appendChild(span);
         }
-      }
+      });
+      el.appendChild(frag);
+    });
 
-      function renderTrailWave() {
-        updateTrailWaveTarget();
-        if (trailMouseActive) waveTargetAmp = 11;
-        if (basePath && progressPath) {
-          waveCurrentY += (waveTargetY - waveCurrentY) * 0.18;
-          waveAmp += (waveTargetAmp - waveAmp) * 0.14;
-
-          const steps = 48;
-          const sigma = 11;
-          let d = '';
-          for (let i = 0; i <= steps; i++) {
-            const y = (100 / steps) * i;
-            const bump = waveAmp * Math.exp(-((y - waveCurrentY) * (y - waveCurrentY)) / (2 * sigma * sigma));
-            const x = 12 + bump;
-            d += (i === 0 ? 'M' : 'L') + x.toFixed(2) + ',' + y.toFixed(2) + ' ';
+    const textObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            textObserver.unobserve(entry.target);
           }
-          d = d.trim();
-          basePath.setAttribute('d', d);
-          progressPath.setAttribute('d', d);
-        }
-        requestAnimationFrame(renderTrailWave);
-      }
-      requestAnimationFrame(renderTrailWave);
-
-      // ── Photo dock: nearby thumbnails lift and scale toward the cursor ──
-      const routeStrip = document.getElementById('routeStrip');
-      const thumbButtons = Array.from(document.querySelectorAll('.route-thumb'));
-
-      if (routeStrip && thumbButtons.length) {
-        let thumbMouseX = -9999;
-        let stripActive = false;
-
-        routeStrip.addEventListener(
-          'mousemove',
-          (e) => {
-            thumbMouseX = e.clientX;
-            stripActive = true;
-          },
-          { passive: true }
-        );
-        routeStrip.addEventListener('mouseleave', () => {
-          stripActive = false;
         });
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -10% 0px' }
+    );
+    document.querySelectorAll('.stagger-text').forEach((el) => textObserver.observe(el));
 
-        const thumbScale = thumbButtons.map(() => 1);
-        const THUMB_RADIUS = 220;
-        const THUMB_MAX_BOOST = 0.32;
+    // ── Photo reveal: grayscale to color as each thumbnail scrolls into view ──
+    const routeThumbs = Array.from(document.querySelectorAll('.route-thumb'));
+    routeThumbs.forEach((btn, i) => btn.style.setProperty('--i', String(i)));
 
-        function animateThumbs() {
-          for (let i = 0; i < thumbButtons.length; i++) {
-            const rect = thumbButtons[i].getBoundingClientRect();
-            const cx = rect.left + rect.width / 2;
-            const dist = stripActive ? Math.abs(thumbMouseX - cx) : Infinity;
-            const target = dist < THUMB_RADIUS ? 1 + (1 - dist / THUMB_RADIUS) * THUMB_MAX_BOOST : 1;
-            thumbScale[i] += (target - thumbScale[i]) * 0.22;
-            if (Math.abs(thumbScale[i] - 1) > 0.001) {
-              const lift = (thumbScale[i] - 1) * 40;
-              thumbButtons[i].style.transform = `translateY(${(-lift).toFixed(2)}px) scale(${thumbScale[i].toFixed(3)})`;
-            } else if (thumbScale[i] !== 1) {
-              thumbButtons[i].style.transform = '';
-              thumbScale[i] = 1;
-            }
+    const routeStripEl = document.getElementById('routeStrip');
+    const photoObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            photoObserver.unobserve(entry.target);
           }
-          requestAnimationFrame(animateThumbs);
-        }
-        requestAnimationFrame(animateThumbs);
-      }
-    }
+        });
+      },
+      { root: routeStripEl, threshold: 0.4 }
+    );
+    routeThumbs.forEach((btn) => photoObserver.observe(btn));
   </script>
 </BaseLayout>
